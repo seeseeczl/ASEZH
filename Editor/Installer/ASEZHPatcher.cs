@@ -122,6 +122,69 @@ namespace AmplifyShaderEditor
 					Marker = "string[] ZWriteModeLabels",
 					Find = "m_zWriteMode.EnumTypePopup( ref owner, ZWriteModeStr, ZWriteModeValues );",
 					Replace = "m_zWriteMode.EnumTypePopup( ref owner, ZWriteModeStr, ZWriteModeLabels );"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-search-label",
+					Description = "Search 窗口搜索框标签",
+					FileName = "PaletteParent.cs",
+					Marker = "ASELocale.T( m_searchFilterStr )",
+					Find = "m_searchFilter = EditorGUILayout.TextField( m_searchFilterStr, m_searchFilter );",
+					Replace = "m_searchFilter = EditorGUILayout.TextField( ASELocale.T( m_searchFilterStr ), m_searchFilter );"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-search-width",
+					Description = "Search 标签宽度按译文计算",
+					FileName = "PaletteParent.cs",
+					Marker = "new GUIContent( ASELocale.T( m_searchFilterStr ) )",
+					Find = "m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( m_searchFilterStr ) ).x;",
+					Replace = "m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( ASELocale.T( m_searchFilterStr ) ) ).x;"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-category",
+					Description = "Search 分类折叠标题（Camera And Screen 等）",
+					FileName = "PaletteParent.cs",
+					Marker = "ASELocale.T( current.Key, ASELocale.TableCategory )",
+					Find = "bool visible = GUILayout.Toggle( current.Value.Visible, current.Key, m_foldoutStyle );",
+					Replace = "bool visible = GUILayout.Toggle( current.Value.Visible, ASELocale.T( current.Key, ASELocale.TableCategory ), m_foldoutStyle );"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-node-item",
+					Description = "Search 节点行显示名",
+					FileName = "PaletteParent.cs",
+					Marker = "ASELocale.TNodeListLabel(",
+					Find = "EditorGUI.Toggle( thisRect, current.Value.Contents[ i ].ItemUIContent.text, false, EditorStyles.label );",
+					Replace = "EditorGUI.Toggle( thisRect, ASELocale.TNodeListLabel( current.Value.Contents[ i ].Name, current.Value.Contents[ i ].ItemUIContent.text ), false, EditorStyles.label );"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-node-item-content",
+					Description = "Search 节点行显示名（GUIContent 重载）",
+					FileName = "PaletteParent.cs",
+					Marker = "ASELocale.TNodeListLabel(",
+					Find = "EditorGUI.Toggle( thisRect, current.Value.Contents[ i ].ItemUIContent, false, EditorStyles.label );",
+					Replace = "EditorGUI.Toggle( thisRect, new GUIContent( ASELocale.TNodeListLabel( current.Value.Contents[ i ].Name, current.Value.Contents[ i ].ItemUIContent.text ), current.Value.Contents[ i ].ItemUIContent.image, current.Value.Contents[ i ].ItemUIContent.tooltip ), false, EditorStyles.label );"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-search-filter",
+					Description = "Search 过滤支持中英文",
+					FileName = "PaletteParent.cs",
+					Marker = "bool localeHit = ASELocale.MatchesSearch",
+					Find = "if( searchList.Length == matchesFound )",
+					Replace = "bool localeHit = ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags );\n\t\t\t\t\t\t\t\tif( localeHit || searchList.Length == matchesFound )"
+				},
+				new ASEZHPatch
+				{
+					Id = "palette-build-list",
+					Description = "Search 完整列表过滤支持中英文",
+					FileName = "PaletteParent.cs",
+					Marker = "if( !ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name",
+					Find = "m_currentItems.Add( allItems[ i ] );\n\t\t\t\t\tif( !m_currentCategories.ContainsKey( allItems[ i ].Category ) )",
+					Replace = "if( !ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags ) )\n\t\t\t\t\t\tcontinue;\n\t\t\t\t\tm_currentItems.Add( allItems[ i ] );\n\t\t\t\t\tif( !m_currentCategories.ContainsKey( allItems[ i ].Category ) )"
 				}
 			};
 		}
