@@ -4,7 +4,9 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 
 ## 1. 接入包
 
-把 ASEZH 放进目标工程（拷贝 `Assets/ASEZH` 或 UPM `file:`）。确认 Console 出现 `ASEZH: entries=...`。
+把 ASEZH 放进目标工程（Package Manager Git URL 或 UPM `file:`）。确认 Console 出现 `ASEZH: entries=...`。
+
+若 ASE 使用 `AmplifyShaderEditor.asmdef`，安装器会写入对 `ASEZH.Editor` 的引用。未写入时编译报 `ASELocale does not exist`。
 
 ## 2. 扫描
 

@@ -152,6 +152,7 @@ namespace AmplifyShaderEditor
 		public static List<ASEZHPatchResult> Scan()
 		{
 			var results = new List<ASEZHPatchResult>();
+			results.Add( EnsureAseAssemblyReference( false ) );
 			var catalog = Catalog();
 			for( int i = 0; i < catalog.Count; i++ )
 				results.Add( Evaluate( catalog[ i ], false ) );
@@ -161,11 +162,67 @@ namespace AmplifyShaderEditor
 		public static List<ASEZHPatchResult> ApplyAll()
 		{
 			var results = new List<ASEZHPatchResult>();
+			results.Add( EnsureAseAssemblyReference( true ) );
 			var catalog = Catalog();
 			for( int i = 0; i < catalog.Count; i++ )
 				results.Add( Evaluate( catalog[ i ], true ) );
 			AssetDatabase.Refresh();
 			return results;
+		}
+
+		const string LocaleAssemblyName = "ASEZH.Editor";
+
+		static string FindAseAsmdef()
+		{
+			string[] guids = AssetDatabase.FindAssets( "AmplifyShaderEditor t:AssemblyDefinitionAsset" );
+			for( int i = 0; i < guids.Length; i++ )
+			{
+				string path = AssetDatabase.GUIDToAssetPath( guids[ i ] );
+				if( path.Replace( '\\', '/' ).EndsWith( "/AmplifyShaderEditor.asmdef" ) )
+					return path;
+			}
+			return null;
+		}
+
+		public static ASEZHPatchResult EnsureAseAssemblyReference( bool apply )
+		{
+			var result = new ASEZHPatchResult { Id = "ase-asmdef-ref", File = "AmplifyShaderEditor.asmdef" };
+			string assetPath = FindAseAsmdef();
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "applied";
+				result.Detail = "ASE 无独立 asmdef（预定义程序集可自动引用 ASEZH.Editor）";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			if( text.Contains( "\"" + LocaleAssemblyName + "\"" ) )
+			{
+				result.Status = "applied";
+				result.Detail = "AmplifyShaderEditor 已引用 ASEZH.Editor";
+				return result;
+			}
+			if( !apply )
+			{
+				result.Status = "ready";
+				result.Detail = "ASE 使用独立程序集，必须引用 ASEZH.Editor，否则 ASELocale 找不到";
+				return result;
+			}
+			if( text.Contains( "\"references\": []" ) )
+				text = text.Replace( "\"references\": []", "\"references\": [ \"" + LocaleAssemblyName + "\" ]" );
+			else if( text.Contains( "\"references\":[]" ) )
+				text = text.Replace( "\"references\":[]", "\"references\":[\"" + LocaleAssemblyName + "\"]" );
+			else
+			{
+				result.Status = "mismatch";
+				result.Detail = "无法自动写入 references，请在 AmplifyShaderEditor.asmdef 中手动加入 ASEZH.Editor";
+				return result;
+			}
+			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
+			result.Status = "patched";
+			result.Detail = "已让 AmplifyShaderEditor 引用 ASEZH.Editor";
+			return result;
 		}
 
 		static ASEZHPatchResult Evaluate( ASEZHPatch patch, bool apply )

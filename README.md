@@ -58,6 +58,8 @@ https://github.com/seeseeczl/ASEZH.git
 
 4. 点 Add，等到 Project 窗口出现 `Packages / ASEZH`
 
+ASE 若使用独立程序集 `AmplifyShaderEditor.asmdef`，必须引用 `ASEZH.Editor`（安装器会自动写入）。未引用时会出现 `The name 'ASELocale' does not exist`。
+
 也可以直接改 `Packages/manifest.json`：
 
 ```json

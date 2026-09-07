@@ -13,6 +13,7 @@ ASEZH (本仓库)                    目标 Unity 工程
 - **词典**是长期维护面：只加 table+key+zh。
 - **引擎**不知道 ASE 节点类型，只做查找、clone、开关。
 - **钩子**是版本适配面：随 ASE 源码漂移，用 Installer 扫描 + 手工补。
+- ASE 若有独立 `AmplifyShaderEditor.asmdef`，必须 `references` 包含 `ASEZH.Editor`。`autoReferenced` 只对预定义程序集生效，不会让 ASE 看到 ASEZH。安装器会自动写入这条引用。
 
 查找顺序：
 
