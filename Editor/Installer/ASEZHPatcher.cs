@@ -290,10 +290,11 @@ namespace AmplifyShaderEditor
 			result.File = assetPath;
 			string abs = ToAbsolute( assetPath );
 			string text = File.ReadAllText( abs, Encoding.UTF8 );
-			bool hasArray = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels" );
+			bool hasArray = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels\s*=\s*\{.*?\}\s*;", RegexOptions.Singleline );
 			bool popupLabels = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeLabels" )
 				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeLabels" );
-			if( hasArray && popupLabels )
+			bool needsSemicolonRepair = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteMode(?:Values|Labels)\s*=\s*\{.*?\}(?!\s*;)", RegexOptions.Singleline );
+			if( hasArray && popupLabels && !needsSemicolonRepair )
 			{
 				result.Status = "applied";
 				return result;
@@ -301,7 +302,7 @@ namespace AmplifyShaderEditor
 			bool canInsert = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeValues\s*=" );
 			bool canRetarget = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeValues" )
 				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeValues" );
-			bool canFix = ( !hasArray && canInsert ) || ( !popupLabels && canRetarget );
+			bool canFix = ( !hasArray && canInsert ) || ( !popupLabels && canRetarget ) || needsSemicolonRepair;
 			if( !canFix )
 			{
 				result.Status = "mismatch";
@@ -311,10 +312,14 @@ namespace AmplifyShaderEditor
 			if( !apply )
 			{
 				result.Status = "ready";
-				if( !hasArray )
+				if( needsSemicolonRepair )
+					result.Detail += "（将补数组末尾分号）";
+				else if( !hasArray )
 					result.Detail += "（将补数组定义）";
 				return result;
 			}
+			if( needsSemicolonRepair )
+				TryRepairZWriteArraySemicolons( ref text );
 			if( !hasArray && !TryInsertZWriteLabelsArray( ref text ) )
 			{
 				result.Status = "mismatch";
@@ -339,16 +344,27 @@ namespace AmplifyShaderEditor
 
 		static bool TryInsertZWriteLabelsArray( ref string text )
 		{
-			if( Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels" ) )
+			if( Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels\s*=\s*\{.*?\}\s*;", RegexOptions.Singleline ) )
 				return true;
-			var rx = new Regex( @"((?:public\s+)?static\s+readonly\s+string\s*\[\s*\]\s*ZWriteModeValues\s*=\s*\{.*?\})", RegexOptions.Singleline );
+			var rx = new Regex( @"((?:public\s+)?static\s+readonly\s+string\s*\[\s*\]\s*ZWriteModeValues\s*=\s*\{.*?\}\s*;)", RegexOptions.Singleline );
 			Match m = rx.Match( text );
 			if( !m.Success )
 				return false;
 			string labels = m.Value.Replace( "ZWriteModeValues", "ZWriteModeLabels" );
+			if( !labels.TrimEnd().EndsWith( ";" ) )
+				labels += ";";
 			string nl = text.IndexOf( "\r\n" ) >= 0 ? "\r\n" : "\n";
 			text = text.Insert( m.Index + m.Length, nl + nl + labels );
 			return true;
+		}
+
+		static void TryRepairZWriteArraySemicolons( ref string text )
+		{
+			text = Regex.Replace(
+				text,
+				@"(string\s*\[\s*\]\s*ZWriteMode(?:Values|Labels)\s*=\s*\{.*?\})(\s*)(?!;)",
+				"$1;$2",
+				RegexOptions.Singleline );
 		}
 
 		static void TryRetargetZWritePopup( ref string text )
