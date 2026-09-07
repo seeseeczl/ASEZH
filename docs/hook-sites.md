@@ -26,7 +26,7 @@ ASEZH 本体不修改 ASE 生成逻辑。要让某个 ASE 版本显示中文，�
 
 | 文件 | 钩子 | 做法 |
 | --- | --- | --- |
-| `ZBufferOpHelper.cs` | ZWrite Popup | 增加 `ZWriteModeLabels`，Popup 用 Labels，生成仍用 `ZWriteModeValues` |
+| `ZBufferOpHelper.cs` | ZWrite Popup | 增加 `ZWriteModeLabels`（英文条目与 `ZWriteModeValues` 相同），Popup 用 Labels，生成仍用 `ZWriteModeValues`。安装器会写入数组定义，不能只改 Popup 调用。 |
 | `TemplateDepthModule.cs` / `OutlineNode.cs` | 同上 | Popup 用 Labels |
 | `InlineProperty.EnumTypePopup` | 参数名 | 传入的必须是 Labels，禁止把 keyword 数组直接拿去翻译后写回 |
 

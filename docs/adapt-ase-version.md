@@ -19,7 +19,9 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 | `mismatch` | 这份 ASE 源码和内置锚点不同，必须手工改 |
 | `missing` | 找不到文件（改名或裁剪过的 ASE） |
 
-不要对 `mismatch` 强行套补丁。
+不要对 `mismatch` 强行套补丁。安装器会忽略 tab/空格/换行差异；仍 mismatch 才需要手工改。
+
+`zwrite-labels` 会从 `ZWriteModeValues` 复制出 `ZWriteModeLabels` 再改 Popup。若只改了 Popup 却没有数组，扫描不会标成 applied，再次应用会把数组补上。
 
 ## 3. 手工接入顺序
 

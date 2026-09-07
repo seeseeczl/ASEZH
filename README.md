@@ -8,7 +8,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
 许可：MIT  
-当前版本：`0.0.2`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
+当前版本：`0.0.3`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 

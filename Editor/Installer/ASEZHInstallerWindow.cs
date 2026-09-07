@@ -61,7 +61,7 @@ namespace AmplifyShaderEditor
 			EditorGUILayout.EndScrollView();
 
 			EditorGUILayout.HelpBox(
-				"mismatch 表示当前 ASE 源码与内置锚点不同，这是适配其他版本时的正常情况。对照 docs/hook-sites.md 手工接入即可，不要强行套用补丁。",
+				"mismatch 表示当前 ASE 源码与内置锚点的方法签名仍对不上。安装器已忽略 tab/空格差异。对照 docs/hook-sites.md 手工接入即可，不要强行套用补丁。",
 				MessageType.Info );
 		}
 	}

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -116,9 +117,9 @@ namespace AmplifyShaderEditor
 				new ASEZHPatch
 				{
 					Id = "zwrite-labels",
-					Description = "ZWrite 显示数组与 Shader 值数组拆开",
+					Description = "ZWrite 显示数组与 Shader 值数组拆开（补 Labels 定义）",
 					FileName = "ZBufferOpHelper.cs",
-					Marker = "ZWriteModeLabels",
+					Marker = "string[] ZWriteModeLabels",
 					Find = "m_zWriteMode.EnumTypePopup( ref owner, ZWriteModeStr, ZWriteModeValues );",
 					Replace = "m_zWriteMode.EnumTypePopup( ref owner, ZWriteModeStr, ZWriteModeLabels );"
 				}
@@ -227,6 +228,11 @@ namespace AmplifyShaderEditor
 
 		static ASEZHPatchResult Evaluate( ASEZHPatch patch, bool apply )
 		{
+			if( patch.Id == "zwrite-labels" )
+				return EnsureZWriteLabels( apply );
+			if( patch.Id == "tools-language-toggle" )
+				return EnsureLanguageToggle( apply );
+
 			var result = new ASEZHPatchResult { Id = patch.Id, File = patch.FileName };
 			string assetPath = FindFile( patch.FileName );
 			if( string.IsNullOrEmpty( assetPath ) )
@@ -238,13 +244,14 @@ namespace AmplifyShaderEditor
 			result.File = assetPath;
 			string abs = ToAbsolute( assetPath );
 			string text = File.ReadAllText( abs, Encoding.UTF8 );
-			if( !string.IsNullOrEmpty( patch.Marker ) && text.Contains( patch.Marker ) )
+			if( !string.IsNullOrEmpty( patch.Marker ) && ContainsFlexible( text, patch.Marker ) )
 			{
 				result.Status = "applied";
 				result.Detail = patch.Description;
 				return result;
 			}
-			if( string.IsNullOrEmpty( patch.Find ) || !text.Contains( patch.Find ) )
+			Match findMatch;
+			if( string.IsNullOrEmpty( patch.Find ) || !TryMatchFlexible( text, patch.Find, out findMatch ) )
 			{
 				result.Status = "mismatch";
 				result.Detail = "锚点未命中，需按 docs/adapt-ase-version.md 手工接入：" + patch.Description;
@@ -256,7 +263,8 @@ namespace AmplifyShaderEditor
 				result.Detail = patch.Description;
 				return result;
 			}
-			string next = text.Replace( patch.Find, patch.Replace );
+			string adapted = AdaptStyle( patch.Replace, findMatch.Value );
+			string next = text.Remove( findMatch.Index, findMatch.Length ).Insert( findMatch.Index, adapted );
 			if( next == text )
 			{
 				result.Status = "mismatch";
@@ -267,6 +275,207 @@ namespace AmplifyShaderEditor
 			result.Status = "patched";
 			result.Detail = patch.Description;
 			return result;
+		}
+
+		static ASEZHPatchResult EnsureZWriteLabels( bool apply )
+		{
+			var result = new ASEZHPatchResult { Id = "zwrite-labels", File = "ZBufferOpHelper.cs", Detail = "ZWrite 显示数组与 Shader 值数组拆开（补 Labels 定义）" };
+			string assetPath = FindFile( "ZBufferOpHelper.cs" );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 ZBufferOpHelper.cs";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			bool hasArray = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels" );
+			bool popupLabels = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeLabels" )
+				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeLabels" );
+			if( hasArray && popupLabels )
+			{
+				result.Status = "applied";
+				return result;
+			}
+			bool canInsert = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeValues\s*=" );
+			bool canRetarget = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeValues" )
+				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeValues" );
+			bool canFix = ( !hasArray && canInsert ) || ( !popupLabels && canRetarget );
+			if( !canFix )
+			{
+				result.Status = "mismatch";
+				result.Detail = "未找到 ZWriteModeValues 定义或 Popup 用法，需按 docs/hook-sites.md 手工接入";
+				return result;
+			}
+			if( !apply )
+			{
+				result.Status = "ready";
+				if( !hasArray )
+					result.Detail += "（将补数组定义）";
+				return result;
+			}
+			if( !hasArray && !TryInsertZWriteLabelsArray( ref text ) )
+			{
+				result.Status = "mismatch";
+				result.Detail = "无法从 ZWriteModeValues 复制 Labels 数组";
+				return result;
+			}
+			if( !popupLabels )
+				TryRetargetZWritePopup( ref text );
+			hasArray = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels" );
+			popupLabels = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeLabels" )
+				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeLabels" );
+			if( !hasArray || !popupLabels )
+			{
+				result.Status = "mismatch";
+				result.Detail = "ZWrite Labels 未能完整写入";
+				return result;
+			}
+			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
+			result.Status = "patched";
+			return result;
+		}
+
+		static bool TryInsertZWriteLabelsArray( ref string text )
+		{
+			if( Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels" ) )
+				return true;
+			var rx = new Regex( @"((?:public\s+)?static\s+readonly\s+string\s*\[\s*\]\s*ZWriteModeValues\s*=\s*\{.*?\})", RegexOptions.Singleline );
+			Match m = rx.Match( text );
+			if( !m.Success )
+				return false;
+			string labels = m.Value.Replace( "ZWriteModeValues", "ZWriteModeLabels" );
+			string nl = text.IndexOf( "\r\n" ) >= 0 ? "\r\n" : "\n";
+			text = text.Insert( m.Index + m.Length, nl + nl + labels );
+			return true;
+		}
+
+		static void TryRetargetZWritePopup( ref string text )
+		{
+			text = Regex.Replace( text, @"(EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*)ZWriteModeValues", "$1ZWriteModeLabels" );
+			text = Regex.Replace( text, @"(EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[^,]+,\s*)ZWriteModeValues", "$1ZWriteModeLabels" );
+		}
+
+		static ASEZHPatchResult EnsureLanguageToggle( bool apply )
+		{
+			var result = new ASEZHPatchResult { Id = "tools-language-toggle", File = "ToolsWindow.cs", Detail = "工具栏语言开关（源码图标右侧）" };
+			string assetPath = FindFile( "ToolsWindow.cs" );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 ToolsWindow.cs";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			if( ContainsFlexible( text, "ASELocale.DrawLanguageToggle" ) )
+			{
+				result.Status = "applied";
+				return result;
+			}
+			var drawRx = new Regex( @"m_openSourceCodeButton\.Draw\(\s*TabX\s*\+\s*m_transformedArea\.x\s*\+\s*m_openSourceCodeButton\.ButtonSpacing\s*,\s*TabY\s*\)\s*;" );
+			Match draw = drawRx.Match( text );
+			if( !draw.Success )
+			{
+				result.Status = "mismatch";
+				result.Detail = "未找到源码图标 Draw 调用，需按 docs/hook-sites.md 手工接入";
+				return result;
+			}
+			if( !apply )
+			{
+				result.Status = "ready";
+				return result;
+			}
+			string after = text.Substring( draw.Index + draw.Length );
+			Match color = Regex.Match( after, @"\A\s*GUI\.color\s*=\s*bufferedColor\s*;" );
+			int insertAt = draw.Index + draw.Length + ( color.Success ? color.Length : 0 );
+			string indent = LineIndent( text, draw.Index );
+			string nl = text.IndexOf( "\r\n" ) >= 0 ? "\r\n" : "\n";
+			string tab = indent.IndexOf( '\t' ) >= 0 ? "\t" : "    ";
+			string block = "";
+			if( !color.Success && text.IndexOf( "bufferedColor" ) >= 0 )
+				block += nl + indent + "GUI.color = bufferedColor;";
+			block += nl + indent + "const float sourceIconW = 24f;"
+				+ nl + indent + "const float langW = 46f;"
+				+ nl + indent + "const float langH = 21f;"
+				+ nl + indent + "Rect languageRect = new Rect("
+				+ nl + indent + tab + "TabX + m_transformedArea.x + m_openSourceCodeButton.ButtonSpacing + sourceIconW + 8f,"
+				+ nl + indent + tab + "TabY,"
+				+ nl + indent + tab + "langW,"
+				+ nl + indent + tab + "langH );"
+				+ nl + indent + "if( ASELocale.DrawLanguageToggle( languageRect ) )"
+				+ nl + indent + tab + "m_parentWindow.RequestRepaint();";
+			text = text.Insert( insertAt, block );
+			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
+			result.Status = "patched";
+			return result;
+		}
+
+		static bool ContainsFlexible( string text, string needle )
+		{
+			if( string.IsNullOrEmpty( needle ) )
+				return false;
+			if( text.IndexOf( needle, StringComparison.Ordinal ) >= 0 )
+				return true;
+			Match unused;
+			return TryMatchFlexible( text, needle, out unused );
+		}
+
+		static bool TryMatchFlexible( string text, string find, out Match match )
+		{
+			match = Match.Empty;
+			if( string.IsNullOrEmpty( find ) )
+				return false;
+			match = Regex.Match( text, ToFlexiblePattern( find ) );
+			return match.Success;
+		}
+
+		static string ToFlexiblePattern( string find )
+		{
+			var sb = new StringBuilder();
+			bool inWs = false;
+			for( int i = 0; i < find.Length; i++ )
+			{
+				char c = find[ i ];
+				if( char.IsWhiteSpace( c ) )
+				{
+					if( !inWs )
+					{
+						sb.Append( @"\s+" );
+						inWs = true;
+					}
+				}
+				else
+				{
+					inWs = false;
+					sb.Append( Regex.Escape( c.ToString() ) );
+				}
+			}
+			return sb.ToString();
+		}
+
+		static string AdaptStyle( string catalogReplace, string matched )
+		{
+			string r = catalogReplace.Replace( "\r\n", "\n" );
+			bool crlf = matched.IndexOf( "\r\n" ) >= 0;
+			if( matched.IndexOf( '\t' ) < 0 )
+				r = r.Replace( "\t", "    " );
+			if( crlf )
+				r = r.Replace( "\n", "\r\n" );
+			return r;
+		}
+
+		static string LineIndent( string text, int index )
+		{
+			int start = index;
+			while( start > 0 && text[ start - 1 ] != '\n' )
+				start--;
+			int i = start;
+			while( i < index && ( text[ i ] == ' ' || text[ i ] == '\t' ) )
+				i++;
+			return text.Substring( start, i - start );
 		}
 
 		static string ToAbsolute( string assetPath )
