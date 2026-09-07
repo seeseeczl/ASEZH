@@ -1,0 +1,5399 @@
+{
+  "entries": [
+    {
+      "table": "category",
+      "key": "Camera And Screen",
+      "zh": "摄像机与屏幕"
+    },
+    {
+      "table": "category",
+      "key": "Constants And Properties",
+      "zh": "常量与属性"
+    },
+    {
+      "table": "category",
+      "key": "Functions",
+      "zh": "函数"
+    },
+    {
+      "table": "category",
+      "key": "Image Effects",
+      "zh": "图像效果"
+    },
+    {
+      "table": "category",
+      "key": "Lighting",
+      "zh": "光照"
+    },
+    {
+      "table": "category",
+      "key": "Logical Operators",
+      "zh": "逻辑运算"
+    },
+    {
+      "table": "category",
+      "key": "Math Operators",
+      "zh": "数学运算"
+    },
+    {
+      "table": "category",
+      "key": "Matrix Operators",
+      "zh": "矩阵运算"
+    },
+    {
+      "table": "category",
+      "key": "Matrix Transform",
+      "zh": "矩阵变换"
+    },
+    {
+      "table": "category",
+      "key": "Miscellaneous",
+      "zh": "杂项"
+    },
+    {
+      "table": "category",
+      "key": "Object",
+      "zh": "物体"
+    },
+    {
+      "table": "category",
+      "key": "Object Transform",
+      "zh": "物体变换"
+    },
+    {
+      "table": "category",
+      "key": "Primitive",
+      "zh": "基元"
+    },
+    {
+      "table": "category",
+      "key": "Surface Data",
+      "zh": "表面数据"
+    },
+    {
+      "table": "category",
+      "key": "Textures",
+      "zh": "纹理"
+    },
+    {
+      "table": "category",
+      "key": "Time",
+      "zh": "时间"
+    },
+    {
+      "table": "category",
+      "key": "Trigonometry Operators",
+      "zh": "三角函数"
+    },
+    {
+      "table": "category",
+      "key": "UV Coordinates",
+      "zh": "UV 坐标"
+    },
+    {
+      "table": "category",
+      "key": "Vector Operators",
+      "zh": "向量运算"
+    },
+    {
+      "table": "category",
+      "key": "Vertex Data",
+      "zh": "顶点数据"
+    },
+    {
+      "table": "category",
+      "key": "Vertex Transform",
+      "zh": "顶点变换"
+    },
+    {
+      "table": "category",
+      "key": "Master",
+      "zh": "主节点"
+    },
+    {
+      "table": "category",
+      "key": "Default",
+      "zh": "默认"
+    },
+    {
+      "table": "category",
+      "key": "Commentary",
+      "zh": "注释"
+    },
+    {
+      "table": "category",
+      "key": "<Custom>",
+      "zh": "<自定义>"
+    },
+    {
+      "table": "panel",
+      "key": "Search",
+      "zh": "搜索"
+    },
+    {
+      "table": "panel",
+      "key": "Output Node",
+      "zh": "输出节点"
+    },
+    {
+      "table": "panel",
+      "key": "Node Properties",
+      "zh": "节点属性"
+    },
+    {
+      "table": "panel",
+      "key": "Common Properties",
+      "zh": "通用属性"
+    },
+    {
+      "table": "panel",
+      "key": "Additional Options",
+      "zh": "附加选项"
+    },
+    {
+      "table": "panel",
+      "key": "Custom Options",
+      "zh": "自定义选项"
+    },
+    {
+      "table": "panel",
+      "key": "Shader Name",
+      "zh": "着色器名称"
+    },
+    {
+      "table": "panel",
+      "key": "Shader Type",
+      "zh": "着色器类型"
+    },
+    {
+      "table": "panel",
+      "key": "Precision",
+      "zh": "精度"
+    },
+    {
+      "table": "panel",
+      "key": "Use Sampling Macros",
+      "zh": "使用采样宏"
+    },
+    {
+      "table": "panel",
+      "key": "Instanced Terrain",
+      "zh": "实例化地形"
+    },
+    {
+      "table": "panel",
+      "key": "Fallback",
+      "zh": "回退着色器"
+    },
+    {
+      "table": "panel",
+      "key": "Custom Editor",
+      "zh": "自定义编辑器"
+    },
+    {
+      "table": "panel",
+      "key": "SubShader",
+      "zh": "子着色器"
+    },
+    {
+      "table": "panel",
+      "key": "Pass",
+      "zh": "通道"
+    },
+    {
+      "table": "panel",
+      "key": "Name",
+      "zh": "名称"
+    },
+    {
+      "table": "panel",
+      "key": "Value",
+      "zh": "值"
+    },
+    {
+      "table": "panel",
+      "key": "Dependencies",
+      "zh": "依赖"
+    },
+    {
+      "table": "panel",
+      "key": "LODs",
+      "zh": "LOD"
+    },
+    {
+      "table": "panel",
+      "key": "Material Type",
+      "zh": "材质类型"
+    },
+    {
+      "table": "panel",
+      "key": "Edit Template",
+      "zh": "编辑模板"
+    },
+    {
+      "table": "panel",
+      "key": "Reload Template",
+      "zh": "重新加载模板"
+    },
+    {
+      "table": "panel",
+      "key": "Category",
+      "zh": "分类"
+    },
+    {
+      "table": "panel",
+      "key": "Parameters",
+      "zh": "参数"
+    },
+    {
+      "table": "option_label",
+      "key": "Lighting Model",
+      "zh": "光照模型"
+    },
+    {
+      "table": "option_label",
+      "key": "Workflow",
+      "zh": "工作流"
+    },
+    {
+      "table": "option_label",
+      "key": "Surface",
+      "zh": "表面"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend",
+      "zh": "混合"
+    },
+    {
+      "table": "option_label",
+      "key": "Two Sided",
+      "zh": "双面"
+    },
+    {
+      "table": "option_label",
+      "key": "Fragment Normal Space",
+      "zh": "片元法线空间"
+    },
+    {
+      "table": "option_label",
+      "key": "Forward Only",
+      "zh": "仅 Forward"
+    },
+    {
+      "table": "option_label",
+      "key": "Transmission",
+      "zh": "透射"
+    },
+    {
+      "table": "option_label",
+      "key": "Transmission Shadow",
+      "zh": "透射阴影"
+    },
+    {
+      "table": "option_label",
+      "key": "Translucency",
+      "zh": "半透明"
+    },
+    {
+      "table": "option_label",
+      "key": "Translucency Strength",
+      "zh": "半透明强度"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal Distortion",
+      "zh": "法线扭曲"
+    },
+    {
+      "table": "option_label",
+      "key": "Scattering",
+      "zh": "散射"
+    },
+    {
+      "table": "option_label",
+      "key": "Direct",
+      "zh": "直接光"
+    },
+    {
+      "table": "option_label",
+      "key": "Ambient",
+      "zh": "环境光"
+    },
+    {
+      "table": "option_label",
+      "key": "Shadow",
+      "zh": "阴影"
+    },
+    {
+      "table": "option_label",
+      "key": "Cast Shadows",
+      "zh": "投射阴影"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Shadow Threshold",
+      "zh": "使用阴影阈值"
+    },
+    {
+      "table": "option_label",
+      "key": "Receive Shadows",
+      "zh": "接收阴影"
+    },
+    {
+      "table": "option_label",
+      "key": "Receive SSAO",
+      "zh": "接收 SSAO"
+    },
+    {
+      "table": "option_label",
+      "key": "GPU Instancing",
+      "zh": "GPU 实例化"
+    },
+    {
+      "table": "option_label",
+      "key": "LOD CrossFade",
+      "zh": "LOD 交叉淡入"
+    },
+    {
+      "table": "option_label",
+      "key": "Built-in Fog",
+      "zh": "内置雾效"
+    },
+    {
+      "table": "option_label",
+      "key": "Meta Pass",
+      "zh": "Meta 通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Override Baked GI",
+      "zh": "覆盖烘焙 GI"
+    },
+    {
+      "table": "option_label",
+      "key": "Extra Pre Pass",
+      "zh": "额外预通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Tessellation",
+      "zh": "曲面细分"
+    },
+    {
+      "table": "option_label",
+      "key": "Phong",
+      "zh": "Phong 平滑"
+    },
+    {
+      "table": "option_label",
+      "key": "Type",
+      "zh": "类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Strength",
+      "zh": "强度"
+    },
+    {
+      "table": "option_label",
+      "key": "Tess",
+      "zh": "细分"
+    },
+    {
+      "table": "option_label",
+      "key": "Min",
+      "zh": "最小"
+    },
+    {
+      "table": "option_label",
+      "key": "Max",
+      "zh": "最大"
+    },
+    {
+      "table": "option_label",
+      "key": "Edge Length",
+      "zh": "边长"
+    },
+    {
+      "table": "option_label",
+      "key": "Max Displacement",
+      "zh": "最大位移"
+    },
+    {
+      "table": "option_label",
+      "key": "Write Depth",
+      "zh": "写入深度"
+    },
+    {
+      "table": "option_label",
+      "key": "Early Z",
+      "zh": "早期 Z"
+    },
+    {
+      "table": "option_label",
+      "key": "Vertex Position",
+      "zh": "顶点位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Debug Display",
+      "zh": "调试显示"
+    },
+    {
+      "table": "option_label",
+      "key": "Clear Coat",
+      "zh": "清漆层"
+    },
+    {
+      "table": "option_label",
+      "key": "Refraction Model",
+      "zh": "折射模型"
+    },
+    {
+      "table": "option_label",
+      "key": "Affect BaseColor",
+      "zh": "影响基础色"
+    },
+    {
+      "table": "option_label",
+      "key": "Affect Normal",
+      "zh": "影响法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Affect MAOS",
+      "zh": "影响 MAOS"
+    },
+    {
+      "table": "option_label",
+      "key": "Affect Emission",
+      "zh": "影响自发光"
+    },
+    {
+      "table": "option_label",
+      "key": "Support LOD CrossFade",
+      "zh": "支持 LOD 交叉淡入"
+    },
+    {
+      "table": "option_label",
+      "key": "Angle Fade",
+      "zh": "角度淡出"
+    },
+    {
+      "table": "option_label",
+      "key": "External Alpha",
+      "zh": "外部 Alpha"
+    },
+    {
+      "table": "option_label",
+      "key": "Depth Only",
+      "zh": "仅深度"
+    },
+    {
+      "table": "option_label",
+      "key": "Ambient Light",
+      "zh": "环境光"
+    },
+    {
+      "table": "option_label",
+      "key": "Add Pass",
+      "zh": "附加通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Deferred Pass",
+      "zh": "Deferred 通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Dither Shadows",
+      "zh": "抖动阴影"
+    },
+    {
+      "table": "option_label",
+      "key": "Fwd Specular Highlights Toggle",
+      "zh": "Forward 高光开关"
+    },
+    {
+      "table": "option_label",
+      "key": "Fwd Reflections Toggle",
+      "zh": "Forward 反射开关"
+    },
+    {
+      "table": "option_label",
+      "key": "Disable Batching",
+      "zh": "禁用合批"
+    },
+    {
+      "table": "panel",
+      "key": "General",
+      "zh": "通用"
+    },
+    {
+      "table": "panel",
+      "key": "Blend Mode",
+      "zh": "混合模式"
+    },
+    {
+      "table": "panel",
+      "key": "Stencil Buffer",
+      "zh": "模板缓冲"
+    },
+    {
+      "table": "panel",
+      "key": "Outline",
+      "zh": "描边"
+    },
+    {
+      "table": "panel",
+      "key": "Billboard",
+      "zh": "公告板"
+    },
+    {
+      "table": "panel",
+      "key": "Depth",
+      "zh": "深度"
+    },
+    {
+      "table": "panel",
+      "key": "Rendering Options",
+      "zh": "渲染选项"
+    },
+    {
+      "table": "panel",
+      "key": "Rendering Platforms",
+      "zh": "渲染平台"
+    },
+    {
+      "table": "panel",
+      "key": "Additional Surface Options",
+      "zh": "额外表面选项"
+    },
+    {
+      "table": "panel",
+      "key": "Additional Use Passes",
+      "zh": "额外 Use Pass"
+    },
+    {
+      "table": "panel",
+      "key": "Additional Directives",
+      "zh": "额外指令"
+    },
+    {
+      "table": "panel",
+      "key": "Custom SubShader Tags",
+      "zh": "自定义 SubShader 标签"
+    },
+    {
+      "table": "panel",
+      "key": "Material Properties",
+      "zh": "材质属性"
+    },
+    {
+      "table": "panel",
+      "key": "Attributes",
+      "zh": "特性"
+    },
+    {
+      "table": "option_label",
+      "key": "Light Model",
+      "zh": "光照模型"
+    },
+    {
+      "table": "option_label",
+      "key": "Shader Model",
+      "zh": "着色器模型"
+    },
+    {
+      "table": "option_label",
+      "key": "Cull Mode",
+      "zh": "剔除模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Render Path",
+      "zh": "渲染路径"
+    },
+    {
+      "table": "option_label",
+      "key": "Queue Index",
+      "zh": "队列偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Vertex Output",
+      "zh": "顶点输出"
+    },
+    {
+      "table": "option_label",
+      "key": "Shader LOD",
+      "zh": "着色器 LOD"
+    },
+    {
+      "table": "option_label",
+      "key": "Render Type",
+      "zh": "渲染类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Render Queue",
+      "zh": "渲染队列"
+    },
+    {
+      "table": "option_label",
+      "key": "Mask Clip Value",
+      "zh": "裁剪阈值"
+    },
+    {
+      "table": "option_label",
+      "key": "Refraction Layer",
+      "zh": "折射层"
+    },
+    {
+      "table": "option_label",
+      "key": "Alpha To Coverage",
+      "zh": "Alpha 覆盖"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend RGB",
+      "zh": "RGB 混合"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend Alpha",
+      "zh": "Alpha 混合"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend Op RGB",
+      "zh": "RGB 混合操作"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend Op Alpha",
+      "zh": "Alpha 混合操作"
+    },
+    {
+      "table": "option_label",
+      "key": "Src",
+      "zh": "源"
+    },
+    {
+      "table": "option_label",
+      "key": "Dst",
+      "zh": "目标"
+    },
+    {
+      "table": "option_label",
+      "key": "Color Mask",
+      "zh": "颜色遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Reference",
+      "zh": "参考值"
+    },
+    {
+      "table": "option_label",
+      "key": "Read Mask",
+      "zh": "读遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Write Mask",
+      "zh": "写遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Comparison",
+      "zh": "比较"
+    },
+    {
+      "table": "option_label",
+      "key": "Pass Front",
+      "zh": "正面通过"
+    },
+    {
+      "table": "option_label",
+      "key": "Fail Front",
+      "zh": "正面失败"
+    },
+    {
+      "table": "option_label",
+      "key": "ZFail Front",
+      "zh": "正面 Z 失败"
+    },
+    {
+      "table": "option_label",
+      "key": "Comp. Front",
+      "zh": "正面比较"
+    },
+    {
+      "table": "option_label",
+      "key": "Comp. Back",
+      "zh": "背面比较"
+    },
+    {
+      "table": "option_label",
+      "key": "Pass Back",
+      "zh": "背面通过"
+    },
+    {
+      "table": "option_label",
+      "key": "Fail Back",
+      "zh": "背面失败"
+    },
+    {
+      "table": "option_label",
+      "key": "ZFail Back",
+      "zh": "背面 Z 失败"
+    },
+    {
+      "table": "option_label",
+      "key": "Mode",
+      "zh": "模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Color",
+      "zh": "颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Width",
+      "zh": "宽度"
+    },
+    {
+      "table": "option_label",
+      "key": "No Fog",
+      "zh": "不受雾影响"
+    },
+    {
+      "table": "option_label",
+      "key": "Ignore Rotation",
+      "zh": "忽略旋转"
+    },
+    {
+      "table": "option_label",
+      "key": "Affect Normal/Tangent",
+      "zh": "影响法线/切线"
+    },
+    {
+      "table": "option_label",
+      "key": "ZWrite Mode",
+      "zh": "ZWrite 模式"
+    },
+    {
+      "table": "option_label",
+      "key": "ZTest Mode",
+      "zh": "ZTest 模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Offset",
+      "zh": "偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Extra Depth Pass",
+      "zh": "额外深度通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Factor",
+      "zh": "因子"
+    },
+    {
+      "table": "option_label",
+      "key": "Units",
+      "zh": "单位"
+    },
+    {
+      "table": "option_label",
+      "key": "Per Vertex Light",
+      "zh": "逐顶点光照"
+    },
+    {
+      "table": "option_label",
+      "key": "Lightmaps",
+      "zh": "光照贴图"
+    },
+    {
+      "table": "option_label",
+      "key": "Dynamic Global GI",
+      "zh": "动态全局 GI"
+    },
+    {
+      "table": "option_label",
+      "key": "Directional lightmaps",
+      "zh": "方向光照贴图"
+    },
+    {
+      "table": "option_label",
+      "key": "LOD Group Cross Fade",
+      "zh": "LOD 组交叉淡入"
+    },
+    {
+      "table": "option_label",
+      "key": "Ignore Projector",
+      "zh": "忽略投影器"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Default Shadow Caster",
+      "zh": "使用默认阴影投射"
+    },
+    {
+      "table": "option_label",
+      "key": "Force No Shadow Casting",
+      "zh": "强制不投射阴影"
+    },
+    {
+      "table": "option_label",
+      "key": "Force Enable Instancing",
+      "zh": "强制开启实例化"
+    },
+    {
+      "table": "option_label",
+      "key": "Force Disable Instancing",
+      "zh": "强制关闭实例化"
+    },
+    {
+      "table": "option_label",
+      "key": "Emission GI Flag",
+      "zh": "自发光 GI 标记"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Type",
+      "zh": "自定义类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Chromatic Aberration",
+      "zh": "色差"
+    },
+    {
+      "table": "option_label",
+      "key": "Max Disp.",
+      "zh": "最大位移"
+    },
+    {
+      "table": "option_label",
+      "key": "Depth ZTest",
+      "zh": "深度 ZTest"
+    },
+    {
+      "table": "option_label",
+      "key": "Hide in Inspector",
+      "zh": "在检视器中隐藏"
+    },
+    {
+      "table": "option_label",
+      "key": "Bezier Curve",
+      "zh": "贝塞尔曲线"
+    },
+    {
+      "table": "option_label",
+      "key": "Cubic Bezier",
+      "zh": "三次贝塞尔"
+    },
+    {
+      "table": "panel",
+      "key": "Graph Properties",
+      "zh": "图表属性"
+    },
+    {
+      "table": "panel",
+      "key": "Internal Data",
+      "zh": "内部数据"
+    },
+    {
+      "table": "panel",
+      "key": "Enums",
+      "zh": "枚举"
+    },
+    {
+      "table": "panel",
+      "key": "Custom Attributes",
+      "zh": "自定义特性"
+    },
+    {
+      "table": "panel",
+      "key": "Headers",
+      "zh": "标题"
+    },
+    {
+      "table": "panel",
+      "key": "MZGUI",
+      "zh": "MZGUI"
+    },
+    {
+      "table": "panel",
+      "key": "Inputs",
+      "zh": "输入"
+    },
+    {
+      "table": "panel",
+      "key": "References",
+      "zh": "引用"
+    },
+    {
+      "table": "panel",
+      "key": "Texture",
+      "zh": "纹理"
+    },
+    {
+      "table": "panel",
+      "key": "Top Texture",
+      "zh": "顶部纹理"
+    },
+    {
+      "table": "panel",
+      "key": "Middle Texture",
+      "zh": "中部纹理"
+    },
+    {
+      "table": "panel",
+      "key": "Bottom Texture",
+      "zh": "底部纹理"
+    },
+    {
+      "table": "option_label",
+      "key": "Property Name",
+      "zh": "属性名"
+    },
+    {
+      "table": "option_label",
+      "key": "Variable Mode",
+      "zh": "变量模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Auto-Register",
+      "zh": "自动注册"
+    },
+    {
+      "table": "option_label",
+      "key": "Material",
+      "zh": "材质"
+    },
+    {
+      "table": "option_label",
+      "key": "Default Texture",
+      "zh": "默认纹理"
+    },
+    {
+      "table": "option_label",
+      "key": "Auto-Cast Mode",
+      "zh": "自动转换模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Index",
+      "zh": "索引"
+    },
+    {
+      "table": "option_label",
+      "key": "UV Set",
+      "zh": "UV 通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Mip Mode",
+      "zh": "Mip 模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Unpack Normal Map",
+      "zh": "解包法线贴图"
+    },
+    {
+      "table": "option_label",
+      "key": "Reference Sampler",
+      "zh": "参考采样器"
+    },
+    {
+      "table": "option_label",
+      "key": "Default Value",
+      "zh": "默认值"
+    },
+    {
+      "table": "option_label",
+      "key": "Material Value",
+      "zh": "材质值"
+    },
+    {
+      "table": "option_label",
+      "key": "Auto Gamma To Linear",
+      "zh": "自动伽马转线性"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Alpha",
+      "zh": "使用 Alpha"
+    },
+    {
+      "table": "option_label",
+      "key": "Hybrid Instanced",
+      "zh": "混合实例化"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Property",
+      "zh": "作为属性"
+    },
+    {
+      "table": "option_label",
+      "key": "Order Index",
+      "zh": "排序索引"
+    },
+    {
+      "table": "option_label",
+      "key": "Color Space",
+      "zh": "色彩空间"
+    },
+    {
+      "table": "option_label",
+      "key": "Pixel Width",
+      "zh": "像素宽度"
+    },
+    {
+      "table": "option_label",
+      "key": "Scale Offset",
+      "zh": "缩放偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Enable Editor",
+      "zh": "启用编辑器"
+    },
+    {
+      "table": "option_label",
+      "key": "Split Channel",
+      "zh": "拆分通道"
+    },
+    {
+      "table": "option_label",
+      "key": "HDR",
+      "zh": "高动态范围"
+    },
+    {
+      "table": "option_label",
+      "key": "Gamma",
+      "zh": "伽马"
+    },
+    {
+      "table": "option_label",
+      "key": "Per Renderer Data",
+      "zh": "每渲染器数据"
+    },
+    {
+      "table": "option_label",
+      "key": "Header",
+      "zh": "标题"
+    },
+    {
+      "table": "option_label",
+      "key": "No Scale Offset",
+      "zh": "无缩放偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal",
+      "zh": "法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Single Line Texture",
+      "zh": "单行纹理"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom",
+      "zh": "自定义"
+    },
+    {
+      "table": "option_label",
+      "key": "Enum",
+      "zh": "枚举"
+    },
+    {
+      "table": "option_label",
+      "key": "Create Enums",
+      "zh": "创建枚举"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Engine Enum Class",
+      "zh": "使用引擎枚举类"
+    },
+    {
+      "table": "option_label",
+      "key": "Int Range",
+      "zh": "整数范围"
+    },
+    {
+      "table": "option_label",
+      "key": "Toggle",
+      "zh": "开关"
+    },
+    {
+      "table": "option_label",
+      "key": "No Keyword Toggle",
+      "zh": "无 Keyword 开关"
+    },
+    {
+      "table": "option_label",
+      "key": "Remap Sliders",
+      "zh": "重映射滑条"
+    },
+    {
+      "table": "option_label",
+      "key": "Foldout",
+      "zh": "折叠"
+    },
+    {
+      "table": "option_label",
+      "key": "Ramp",
+      "zh": "渐变条"
+    },
+    {
+      "table": "option_label",
+      "key": "Vector",
+      "zh": "矢量"
+    },
+    {
+      "table": "option_label",
+      "key": "HelpBox",
+      "zh": "帮助框"
+    },
+    {
+      "table": "option_label",
+      "key": "Tooltip",
+      "zh": "提示"
+    },
+    {
+      "table": "option_label",
+      "key": "KeywordDesc",
+      "zh": "Keyword 说明"
+    },
+    {
+      "table": "option_label",
+      "key": "Array Index",
+      "zh": "数组索引"
+    },
+    {
+      "table": "option_label",
+      "key": "Mip Level",
+      "zh": "Mip 级别"
+    },
+    {
+      "table": "option_label",
+      "key": "Mip Bias",
+      "zh": "Mip 偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal Map",
+      "zh": "法线贴图"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal Space",
+      "zh": "法线空间"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal Vector",
+      "zh": "法线向量"
+    },
+    {
+      "table": "option_label",
+      "key": "Normalize",
+      "zh": "归一化"
+    },
+    {
+      "table": "option_label",
+      "key": "Normalize Vectors",
+      "zh": "归一化向量"
+    },
+    {
+      "table": "option_label",
+      "key": "Safe Normalize",
+      "zh": "安全归一化"
+    },
+    {
+      "table": "option_label",
+      "key": "Output Normal Space",
+      "zh": "输出法线空间"
+    },
+    {
+      "table": "option_label",
+      "key": "Space",
+      "zh": "空间"
+    },
+    {
+      "table": "option_label",
+      "key": "View Space",
+      "zh": "观察空间"
+    },
+    {
+      "table": "option_label",
+      "key": "Screen Position",
+      "zh": "屏幕位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Mapping",
+      "zh": "映射"
+    },
+    {
+      "table": "option_label",
+      "key": "Tiling",
+      "zh": "平铺"
+    },
+    {
+      "table": "option_label",
+      "key": "Scale",
+      "zh": "缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Scale and Offset",
+      "zh": "缩放与偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Size",
+      "zh": "大小"
+    },
+    {
+      "table": "option_label",
+      "key": "Channel",
+      "zh": "通道"
+    },
+    {
+      "table": "option_label",
+      "key": "UV Channel",
+      "zh": "UV 通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Wrap Mode",
+      "zh": "环绕模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Filter Mode",
+      "zh": "过滤模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Aniso. Filtering",
+      "zh": "各向异性过滤"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Normal Map",
+      "zh": "法线贴图"
+    },
+    {
+      "table": "option_label",
+      "key": "Keyword",
+      "zh": "Keyword"
+    },
+    {
+      "table": "option_label",
+      "key": "Keyword Name",
+      "zh": "Keyword 名称"
+    },
+    {
+      "table": "option_label",
+      "key": "Keyword Type",
+      "zh": "Keyword 类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Toggle Type",
+      "zh": "开关类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Toggle Value",
+      "zh": "开关值"
+    },
+    {
+      "table": "option_label",
+      "key": "Toggle Mode",
+      "zh": "开关模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Var Name",
+      "zh": "变量名"
+    },
+    {
+      "table": "option_label",
+      "key": "Code",
+      "zh": "代码"
+    },
+    {
+      "table": "option_label",
+      "key": "Output Type",
+      "zh": "输出类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Output type",
+      "zh": "输出类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Input Type",
+      "zh": "输入类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Input type",
+      "zh": "输入类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Input amount",
+      "zh": "输入数量"
+    },
+    {
+      "table": "option_label",
+      "key": "Qualifier",
+      "zh": "修饰符"
+    },
+    {
+      "table": "option_label",
+      "key": "Stage",
+      "zh": "阶段"
+    },
+    {
+      "table": "option_label",
+      "key": "Auto Order",
+      "zh": "自动排序"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Local",
+      "zh": "本地 Keyword"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Variable",
+      "zh": "作为变量"
+    },
+    {
+      "table": "option_label",
+      "key": "Generate Keyword",
+      "zh": "生成 Keyword"
+    },
+    {
+      "table": "option_label",
+      "key": "Shader Keywords",
+      "zh": "着色器 Keyword"
+    },
+    {
+      "table": "option_label",
+      "key": "Dynamic Branching",
+      "zh": "动态分支"
+    },
+    {
+      "table": "option_label",
+      "key": "Note Title",
+      "zh": "备注标题"
+    },
+    {
+      "table": "option_label",
+      "key": "Comment",
+      "zh": "注释"
+    },
+    {
+      "table": "option_label",
+      "key": "Per Pixel",
+      "zh": "逐像素"
+    },
+    {
+      "table": "option_label",
+      "key": "Power",
+      "zh": "幂"
+    },
+    {
+      "table": "option_label",
+      "key": "Safe Power",
+      "zh": "安全幂"
+    },
+    {
+      "table": "option_label",
+      "key": "Prevent NaN",
+      "zh": "防止 NaN"
+    },
+    {
+      "table": "option_label",
+      "key": "Saturate",
+      "zh": "饱和"
+    },
+    {
+      "table": "option_label",
+      "key": "Contrast",
+      "zh": "对比度"
+    },
+    {
+      "table": "option_label",
+      "key": "Amount",
+      "zh": "数量"
+    },
+    {
+      "table": "option_label",
+      "key": "Pattern",
+      "zh": "图案"
+    },
+    {
+      "table": "option_label",
+      "key": "Octaves",
+      "zh": "倍频"
+    },
+    {
+      "table": "option_label",
+      "key": "Tileable",
+      "zh": "可平铺"
+    },
+    {
+      "table": "option_label",
+      "key": "Tile Scale",
+      "zh": "平铺缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Smooth",
+      "zh": "平滑"
+    },
+    {
+      "table": "option_label",
+      "key": "Clip Edges",
+      "zh": "裁剪边缘"
+    },
+    {
+      "table": "option_label",
+      "key": "Distance Function",
+      "zh": "距离函数"
+    },
+    {
+      "table": "option_label",
+      "key": "Minkowski Power",
+      "zh": "闵可夫斯基幂"
+    },
+    {
+      "table": "option_label",
+      "key": "Unity's Voronoi",
+      "zh": "Unity Voronoi"
+    },
+    {
+      "table": "option_label",
+      "key": "Search Quality",
+      "zh": "搜索质量"
+    },
+    {
+      "table": "option_label",
+      "key": "Max Samples",
+      "zh": "最大采样"
+    },
+    {
+      "table": "option_label",
+      "key": "Min Samples",
+      "zh": "最小采样"
+    },
+    {
+      "table": "option_label",
+      "key": "Sidewall Steps",
+      "zh": "侧壁步数"
+    },
+    {
+      "table": "option_label",
+      "key": "Clip Silhouette",
+      "zh": "裁剪剪影"
+    },
+    {
+      "table": "option_label",
+      "key": "Default Scale",
+      "zh": "默认缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Default Ref Plane",
+      "zh": "默认参考平面"
+    },
+    {
+      "table": "option_label",
+      "key": "Parallax Type",
+      "zh": "视差类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Apply Scaling",
+      "zh": "应用缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "If Negative Speed",
+      "zh": "负速度时"
+    },
+    {
+      "table": "option_label",
+      "key": "Speed X",
+      "zh": "X 速度"
+    },
+    {
+      "table": "option_label",
+      "key": "Speed Y",
+      "zh": "Y 速度"
+    },
+    {
+      "table": "option_label",
+      "key": "U axis",
+      "zh": "U 轴"
+    },
+    {
+      "table": "option_label",
+      "key": "V axis",
+      "zh": "V 轴"
+    },
+    {
+      "table": "option_label",
+      "key": "Coord Size",
+      "zh": "坐标尺寸"
+    },
+    {
+      "table": "option_label",
+      "key": "Tex3D Slice",
+      "zh": "3D 纹理切片"
+    },
+    {
+      "table": "option_label",
+      "key": "Texture Direction",
+      "zh": "纹理方向"
+    },
+    {
+      "table": "option_label",
+      "key": "Inline Sampler State",
+      "zh": "内联采样状态"
+    },
+    {
+      "table": "option_label",
+      "key": "No Interpolation",
+      "zh": "无插值"
+    },
+    {
+      "table": "option_label",
+      "key": "Use SV semantic",
+      "zh": "使用 SV 语义"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Semantics",
+      "zh": "使用语义"
+    },
+    {
+      "table": "option_label",
+      "key": "Set as UINT",
+      "zh": "设为 UINT"
+    },
+    {
+      "table": "option_label",
+      "key": "Precision Suffix",
+      "zh": "精度后缀"
+    },
+    {
+      "table": "option_label",
+      "key": "Option Label",
+      "zh": "选项标签"
+    },
+    {
+      "table": "option_label",
+      "key": "Class Name",
+      "zh": "类名"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Grab Pass",
+      "zh": "自定义 Grab Pass"
+    },
+    {
+      "table": "option_label",
+      "key": "Default Inspector",
+      "zh": "默认检视器"
+    },
+    {
+      "table": "option_label",
+      "key": "Exposure",
+      "zh": "曝光"
+    },
+    {
+      "table": "option_label",
+      "key": "Intensity Unit",
+      "zh": "强度单位"
+    },
+    {
+      "table": "option_label",
+      "key": "Convert To Linear",
+      "zh": "转换为线性"
+    },
+    {
+      "table": "option_label",
+      "key": "Normalize Color",
+      "zh": "归一化颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Normalize Axis",
+      "zh": "归一化轴"
+    },
+    {
+      "table": "option_label",
+      "key": "Normalized Rotation Axis",
+      "zh": "归一化旋转轴"
+    },
+    {
+      "table": "option_label",
+      "key": "Rotation Axis",
+      "zh": "旋转轴"
+    },
+    {
+      "table": "option_label",
+      "key": "Rotation Independent Scale",
+      "zh": "旋转无关缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Perspective Divide",
+      "zh": "透视除法"
+    },
+    {
+      "table": "option_label",
+      "key": "Range Check",
+      "zh": "范围检查"
+    },
+    {
+      "table": "option_label",
+      "key": "Legacy Behavior",
+      "zh": "旧版行为"
+    },
+    {
+      "table": "option_label",
+      "key": "Light Count",
+      "zh": "灯光数量"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Spotlight",
+      "zh": "聚光灯"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Jagged",
+      "zh": "锯齿边缘"
+    },
+    {
+      "table": "option_label",
+      "key": "0-1 Range",
+      "zh": "0-1 范围"
+    },
+    {
+      "table": "option_label",
+      "key": "From",
+      "zh": "从"
+    },
+    {
+      "table": "option_label",
+      "key": "To",
+      "zh": "到"
+    },
+    {
+      "table": "option_label",
+      "key": "True",
+      "zh": "真"
+    },
+    {
+      "table": "option_label",
+      "key": "False",
+      "zh": "假"
+    },
+    {
+      "table": "option_label",
+      "key": "In",
+      "zh": "输入"
+    },
+    {
+      "table": "option_label",
+      "key": "Albedo",
+      "zh": "漫反射"
+    },
+    {
+      "table": "option_label",
+      "key": "Alpha",
+      "zh": "Alpha"
+    },
+    {
+      "table": "option_label",
+      "key": "Emission",
+      "zh": "自发光"
+    },
+    {
+      "table": "option_label",
+      "key": "Metallic",
+      "zh": "金属度"
+    },
+    {
+      "table": "option_label",
+      "key": "Smoothness",
+      "zh": "光滑度"
+    },
+    {
+      "table": "option_label",
+      "key": "Occlusion",
+      "zh": "遮蔽"
+    },
+    {
+      "table": "option_label",
+      "key": "Ambient Occlusion",
+      "zh": "环境遮蔽"
+    },
+    {
+      "table": "option_label",
+      "key": "Gloss",
+      "zh": "光泽"
+    },
+    {
+      "table": "option_label",
+      "key": "Specular",
+      "zh": "高光"
+    },
+    {
+      "table": "option_label",
+      "key": "Opacity",
+      "zh": "不透明度"
+    },
+    {
+      "table": "option_label",
+      "key": "Opacity Mask",
+      "zh": "不透明遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Refraction",
+      "zh": "折射"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Lighting",
+      "zh": "自定义光照"
+    },
+    {
+      "table": "option_label",
+      "key": "Alpha Mode",
+      "zh": "Alpha 模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend Op",
+      "zh": "混合操作"
+    },
+    {
+      "table": "option_label",
+      "key": "Fail",
+      "zh": "失败"
+    },
+    {
+      "table": "option_label",
+      "key": "ZFail",
+      "zh": "Z 失败"
+    },
+    {
+      "table": "option_label",
+      "key": "Local Vertex Position",
+      "zh": "局部顶点位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Local Vertex Normal",
+      "zh": "局部顶点法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Local Vertex Tangent",
+      "zh": "局部顶点切线"
+    },
+    {
+      "table": "option_label",
+      "key": "Local Vertex Offset",
+      "zh": "局部顶点偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "View Vector",
+      "zh": "观察向量"
+    },
+    {
+      "table": "option_label",
+      "key": "Advanced View",
+      "zh": "高级观察"
+    },
+    {
+      "table": "option_label",
+      "key": "Sample",
+      "zh": "采样"
+    },
+    {
+      "table": "option_label",
+      "key": "Procedural",
+      "zh": "程序化"
+    },
+    {
+      "table": "option_label",
+      "key": "Misc",
+      "zh": "杂项"
+    },
+    {
+      "table": "option_label",
+      "key": "2D Renderer",
+      "zh": "2D 渲染器"
+    },
+    {
+      "table": "option_label",
+      "key": "Apply To ID",
+      "zh": "应用到 ID"
+    },
+    {
+      "table": "option_label",
+      "key": "Function Inputs",
+      "zh": "函数输入"
+    },
+    {
+      "table": "option_label",
+      "key": "Function Outputs",
+      "zh": "函数输出"
+    },
+    {
+      "table": "option_label",
+      "key": "Function Switches",
+      "zh": "函数开关"
+    },
+    {
+      "table": "option_label",
+      "key": "Frame Title",
+      "zh": "框标题"
+    },
+    {
+      "table": "option_label",
+      "key": "Frame Color",
+      "zh": "框颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Header Color",
+      "zh": "标题颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Header Style",
+      "zh": "标题样式"
+    },
+    {
+      "table": "option_label",
+      "key": "Preview Position",
+      "zh": "预览位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Hidden",
+      "zh": "隐藏"
+    },
+    {
+      "table": "option_label",
+      "key": "Exact Conversion",
+      "zh": "精确转换"
+    },
+    {
+      "table": "option_label",
+      "key": "Linear",
+      "zh": "线性"
+    },
+    {
+      "table": "option_label",
+      "key": "Format",
+      "zh": "格式"
+    },
+    {
+      "table": "option_label",
+      "key": "Passes",
+      "zh": "通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Target Name",
+      "zh": "目标名称"
+    },
+    {
+      "table": "option_label",
+      "key": "Target Path",
+      "zh": "目标路径"
+    },
+    {
+      "table": "option_label",
+      "key": "Texture 3D",
+      "zh": "3D 纹理"
+    },
+    {
+      "table": "option_label",
+      "key": "Max Amount",
+      "zh": "最大数量"
+    },
+    {
+      "table": "option_label",
+      "key": "Input to Row",
+      "zh": "输入到行"
+    },
+    {
+      "table": "option_label",
+      "key": "Matrix",
+      "zh": "矩阵"
+    },
+    {
+      "table": "option_label",
+      "key": "Plane",
+      "zh": "平面"
+    },
+    {
+      "table": "option_label",
+      "key": "Position",
+      "zh": "位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Method",
+      "zh": "方法"
+    },
+    {
+      "table": "option_label",
+      "key": "Switch",
+      "zh": "开关"
+    },
+    {
+      "table": "option_label",
+      "key": "Debug",
+      "zh": "调试"
+    },
+    {
+      "table": "option_label",
+      "key": "Current",
+      "zh": "当前"
+    },
+    {
+      "table": "option_label",
+      "key": "Project",
+      "zh": "工程"
+    },
+    {
+      "table": "option_label",
+      "key": "File",
+      "zh": "文件"
+    },
+    {
+      "table": "option_label",
+      "key": "Help",
+      "zh": "帮助"
+    },
+    {
+      "table": "option_label",
+      "key": "Clear",
+      "zh": "清除"
+    },
+    {
+      "table": "option_label",
+      "key": "Copy",
+      "zh": "复制"
+    },
+    {
+      "table": "option_label",
+      "key": "Paste",
+      "zh": "粘贴"
+    },
+    {
+      "table": "option_label",
+      "key": "Duplicate",
+      "zh": "复制节点"
+    },
+    {
+      "table": "option_label",
+      "key": "Id",
+      "zh": "ID"
+    },
+    {
+      "table": "option_label",
+      "key": "LOD",
+      "zh": "LOD"
+    },
+    {
+      "table": "option_label",
+      "key": "Queue",
+      "zh": "队列"
+    },
+    {
+      "table": "option_label",
+      "key": "Scope",
+      "zh": "作用域"
+    },
+    {
+      "table": "option_label",
+      "key": "Data",
+      "zh": "数据"
+    },
+    {
+      "table": "option_label",
+      "key": "Parameter",
+      "zh": "参数"
+    },
+    {
+      "table": "option_label",
+      "key": "Instanced",
+      "zh": "实例化"
+    },
+    {
+      "table": "option_label",
+      "key": "Safe",
+      "zh": "安全"
+    },
+    {
+      "table": "option_label",
+      "key": "None",
+      "zh": "无"
+    },
+    {
+      "table": "option_label",
+      "key": "Activate",
+      "zh": "启用"
+    },
+    {
+      "table": "option_label",
+      "key": "Mirror",
+      "zh": "镜像"
+    },
+    {
+      "table": "option_label",
+      "key": "Layout Preset",
+      "zh": "布局预设"
+    },
+    {
+      "table": "option_label",
+      "key": "Grayscale Style",
+      "zh": "灰度样式"
+    },
+    {
+      "table": "option_label",
+      "key": "Virtual Layer",
+      "zh": "虚拟层"
+    },
+    {
+      "table": "option_label",
+      "key": "Shader Input Order",
+      "zh": "着色器输入顺序"
+    },
+    {
+      "table": "option_label",
+      "key": "Material Toggle",
+      "zh": "材质开关"
+    },
+    {
+      "table": "option_label",
+      "key": "Set Unique",
+      "zh": "设为唯一"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Unity Version",
+      "zh": "使用 Unity 版本"
+    },
+    {
+      "table": "option_label",
+      "key": "Projection Matrix",
+      "zh": "投影矩阵"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Attribute",
+      "zh": "自定义特性"
+    },
+    {
+      "table": "option_label",
+      "key": "Attribute ",
+      "zh": "特性 "
+    },
+    {
+      "table": "option_label",
+      "key": "Header ",
+      "zh": "标题 "
+    },
+    {
+      "table": "option_label",
+      "key": "Item ",
+      "zh": "项 "
+    },
+    {
+      "table": "option_label",
+      "key": "Auto Cast",
+      "zh": "自动转换"
+    },
+    {
+      "table": "node_title",
+      "key": "ACos",
+      "zh": "反余弦"
+    },
+    {
+      "table": "node_title",
+      "key": "ASin",
+      "zh": "反正弦"
+    },
+    {
+      "table": "node_title",
+      "key": "ATan",
+      "zh": "反正切"
+    },
+    {
+      "table": "node_title",
+      "key": "ATan2",
+      "zh": "反正切2"
+    },
+    {
+      "table": "node_title",
+      "key": "Abs",
+      "zh": "绝对值"
+    },
+    {
+      "table": "node_title",
+      "key": "Add",
+      "zh": "加法"
+    },
+    {
+      "table": "node_title",
+      "key": "All",
+      "zh": "全真"
+    },
+    {
+      "table": "node_title",
+      "key": "Any",
+      "zh": "任一真"
+    },
+    {
+      "table": "node_title",
+      "key": "Append",
+      "zh": "拼接"
+    },
+    {
+      "table": "node_title",
+      "key": "Bezier Gradient",
+      "zh": "贝塞尔渐变"
+    },
+    {
+      "table": "node_title",
+      "key": "Blend Normals",
+      "zh": "混合法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Blend Operations",
+      "zh": "混合运算"
+    },
+    {
+      "table": "node_title",
+      "key": "Bone Blend Indices",
+      "zh": "骨骼混合索引"
+    },
+    {
+      "table": "node_title",
+      "key": "Bone Blend Weights",
+      "zh": "骨骼混合权重"
+    },
+    {
+      "table": "node_title",
+      "key": "Camera Depth Fade",
+      "zh": "摄像机深度淡出"
+    },
+    {
+      "table": "node_title",
+      "key": "Camera To World Matrix",
+      "zh": "摄像机到世界矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Ceil",
+      "zh": "向上取整"
+    },
+    {
+      "table": "node_title",
+      "key": "Clamp",
+      "zh": "钳制"
+    },
+    {
+      "table": "node_title",
+      "key": "Clip",
+      "zh": "裁剪"
+    },
+    {
+      "table": "node_title",
+      "key": "Clip Planes",
+      "zh": "裁剪平面"
+    },
+    {
+      "table": "node_title",
+      "key": "Color Space Double",
+      "zh": "色彩空间倍增"
+    },
+    {
+      "table": "node_title",
+      "key": "Common Transform Matrices",
+      "zh": "常用变换矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare",
+      "zh": "比较"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare (A < B)",
+      "zh": "比较 (A < B)"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare (A > B)",
+      "zh": "比较 (A > B)"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare With Range",
+      "zh": "范围比较"
+    },
+    {
+      "table": "node_title",
+      "key": "Component Mask",
+      "zh": "分量遮罩"
+    },
+    {
+      "table": "node_title",
+      "key": "Compute Grab Screen Pos",
+      "zh": "计算 Grab 屏幕坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Compute Screen Pos",
+      "zh": "计算屏幕坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Cos",
+      "zh": "余弦"
+    },
+    {
+      "table": "node_title",
+      "key": "Cos Time",
+      "zh": "余弦时间"
+    },
+    {
+      "table": "node_title",
+      "key": "Cosh",
+      "zh": "双曲余弦"
+    },
+    {
+      "table": "node_title",
+      "key": "Cross",
+      "zh": "叉积"
+    },
+    {
+      "table": "node_title",
+      "key": "Cubic Bezier Gradient",
+      "zh": "三次贝塞尔渐变"
+    },
+    {
+      "table": "node_title",
+      "key": "Custom Add Node",
+      "zh": "自定义加法节点"
+    },
+    {
+      "table": "node_title",
+      "key": "Custom Expression",
+      "zh": "自定义表达式"
+    },
+    {
+      "table": "node_title",
+      "key": "DDX",
+      "zh": "DDX"
+    },
+    {
+      "table": "node_title",
+      "key": "DDY",
+      "zh": "DDY"
+    },
+    {
+      "table": "node_title",
+      "key": "Debug Switch",
+      "zh": "调试开关"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode Depth Normal",
+      "zh": "解码深度法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode Float RG",
+      "zh": "解码浮点 RG"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode Float RGBA",
+      "zh": "解码浮点 RGBA"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode Lightmap",
+      "zh": "解码光照贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode View Normal Stereo",
+      "zh": "解码立体观察法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Degrees",
+      "zh": "角度"
+    },
+    {
+      "table": "node_title",
+      "key": "Delta Time",
+      "zh": "时间增量"
+    },
+    {
+      "table": "node_title",
+      "key": "Depth Fade",
+      "zh": "深度淡出"
+    },
+    {
+      "table": "node_title",
+      "key": "Desaturate",
+      "zh": "去饱和"
+    },
+    {
+      "table": "node_title",
+      "key": "Determinant",
+      "zh": "行列式"
+    },
+    {
+      "table": "node_title",
+      "key": "Diffuse And Specular From Metallic",
+      "zh": "金属度转漫反射与高光"
+    },
+    {
+      "table": "node_title",
+      "key": "Diffusion Profile",
+      "zh": "扩散剖面"
+    },
+    {
+      "table": "node_title",
+      "key": "Distance",
+      "zh": "距离"
+    },
+    {
+      "table": "node_title",
+      "key": "Distance-based Tessellation",
+      "zh": "基于距离的曲面细分"
+    },
+    {
+      "table": "node_title",
+      "key": "Dither",
+      "zh": "抖动"
+    },
+    {
+      "table": "node_title",
+      "key": "Divide",
+      "zh": "除法"
+    },
+    {
+      "table": "node_title",
+      "key": "Dot",
+      "zh": "点积"
+    },
+    {
+      "table": "node_title",
+      "key": "Edge Length Tessellation",
+      "zh": "边长曲面细分"
+    },
+    {
+      "table": "node_title",
+      "key": "Edge Length Tessellation With Cull",
+      "zh": "带剔除的边长曲面细分"
+    },
+    {
+      "table": "node_title",
+      "key": "Encode Depth Normal",
+      "zh": "编码深度法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Encode Float RG",
+      "zh": "编码浮点 RG"
+    },
+    {
+      "table": "node_title",
+      "key": "Encode Float RGBA",
+      "zh": "编码浮点 RGBA"
+    },
+    {
+      "table": "node_title",
+      "key": "Encode View Normal Stereo",
+      "zh": "编码立体观察法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Exp",
+      "zh": "指数"
+    },
+    {
+      "table": "node_title",
+      "key": "Exp2",
+      "zh": "指数2"
+    },
+    {
+      "table": "node_title",
+      "key": "FWidth",
+      "zh": "FWidth"
+    },
+    {
+      "table": "node_title",
+      "key": "Face",
+      "zh": "朝向"
+    },
+    {
+      "table": "node_title",
+      "key": "Flip",
+      "zh": "翻转"
+    },
+    {
+      "table": "node_title",
+      "key": "Flipbook UV Animation",
+      "zh": "序列帧 UV 动画"
+    },
+    {
+      "table": "node_title",
+      "key": "Float",
+      "zh": "浮点"
+    },
+    {
+      "table": "node_title",
+      "key": "Floor",
+      "zh": "向下取整"
+    },
+    {
+      "table": "node_title",
+      "key": "Fmod",
+      "zh": "取模"
+    },
+    {
+      "table": "node_title",
+      "key": "Fog And Ambient Colors",
+      "zh": "雾与环境色"
+    },
+    {
+      "table": "node_title",
+      "key": "Fog Params",
+      "zh": "雾参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Fract",
+      "zh": "小数部分"
+    },
+    {
+      "table": "node_title",
+      "key": "Fresnel",
+      "zh": "菲涅尔"
+    },
+    {
+      "table": "node_title",
+      "key": "Function Input",
+      "zh": "函数输入"
+    },
+    {
+      "table": "node_title",
+      "key": "Function Node",
+      "zh": "函数节点"
+    },
+    {
+      "table": "node_title",
+      "key": "Function Output",
+      "zh": "函数输出"
+    },
+    {
+      "table": "node_title",
+      "key": "Function Subtitle",
+      "zh": "函数副标题"
+    },
+    {
+      "table": "node_title",
+      "key": "Function Switch",
+      "zh": "函数开关"
+    },
+    {
+      "table": "node_title",
+      "key": "Gamma To Linear",
+      "zh": "伽马转线性"
+    },
+    {
+      "table": "node_title",
+      "key": "Get Local Var",
+      "zh": "获取局部变量"
+    },
+    {
+      "table": "node_title",
+      "key": "Global Array",
+      "zh": "全局数组"
+    },
+    {
+      "table": "node_title",
+      "key": "Grab Screen Color",
+      "zh": "抓取屏幕颜色"
+    },
+    {
+      "table": "node_title",
+      "key": "Grab Screen Position",
+      "zh": "抓取屏幕位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Gradient",
+      "zh": "渐变"
+    },
+    {
+      "table": "node_title",
+      "key": "Gradient Sample",
+      "zh": "渐变采样"
+    },
+    {
+      "table": "node_title",
+      "key": "Grayscale",
+      "zh": "灰度"
+    },
+    {
+      "table": "node_title",
+      "key": "HD Emission",
+      "zh": "HD 自发光"
+    },
+    {
+      "table": "node_title",
+      "key": "HSV to RGB",
+      "zh": "HSV 转 RGB"
+    },
+    {
+      "table": "node_title",
+      "key": "HeightMap Texture Blend",
+      "zh": "高度图纹理混合"
+    },
+    {
+      "table": "node_title",
+      "key": "If",
+      "zh": "条件 If"
+    },
+    {
+      "table": "node_title",
+      "key": "If [Community]",
+      "zh": "条件 If [社区]"
+    },
+    {
+      "table": "node_title",
+      "key": "Indirect Diffuse Light",
+      "zh": "间接漫反射光"
+    },
+    {
+      "table": "node_title",
+      "key": "Indirect Specular Light",
+      "zh": "间接高光"
+    },
+    {
+      "table": "node_title",
+      "key": "Instance ID",
+      "zh": "实例 ID"
+    },
+    {
+      "table": "node_title",
+      "key": "Int",
+      "zh": "整数"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse",
+      "zh": "求逆"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse Projection Matrix",
+      "zh": "逆投影矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse Transpose Model View Matrix",
+      "zh": "模型视图逆转置矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse View Matrix",
+      "zh": "逆观察矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse View Projection Matrix",
+      "zh": "逆观察投影矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Is Infinite",
+      "zh": "是否无穷"
+    },
+    {
+      "table": "node_title",
+      "key": "Is NaN",
+      "zh": "是否 NaN"
+    },
+    {
+      "table": "node_title",
+      "key": "Keyword Switch",
+      "zh": "Keyword 开关"
+    },
+    {
+      "table": "node_title",
+      "key": "LOD Fade",
+      "zh": "LOD 淡入"
+    },
+    {
+      "table": "node_title",
+      "key": "Layered Blend",
+      "zh": "分层混合"
+    },
+    {
+      "table": "node_title",
+      "key": "Length",
+      "zh": "长度"
+    },
+    {
+      "table": "node_title",
+      "key": "Lerp",
+      "zh": "线性插值"
+    },
+    {
+      "table": "node_title",
+      "key": "Light Attenuation",
+      "zh": "光照衰减"
+    },
+    {
+      "table": "node_title",
+      "key": "Light Color",
+      "zh": "灯光颜色"
+    },
+    {
+      "table": "node_title",
+      "key": "Linear Depth",
+      "zh": "线性深度"
+    },
+    {
+      "table": "node_title",
+      "key": "Linear To Gamma",
+      "zh": "线性转伽马"
+    },
+    {
+      "table": "node_title",
+      "key": "Log",
+      "zh": "对数"
+    },
+    {
+      "table": "node_title",
+      "key": "Log10",
+      "zh": "对数10"
+    },
+    {
+      "table": "node_title",
+      "key": "Log2",
+      "zh": "对数2"
+    },
+    {
+      "table": "node_title",
+      "key": "Luminance",
+      "zh": "亮度"
+    },
+    {
+      "table": "node_title",
+      "key": "Material Quality",
+      "zh": "材质品质"
+    },
+    {
+      "table": "node_title",
+      "key": "Matrix From Vectors",
+      "zh": "向量转矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Matrix3X3",
+      "zh": "3x3 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Matrix4X4",
+      "zh": "4x4 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Model Matrix",
+      "zh": "模型矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Model View Matrix",
+      "zh": "模型视图矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Model View Projection Matrix",
+      "zh": "模型视图投影矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Multiply",
+      "zh": "乘法"
+    },
+    {
+      "table": "node_title",
+      "key": "Nand",
+      "zh": "与非"
+    },
+    {
+      "table": "node_title",
+      "key": "Negate",
+      "zh": "取负"
+    },
+    {
+      "table": "node_title",
+      "key": "Noise Generator",
+      "zh": "噪声生成"
+    },
+    {
+      "table": "node_title",
+      "key": "Not",
+      "zh": "非"
+    },
+    {
+      "table": "node_title",
+      "key": "Object Bounds",
+      "zh": "物体包围盒"
+    },
+    {
+      "table": "node_title",
+      "key": "Object Position",
+      "zh": "物体位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Object Scale",
+      "zh": "物体缩放"
+    },
+    {
+      "table": "node_title",
+      "key": "Object Space Light Dir",
+      "zh": "物体空间灯光方向"
+    },
+    {
+      "table": "node_title",
+      "key": "Object Space View Dir",
+      "zh": "物体空间观察方向"
+    },
+    {
+      "table": "node_title",
+      "key": "Object To Clip Pos",
+      "zh": "物体到裁剪空间位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Object To View Pos",
+      "zh": "物体到观察空间位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Object To World",
+      "zh": "物体到世界"
+    },
+    {
+      "table": "node_title",
+      "key": "Object To World Matrix",
+      "zh": "物体到世界矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "One Minus",
+      "zh": "一减"
+    },
+    {
+      "table": "node_title",
+      "key": "Ortho Params",
+      "zh": "正交参数"
+    },
+    {
+      "table": "node_title",
+      "key": "PI",
+      "zh": "圆周率"
+    },
+    {
+      "table": "node_title",
+      "key": "Panner",
+      "zh": "UV 平移"
+    },
+    {
+      "table": "node_title",
+      "key": "Parallax Mapping",
+      "zh": "视差贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Parallax Occlusion Mapping",
+      "zh": "视差遮蔽贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Parallax Offset",
+      "zh": "视差偏移"
+    },
+    {
+      "table": "node_title",
+      "key": "Pixelate UV",
+      "zh": "像素化 UV"
+    },
+    {
+      "table": "node_title",
+      "key": "Position From Transform",
+      "zh": "从变换取位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Posterize",
+      "zh": "色调分离"
+    },
+    {
+      "table": "node_title",
+      "key": "Primitive ID",
+      "zh": "图元 ID"
+    },
+    {
+      "table": "node_title",
+      "key": "Projection Matrices",
+      "zh": "投影矩阵组"
+    },
+    {
+      "table": "node_title",
+      "key": "Projection Params",
+      "zh": "投影参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Projector Clip Matrix",
+      "zh": "投影器裁剪矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Projector Matrix",
+      "zh": "投影器矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "RGB to HSV",
+      "zh": "RGB 转 HSV"
+    },
+    {
+      "table": "node_title",
+      "key": "Radians",
+      "zh": "弧度"
+    },
+    {
+      "table": "node_title",
+      "key": "Reciprocal",
+      "zh": "倒数"
+    },
+    {
+      "table": "node_title",
+      "key": "Reflect",
+      "zh": "反射"
+    },
+    {
+      "table": "node_title",
+      "key": "Reflection Probe",
+      "zh": "反射探针"
+    },
+    {
+      "table": "node_title",
+      "key": "Refract",
+      "zh": "折射"
+    },
+    {
+      "table": "node_title",
+      "key": "Register Local Var",
+      "zh": "注册局部变量"
+    },
+    {
+      "table": "node_title",
+      "key": "Relay",
+      "zh": "中继"
+    },
+    {
+      "table": "node_title",
+      "key": "Remainder",
+      "zh": "余数"
+    },
+    {
+      "table": "node_title",
+      "key": "Remap",
+      "zh": "重映射"
+    },
+    {
+      "table": "node_title",
+      "key": "Rotate About Axis",
+      "zh": "绕轴旋转"
+    },
+    {
+      "table": "node_title",
+      "key": "Rotator",
+      "zh": "旋转器"
+    },
+    {
+      "table": "node_title",
+      "key": "Round",
+      "zh": "四舍五入"
+    },
+    {
+      "table": "node_title",
+      "key": "Rsqrt",
+      "zh": "平方根倒数"
+    },
+    {
+      "table": "node_title",
+      "key": "SRP Baked GI",
+      "zh": "SRP 烘焙 GI"
+    },
+    {
+      "table": "node_title",
+      "key": "Sampler State",
+      "zh": "采样状态"
+    },
+    {
+      "table": "node_title",
+      "key": "Scale And Offset",
+      "zh": "缩放与偏移"
+    },
+    {
+      "table": "node_title",
+      "key": "Scale Matrix",
+      "zh": "缩放矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Screen Depth",
+      "zh": "屏幕深度"
+    },
+    {
+      "table": "node_title",
+      "key": "Screen Params",
+      "zh": "屏幕参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Shade Vertex Lights",
+      "zh": "顶点光照"
+    },
+    {
+      "table": "node_title",
+      "key": "Sign",
+      "zh": "符号"
+    },
+    {
+      "table": "node_title",
+      "key": "Simple Contrast",
+      "zh": "简单对比度"
+    },
+    {
+      "table": "node_title",
+      "key": "Simplified Fmod",
+      "zh": "简化取模"
+    },
+    {
+      "table": "node_title",
+      "key": "Sin",
+      "zh": "正弦"
+    },
+    {
+      "table": "node_title",
+      "key": "Sin Time",
+      "zh": "正弦时间"
+    },
+    {
+      "table": "node_title",
+      "key": "Sinh",
+      "zh": "双曲正弦"
+    },
+    {
+      "table": "node_title",
+      "key": "Smoothstep",
+      "zh": "平滑步进"
+    },
+    {
+      "table": "node_title",
+      "key": "Split",
+      "zh": "拆分"
+    },
+    {
+      "table": "node_title",
+      "key": "Sqrt",
+      "zh": "平方根"
+    },
+    {
+      "table": "node_title",
+      "key": "Standard Surface Light",
+      "zh": "标准表面光照"
+    },
+    {
+      "table": "node_title",
+      "key": "Standard Surface Output",
+      "zh": "标准表面输出"
+    },
+    {
+      "table": "node_title",
+      "key": "Step",
+      "zh": "步进"
+    },
+    {
+      "table": "node_title",
+      "key": "Sticky Note",
+      "zh": "便签"
+    },
+    {
+      "table": "node_title",
+      "key": "Subtract",
+      "zh": "减法"
+    },
+    {
+      "table": "node_title",
+      "key": "Summed Blend",
+      "zh": "累加混合"
+    },
+    {
+      "table": "node_title",
+      "key": "Surface Depth",
+      "zh": "表面深度"
+    },
+    {
+      "table": "node_title",
+      "key": "Switch by Face",
+      "zh": "按朝向切换"
+    },
+    {
+      "table": "node_title",
+      "key": "Switch by Pipeline",
+      "zh": "按管线切换"
+    },
+    {
+      "table": "node_title",
+      "key": "Switch by SRP Version",
+      "zh": "按 SRP 版本切换"
+    },
+    {
+      "table": "node_title",
+      "key": "Swizzle",
+      "zh": "重排"
+    },
+    {
+      "table": "node_title",
+      "key": "Tan",
+      "zh": "正切"
+    },
+    {
+      "table": "node_title",
+      "key": "Tanh",
+      "zh": "双曲正切"
+    },
+    {
+      "table": "node_title",
+      "key": "Tau",
+      "zh": "Tau"
+    },
+    {
+      "table": "node_title",
+      "key": "Template Fragment Data",
+      "zh": "模板片元数据"
+    },
+    {
+      "table": "node_title",
+      "key": "Template Local Var Data",
+      "zh": "模板局部变量"
+    },
+    {
+      "table": "node_title",
+      "key": "Template Master Node",
+      "zh": "模板主节点"
+    },
+    {
+      "table": "node_title",
+      "key": "Template Multi-Pass Switch",
+      "zh": "模板多通道开关"
+    },
+    {
+      "table": "node_title",
+      "key": "Template Parameter",
+      "zh": "模板参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Template Vertex Data",
+      "zh": "模板顶点数据"
+    },
+    {
+      "table": "node_title",
+      "key": "Texel Size",
+      "zh": "纹素尺寸"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture 0 Matrix",
+      "zh": "纹理 0 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture 1 Matrix",
+      "zh": "纹理 1 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture 2 Matrix",
+      "zh": "纹理 2 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture 3 Matrix",
+      "zh": "纹理 3 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture Array",
+      "zh": "纹理数组"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture Coordinates",
+      "zh": "纹理坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture Object",
+      "zh": "纹理对象"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture Sample",
+      "zh": "纹理采样"
+    },
+    {
+      "table": "node_title",
+      "key": "Texture Transform",
+      "zh": "纹理变换"
+    },
+    {
+      "table": "node_title",
+      "key": "Time Parameters",
+      "zh": "时间参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Toggle Switch",
+      "zh": "开关切换"
+    },
+    {
+      "table": "node_title",
+      "key": "Transform Direction",
+      "zh": "变换方向"
+    },
+    {
+      "table": "node_title",
+      "key": "Transform Position",
+      "zh": "变换位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Transform Vector",
+      "zh": "变换向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Transpose",
+      "zh": "转置"
+    },
+    {
+      "table": "node_title",
+      "key": "Transpose Model View Matrix",
+      "zh": "模型视图转置矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Triplanar Sample",
+      "zh": "三平面采样"
+    },
+    {
+      "table": "node_title",
+      "key": "Trunc",
+      "zh": "截断"
+    },
+    {
+      "table": "node_title",
+      "key": "Two Sided Sign",
+      "zh": "双面符号"
+    },
+    {
+      "table": "node_title",
+      "key": "Unpack Scale Normal",
+      "zh": "解包缩放法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Vector From Matrix",
+      "zh": "矩阵取向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Vector2",
+      "zh": "二维向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Vector3",
+      "zh": "三维向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Vector4",
+      "zh": "四维向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex Bitangent",
+      "zh": "顶点副切线"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex Color",
+      "zh": "顶点色"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex ID",
+      "zh": "顶点 ID"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex Normal",
+      "zh": "顶点法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex Tangent",
+      "zh": "顶点切线"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex Tangent Sign",
+      "zh": "顶点切线符号"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex TexCoord",
+      "zh": "顶点纹理坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex To Fragment",
+      "zh": "顶点到片元"
+    },
+    {
+      "table": "node_title",
+      "key": "View Dir",
+      "zh": "观察方向"
+    },
+    {
+      "table": "node_title",
+      "key": "View Matrix",
+      "zh": "观察矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "View Projection Matrix",
+      "zh": "观察投影矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Virtual Texture Object",
+      "zh": "虚拟纹理对象"
+    },
+    {
+      "table": "node_title",
+      "key": "Voronoi",
+      "zh": "沃罗诺伊"
+    },
+    {
+      "table": "node_title",
+      "key": "Weighted Blend",
+      "zh": "加权混合"
+    },
+    {
+      "table": "node_title",
+      "key": "Wire Node",
+      "zh": "连线节点"
+    },
+    {
+      "table": "node_title",
+      "key": "World Bitangent",
+      "zh": "世界副切线"
+    },
+    {
+      "table": "node_title",
+      "key": "World Normal",
+      "zh": "世界法线"
+    },
+    {
+      "table": "node_title",
+      "key": "World Position",
+      "zh": "世界位置"
+    },
+    {
+      "table": "node_title",
+      "key": "World Reflection",
+      "zh": "世界反射"
+    },
+    {
+      "table": "node_title",
+      "key": "World Space Camera Pos",
+      "zh": "世界空间摄像机位置"
+    },
+    {
+      "table": "node_title",
+      "key": "World Space Light Dir",
+      "zh": "世界空间灯光方向"
+    },
+    {
+      "table": "node_title",
+      "key": "World Space Light Pos",
+      "zh": "世界空间灯光位置"
+    },
+    {
+      "table": "node_title",
+      "key": "World Space View Dir",
+      "zh": "世界空间观察方向"
+    },
+    {
+      "table": "node_title",
+      "key": "World Tangent",
+      "zh": "世界切线"
+    },
+    {
+      "table": "node_title",
+      "key": "World To Camera Matrix",
+      "zh": "世界到摄像机矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "World To Object",
+      "zh": "世界到物体"
+    },
+    {
+      "table": "node_title",
+      "key": "World To Object Matrix",
+      "zh": "世界到物体矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "World To Tangent Matrix",
+      "zh": "世界到切线矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "World Transform Params",
+      "zh": "世界变换参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Z-Buffer Params",
+      "zh": "深度缓冲参数"
+    },
+    {
+      "table": "node_title",
+      "key": "Alpha Merge",
+      "zh": "Alpha 合并"
+    },
+    {
+      "table": "node_title",
+      "key": "Alpha Split",
+      "zh": "Alpha 拆分"
+    },
+    {
+      "table": "node_title",
+      "key": "And",
+      "zh": "与"
+    },
+    {
+      "table": "node_title",
+      "key": "Bacteria",
+      "zh": "菌落"
+    },
+    {
+      "table": "node_title",
+      "key": "Bacteria Smoothstep",
+      "zh": "菌落平滑步进"
+    },
+    {
+      "table": "node_title",
+      "key": "Bicubic Precompute",
+      "zh": "双三次预计算"
+    },
+    {
+      "table": "node_title",
+      "key": "Bicubic Sample",
+      "zh": "双三次采样"
+    },
+    {
+      "table": "node_title",
+      "key": "Bidirectional Parallax Mapping",
+      "zh": "双向视差贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Blackbody",
+      "zh": "黑体"
+    },
+    {
+      "table": "node_title",
+      "key": "Blinn Phong Light Wrap",
+      "zh": "Blinn-Phong 光包裹"
+    },
+    {
+      "table": "node_title",
+      "key": "Blinn-Phong Half Vector",
+      "zh": "Blinn-Phong 半角向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Blinn-Phong Light",
+      "zh": "Blinn-Phong 光照"
+    },
+    {
+      "table": "node_title",
+      "key": "Box Mask",
+      "zh": "盒形遮罩"
+    },
+    {
+      "table": "node_title",
+      "key": "Bricks Pattern",
+      "zh": "砖墙图案"
+    },
+    {
+      "table": "node_title",
+      "key": "Checkerboard",
+      "zh": "棋盘格"
+    },
+    {
+      "table": "node_title",
+      "key": "Color Mask",
+      "zh": "颜色遮罩"
+    },
+    {
+      "table": "node_title",
+      "key": "Compute Filter Width",
+      "zh": "计算滤波宽度"
+    },
+    {
+      "table": "node_title",
+      "key": "Compute Mip Level",
+      "zh": "计算 Mip 级别"
+    },
+    {
+      "table": "node_title",
+      "key": "Constant Bias Scale",
+      "zh": "常量偏移缩放"
+    },
+    {
+      "table": "node_title",
+      "key": "Cotangent Frame",
+      "zh": "余切坐标系"
+    },
+    {
+      "table": "node_title",
+      "key": "Create Orthogonal Vector",
+      "zh": "创建正交向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Custom Screen Position",
+      "zh": "自定义屏幕坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode Directional Lighmap",
+      "zh": "解码方向光照贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Decode Directional Lightmap",
+      "zh": "解码方向光照贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Depth Masked Refraction",
+      "zh": "深度遮罩折射"
+    },
+    {
+      "table": "node_title",
+      "key": "Derive Tangent Basis",
+      "zh": "推导切线基底"
+    },
+    {
+      "table": "node_title",
+      "key": "Detail Albedo",
+      "zh": "细节反照率"
+    },
+    {
+      "table": "node_title",
+      "key": "Device Depth",
+      "zh": "设备深度"
+    },
+    {
+      "table": "node_title",
+      "key": "Dielectric Specular",
+      "zh": "电介质高光"
+    },
+    {
+      "table": "node_title",
+      "key": "Dots Pattern",
+      "zh": "圆点图案"
+    },
+    {
+      "table": "node_title",
+      "key": "Ellipse",
+      "zh": "椭圆"
+    },
+    {
+      "table": "node_title",
+      "key": "Fetch HD Color Pyramid",
+      "zh": "获取 HD 颜色金字塔"
+    },
+    {
+      "table": "node_title",
+      "key": "Fetch Lightmap Value",
+      "zh": "获取光照贴图值"
+    },
+    {
+      "table": "node_title",
+      "key": "Flipbook",
+      "zh": "序列帧"
+    },
+    {
+      "table": "node_title",
+      "key": "Flow",
+      "zh": "流动"
+    },
+    {
+      "table": "node_title",
+      "key": "Four Splats First Pass Terrain",
+      "zh": "四层 Splat 首通道地形"
+    },
+    {
+      "table": "node_title",
+      "key": "Grid",
+      "zh": "网格"
+    },
+    {
+      "table": "node_title",
+      "key": "Half Lambert Term",
+      "zh": "半 Lambert 项"
+    },
+    {
+      "table": "node_title",
+      "key": "HDRP Decal UVs",
+      "zh": "HDRP 贴花 UV"
+    },
+    {
+      "table": "node_title",
+      "key": "Height-based Blending",
+      "zh": "基于高度的混合"
+    },
+    {
+      "table": "node_title",
+      "key": "Herringbone",
+      "zh": "人字纹"
+    },
+    {
+      "table": "node_title",
+      "key": "Hex Lattice",
+      "zh": "六边形晶格"
+    },
+    {
+      "table": "node_title",
+      "key": "Houndstooth",
+      "zh": "千鸟格"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse Lerp",
+      "zh": "反线性插值"
+    },
+    {
+      "table": "node_title",
+      "key": "Lambert Light",
+      "zh": "Lambert 光照"
+    },
+    {
+      "table": "node_title",
+      "key": "Lerp White To",
+      "zh": "白色插值到"
+    },
+    {
+      "table": "node_title",
+      "key": "Lightmap UV",
+      "zh": "光照贴图 UV"
+    },
+    {
+      "table": "node_title",
+      "key": "Metal Reflectance",
+      "zh": "金属反射率"
+    },
+    {
+      "table": "node_title",
+      "key": "Midtones Control",
+      "zh": "中间调控制"
+    },
+    {
+      "table": "node_title",
+      "key": "Noise Sine Wave",
+      "zh": "噪声正弦波"
+    },
+    {
+      "table": "node_title",
+      "key": "Non Stereo Screen Pos",
+      "zh": "非立体屏幕坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Normal Create",
+      "zh": "创建法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Normal From Height",
+      "zh": "高度转法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Normal From Texture",
+      "zh": "纹理转法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Normal Reconstruct Z",
+      "zh": "重建法线 Z"
+    },
+    {
+      "table": "node_title",
+      "key": "Or",
+      "zh": "或"
+    },
+    {
+      "table": "node_title",
+      "key": "Perturb Normal",
+      "zh": "扰动法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Perturb Normal HQ",
+      "zh": "高质量扰动法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Polar Coordinates",
+      "zh": "极坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Polygon",
+      "zh": "多边形"
+    },
+    {
+      "table": "node_title",
+      "key": "Prepare Perturb Normal HQ",
+      "zh": "预备高质量扰动法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Procedural Sample",
+      "zh": "程序化采样"
+    },
+    {
+      "table": "node_title",
+      "key": "Projection",
+      "zh": "投影"
+    },
+    {
+      "table": "node_title",
+      "key": "Radial Shear",
+      "zh": "径向剪切"
+    },
+    {
+      "table": "node_title",
+      "key": "Radial UV Distortion",
+      "zh": "径向 UV 扭曲"
+    },
+    {
+      "table": "node_title",
+      "key": "Random Range",
+      "zh": "随机范围"
+    },
+    {
+      "table": "node_title",
+      "key": "Reconstruct World Position From Depth",
+      "zh": "从深度重建世界位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Rectangle",
+      "zh": "矩形"
+    },
+    {
+      "table": "node_title",
+      "key": "Rejection",
+      "zh": "向量拒绝"
+    },
+    {
+      "table": "node_title",
+      "key": "Replace Color",
+      "zh": "替换颜色"
+    },
+    {
+      "table": "node_title",
+      "key": "Rounded Rectangle",
+      "zh": "圆角矩形"
+    },
+    {
+      "table": "node_title",
+      "key": "Sample Lightmap",
+      "zh": "采样光照贴图"
+    },
+    {
+      "table": "node_title",
+      "key": "Sawtooth Wave",
+      "zh": "锯齿波"
+    },
+    {
+      "table": "node_title",
+      "key": "Shadow Mask",
+      "zh": "阴影遮罩"
+    },
+    {
+      "table": "node_title",
+      "key": "Simple HUE",
+      "zh": "简单色相"
+    },
+    {
+      "table": "node_title",
+      "key": "Smooth Wave",
+      "zh": "平滑波"
+    },
+    {
+      "table": "node_title",
+      "key": "Sphere Mask",
+      "zh": "球形遮罩"
+    },
+    {
+      "table": "node_title",
+      "key": "Spherize",
+      "zh": "球面化"
+    },
+    {
+      "table": "node_title",
+      "key": "Spiral",
+      "zh": "螺旋"
+    },
+    {
+      "table": "node_title",
+      "key": "Square",
+      "zh": "平方"
+    },
+    {
+      "table": "node_title",
+      "key": "Square Wave",
+      "zh": "方波"
+    },
+    {
+      "table": "node_title",
+      "key": "SRP Additional Light",
+      "zh": "SRP 附加光"
+    },
+    {
+      "table": "node_title",
+      "key": "Step Antialiasing",
+      "zh": "步进抗锯齿"
+    },
+    {
+      "table": "node_title",
+      "key": "Stereo Screen Pos",
+      "zh": "立体屏幕坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "Stripes",
+      "zh": "条纹"
+    },
+    {
+      "table": "node_title",
+      "key": "Terrain Wind Animate Vertex",
+      "zh": "地形风动画顶点"
+    },
+    {
+      "table": "node_title",
+      "key": "Terrain Wind Value",
+      "zh": "地形风数值"
+    },
+    {
+      "table": "node_title",
+      "key": "Triangle Wave",
+      "zh": "三角波"
+    },
+    {
+      "table": "node_title",
+      "key": "Truchet",
+      "zh": "特鲁谢"
+    },
+    {
+      "table": "node_title",
+      "key": "Twirl",
+      "zh": "扭转"
+    },
+    {
+      "table": "node_title",
+      "key": "UI-Sprite Effect Layer",
+      "zh": "UI Sprite 效果层"
+    },
+    {
+      "table": "node_title",
+      "key": "URP Tangent To World Normal",
+      "zh": "URP 切线转世界法线"
+    },
+    {
+      "table": "node_title",
+      "key": "Whirl",
+      "zh": "漩涡"
+    },
+    {
+      "table": "node_title",
+      "key": "World Normal Face",
+      "zh": "世界法线朝向"
+    },
+    {
+      "table": "node_title",
+      "key": "Zig Zag",
+      "zh": "之字形"
+    },
+    {
+      "table": "panel",
+      "key": "Available Passes",
+      "zh": "可用通道"
+    },
+    {
+      "table": "option_label",
+      "key": "ExtraPrePass",
+      "zh": "额外预通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Forward",
+      "zh": "前向"
+    },
+    {
+      "table": "option_label",
+      "key": "ShadowCaster",
+      "zh": "阴影投射"
+    },
+    {
+      "table": "option_label",
+      "key": "DepthOnly",
+      "zh": "仅深度"
+    },
+    {
+      "table": "option_label",
+      "key": "Meta",
+      "zh": "烘焙"
+    },
+    {
+      "table": "option_label",
+      "key": "Universal2D",
+      "zh": "2D 渲染"
+    },
+    {
+      "table": "option_label",
+      "key": "SceneSelectionPass",
+      "zh": "场景选择"
+    },
+    {
+      "table": "option_label",
+      "key": "ScenePickingPass",
+      "zh": "场景拾取"
+    },
+    {
+      "table": "option_label",
+      "key": "DepthNormals",
+      "zh": "深度法线"
+    },
+    {
+      "table": "option_label",
+      "key": "DepthNormalsOnly",
+      "zh": "仅深度法线"
+    },
+    {
+      "table": "option_value",
+      "key": "Constant",
+      "zh": "常量"
+    },
+    {
+      "table": "option_value",
+      "key": "Property",
+      "zh": "属性"
+    },
+    {
+      "table": "option_value",
+      "key": "InstancedProperty",
+      "zh": "实例化属性"
+    },
+    {
+      "table": "option_value",
+      "key": "Global",
+      "zh": "全局"
+    },
+    {
+      "table": "option_value",
+      "key": "Create",
+      "zh": "创建"
+    },
+    {
+      "table": "option_value",
+      "key": "Fetch",
+      "zh": "获取"
+    },
+    {
+      "table": "option_value",
+      "key": "Opaque",
+      "zh": "不透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Transparent",
+      "zh": "透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Masked",
+      "zh": "镂空"
+    },
+    {
+      "table": "option_value",
+      "key": "Translucent",
+      "zh": "半透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Premultiply",
+      "zh": "预乘"
+    },
+    {
+      "table": "option_value",
+      "key": "Custom",
+      "zh": "自定义"
+    },
+    {
+      "table": "option_value",
+      "key": "Float",
+      "zh": "浮点"
+    },
+    {
+      "table": "option_value",
+      "key": "Half",
+      "zh": "半精度"
+    },
+    {
+      "table": "option_value",
+      "key": "Inherit",
+      "zh": "继承"
+    },
+    {
+      "table": "option_value",
+      "key": "Back",
+      "zh": "背面"
+    },
+    {
+      "table": "option_value",
+      "key": "Front",
+      "zh": "正面"
+    },
+    {
+      "table": "option_value",
+      "key": "Off",
+      "zh": "关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "On",
+      "zh": "开启"
+    },
+    {
+      "table": "option_value",
+      "key": "Cull Back",
+      "zh": "剔除背面"
+    },
+    {
+      "table": "option_value",
+      "key": "Cull Front",
+      "zh": "剔除正面"
+    },
+    {
+      "table": "option_value",
+      "key": "Cull Off",
+      "zh": "不剔除"
+    },
+    {
+      "table": "option_value",
+      "key": "PBR",
+      "zh": "PBR"
+    },
+    {
+      "table": "option_value",
+      "key": "Unlit",
+      "zh": "无光照"
+    },
+    {
+      "table": "option_value",
+      "key": "Metallic",
+      "zh": "金属度"
+    },
+    {
+      "table": "option_value",
+      "key": "Specular",
+      "zh": "高光"
+    },
+    {
+      "table": "option_value",
+      "key": "Relative",
+      "zh": "相对"
+    },
+    {
+      "table": "option_value",
+      "key": "Absolute",
+      "zh": "绝对"
+    },
+    {
+      "table": "option_value",
+      "key": "Vertex Offset",
+      "zh": "顶点偏移"
+    },
+    {
+      "table": "option_value",
+      "key": "Vertex Position",
+      "zh": "顶点位置"
+    },
+    {
+      "table": "option_value",
+      "key": "white",
+      "zh": "白色"
+    },
+    {
+      "table": "option_value",
+      "key": "black",
+      "zh": "黑色"
+    },
+    {
+      "table": "option_value",
+      "key": "gray",
+      "zh": "灰色"
+    },
+    {
+      "table": "option_value",
+      "key": "bump",
+      "zh": "法线"
+    },
+    {
+      "table": "option_value",
+      "key": "Auto",
+      "zh": "自动"
+    },
+    {
+      "table": "option_value",
+      "key": "None",
+      "zh": "无"
+    },
+    {
+      "table": "option_value",
+      "key": "<None>",
+      "zh": "<无>"
+    },
+    {
+      "table": "option_value",
+      "key": "<Default>",
+      "zh": "<默认>"
+    },
+    {
+      "table": "option_value",
+      "key": "LockedToTexture2D",
+      "zh": "锁定为 Texture2D"
+    },
+    {
+      "table": "option_value",
+      "key": "LockedToTexture3D",
+      "zh": "锁定为 Texture3D"
+    },
+    {
+      "table": "option_value",
+      "key": "LockedToCube",
+      "zh": "锁定为 Cube"
+    },
+    {
+      "table": "option_value",
+      "key": "LockedToTexture2DArray",
+      "zh": "锁定为 Texture2DArray"
+    },
+    {
+      "table": "option_value",
+      "key": "LockedToTexture1D",
+      "zh": "锁定为 Texture1D"
+    },
+    {
+      "table": "option_value",
+      "key": "One",
+      "zh": "One"
+    },
+    {
+      "table": "option_value",
+      "key": "Zero",
+      "zh": "Zero"
+    },
+    {
+      "table": "option_value",
+      "key": "SrcAlpha",
+      "zh": "SrcAlpha"
+    },
+    {
+      "table": "option_value",
+      "key": "OneMinusSrcAlpha",
+      "zh": "OneMinusSrcAlpha"
+    },
+    {
+      "table": "option_value",
+      "key": "Edge Length",
+      "zh": "边长"
+    },
+    {
+      "table": "option_value",
+      "key": "Less",
+      "zh": "小于"
+    },
+    {
+      "table": "option_value",
+      "key": "Greater",
+      "zh": "大于"
+    },
+    {
+      "table": "option_value",
+      "key": "Less or Equal",
+      "zh": "小于等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Greater or Equal",
+      "zh": "大于等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Equal",
+      "zh": "等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Not Equal",
+      "zh": "不等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Always",
+      "zh": "总是"
+    },
+    {
+      "table": "option_value",
+      "key": "Never",
+      "zh": "从不"
+    },
+    {
+      "table": "option_value",
+      "key": "Keep",
+      "zh": "保持"
+    },
+    {
+      "table": "option_value",
+      "key": "Replace",
+      "zh": "替换"
+    },
+    {
+      "table": "option_value",
+      "key": "Invert",
+      "zh": "取反"
+    },
+    {
+      "table": "option_value",
+      "key": "Add",
+      "zh": "相加"
+    },
+    {
+      "table": "option_value",
+      "key": "Sub",
+      "zh": "相减"
+    },
+    {
+      "table": "option_value",
+      "key": "RevSub",
+      "zh": "反向相减"
+    },
+    {
+      "table": "option_value",
+      "key": "<OFF>",
+      "zh": "<关闭>"
+    },
+    {
+      "table": "option_value",
+      "key": "Alpha Blend",
+      "zh": "Alpha 混合"
+    },
+    {
+      "table": "option_value",
+      "key": "Premultiplied",
+      "zh": "预乘"
+    },
+    {
+      "table": "option_value",
+      "key": "Additive",
+      "zh": "叠加"
+    },
+    {
+      "table": "option_value",
+      "key": "Soft Additive",
+      "zh": "柔和叠加"
+    },
+    {
+      "table": "option_value",
+      "key": "Multiplicative",
+      "zh": "正片叠底"
+    },
+    {
+      "table": "option_value",
+      "key": "2x Multiplicative",
+      "zh": "2x 正片叠底"
+    },
+    {
+      "table": "option_value",
+      "key": "TransparentCutout",
+      "zh": "镂空透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Transparent Cutout",
+      "zh": "镂空透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Background",
+      "zh": "背景"
+    },
+    {
+      "table": "option_value",
+      "key": "Overlay",
+      "zh": "覆盖"
+    },
+    {
+      "table": "option_value",
+      "key": "Geometry",
+      "zh": "几何"
+    },
+    {
+      "table": "option_value",
+      "key": "AlphaTest",
+      "zh": "Alpha 测试"
+    },
+    {
+      "table": "option_value",
+      "key": "Alpha Test",
+      "zh": "Alpha 测试"
+    },
+    {
+      "table": "option_value",
+      "key": "TreeOpaque",
+      "zh": "树木不透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Tree Opaque",
+      "zh": "树木不透明"
+    },
+    {
+      "table": "option_value",
+      "key": "TreeTransparentCutout",
+      "zh": "树木镂空"
+    },
+    {
+      "table": "option_value",
+      "key": "Tree Transparent Cutout",
+      "zh": "树木镂空"
+    },
+    {
+      "table": "option_value",
+      "key": "TreeBillboard",
+      "zh": "树木公告板"
+    },
+    {
+      "table": "option_value",
+      "key": "Tree Billboard",
+      "zh": "树木公告板"
+    },
+    {
+      "table": "option_value",
+      "key": "Grass",
+      "zh": "草地"
+    },
+    {
+      "table": "option_value",
+      "key": "GrassBillboard",
+      "zh": "草地公告板"
+    },
+    {
+      "table": "option_value",
+      "key": "Grass Billboard",
+      "zh": "草地公告板"
+    },
+    {
+      "table": "option_value",
+      "key": "LODFading",
+      "zh": "LOD 淡入"
+    },
+    {
+      "table": "option_value",
+      "key": "LOD Fading",
+      "zh": "LOD 淡入"
+    },
+    {
+      "table": "option_value",
+      "key": "True",
+      "zh": "是"
+    },
+    {
+      "table": "option_value",
+      "key": "False",
+      "zh": "否"
+    },
+    {
+      "table": "option_value",
+      "key": "Greater Or Equal",
+      "zh": "大于等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Less Or Equal",
+      "zh": "小于等于"
+    },
+    {
+      "table": "panel",
+      "key": "Your list is Empty!\nUse the plus button to add one.",
+      "zh": "列表为空！\n请用加号按钮添加一项。"
+    },
+    {
+      "table": "option_label",
+      "key": "Activate Holes",
+      "zh": "启用空洞"
+    },
+    {
+      "table": "option_label",
+      "key": "Amplitude",
+      "zh": "振幅"
+    },
+    {
+      "table": "option_label",
+      "key": "Anim Params",
+      "zh": "动画参数"
+    },
+    {
+      "table": "option_label",
+      "key": "Anti Aliasing",
+      "zh": "抗锯齿"
+    },
+    {
+      "table": "option_label",
+      "key": "Apply Exposure",
+      "zh": "应用曝光"
+    },
+    {
+      "table": "option_label",
+      "key": "Bias",
+      "zh": "偏置"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend Factor",
+      "zh": "混合因子"
+    },
+    {
+      "table": "option_label",
+      "key": "Blend Falloff",
+      "zh": "混合衰减"
+    },
+    {
+      "table": "option_label",
+      "key": "Blue Shift",
+      "zh": "蓝色偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Bottom",
+      "zh": "底部"
+    },
+    {
+      "table": "option_label",
+      "key": "Boundaries",
+      "zh": "边界"
+    },
+    {
+      "table": "option_label",
+      "key": "Bump Center",
+      "zh": "凹凸中心"
+    },
+    {
+      "table": "option_label",
+      "key": "Bump One Pixel Down",
+      "zh": "凹凸下一像素"
+    },
+    {
+      "table": "option_label",
+      "key": "Bump One Pixel Right",
+      "zh": "凹凸右一像素"
+    },
+    {
+      "table": "option_label",
+      "key": "Cells",
+      "zh": "单元格"
+    },
+    {
+      "table": "option_label",
+      "key": "Center",
+      "zh": "中心"
+    },
+    {
+      "table": "option_label",
+      "key": "Color A",
+      "zh": "颜色 A"
+    },
+    {
+      "table": "option_label",
+      "key": "Color B",
+      "zh": "颜色 B"
+    },
+    {
+      "table": "option_label",
+      "key": "Columns",
+      "zh": "列"
+    },
+    {
+      "table": "option_label",
+      "key": "Combined Noise Map Strength",
+      "zh": "合成噪声图强度"
+    },
+    {
+      "table": "option_label",
+      "key": "Compare Alpha",
+      "zh": "比较 Alpha"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Albedo",
+      "zh": "自定义反照率"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Alpha",
+      "zh": "自定义 Alpha"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Control",
+      "zh": "自定义控制"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Metallic",
+      "zh": "自定义金属度"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Normal",
+      "zh": "自定义法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Occlusion",
+      "zh": "自定义遮蔽"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom Smoothness",
+      "zh": "自定义光滑度"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom UVs",
+      "zh": "自定义 UV"
+    },
+    {
+      "table": "option_label",
+      "key": "Detail Mask",
+      "zh": "细节遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Diffuse",
+      "zh": "漫反射"
+    },
+    {
+      "table": "option_label",
+      "key": "Direction Filter",
+      "zh": "方向过滤"
+    },
+    {
+      "table": "option_label",
+      "key": "DirTex",
+      "zh": "方向纹理"
+    },
+    {
+      "table": "option_label",
+      "key": "Distortion Amount",
+      "zh": "扭曲强度"
+    },
+    {
+      "table": "option_label",
+      "key": "Distortion Blend Mask",
+      "zh": "扭曲混合遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Distortion Mask",
+      "zh": "扭曲遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Distortion Normal",
+      "zh": "扭曲法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Draw SRP Per Pixel Normals",
+      "zh": "绘制 SRP 逐像素法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Edge Width",
+      "zh": "边缘宽度"
+    },
+    {
+      "table": "option_label",
+      "key": "Effect",
+      "zh": "效果"
+    },
+    {
+      "table": "option_label",
+      "key": "Enable Custom Time",
+      "zh": "启用自定义时间"
+    },
+    {
+      "table": "option_label",
+      "key": "Enable Max Frame ID",
+      "zh": "启用最大帧 ID"
+    },
+    {
+      "table": "option_label",
+      "key": "Falloff",
+      "zh": "衰减"
+    },
+    {
+      "table": "option_label",
+      "key": "Filtering",
+      "zh": "过滤"
+    },
+    {
+      "table": "option_label",
+      "key": "Flow (RG) Mask (A)",
+      "zh": "流动(RG) 遮罩(A)"
+    },
+    {
+      "table": "option_label",
+      "key": "Flow Direction",
+      "zh": "流动方向"
+    },
+    {
+      "table": "option_label",
+      "key": "Flow Speed",
+      "zh": "流动速度"
+    },
+    {
+      "table": "option_label",
+      "key": "Flow Strength",
+      "zh": "流动强度"
+    },
+    {
+      "table": "option_label",
+      "key": "Frequency",
+      "zh": "频率"
+    },
+    {
+      "table": "option_label",
+      "key": "Fuzziness",
+      "zh": "柔边"
+    },
+    {
+      "table": "option_label",
+      "key": "Green Shift",
+      "zh": "绿色偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Half Lambert",
+      "zh": "半 Lambert"
+    },
+    {
+      "table": "option_label",
+      "key": "Hardness",
+      "zh": "硬度"
+    },
+    {
+      "table": "option_label",
+      "key": "Height",
+      "zh": "高度"
+    },
+    {
+      "table": "option_label",
+      "key": "Height Channel",
+      "zh": "高度通道"
+    },
+    {
+      "table": "option_label",
+      "key": "Heightmap Tex",
+      "zh": "高度图"
+    },
+    {
+      "table": "option_label",
+      "key": "Hex Scale",
+      "zh": "六边形缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Inner Edge",
+      "zh": "内边缘"
+    },
+    {
+      "table": "option_label",
+      "key": "Input",
+      "zh": "输入"
+    },
+    {
+      "table": "option_label",
+      "key": "Invert Middle Point",
+      "zh": "反转中点"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Grab Op",
+      "zh": "是否 Grab 操作"
+    },
+    {
+      "table": "option_label",
+      "key": "Is Normal",
+      "zh": "是否法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Iterations",
+      "zh": "迭代次数"
+    },
+    {
+      "table": "option_label",
+      "key": "Length Scale",
+      "zh": "长度缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Light Wrapping",
+      "zh": "光包裹"
+    },
+    {
+      "table": "option_label",
+      "key": "Lighting Filter",
+      "zh": "光照过滤"
+    },
+    {
+      "table": "option_label",
+      "key": "Lighting Mode",
+      "zh": "光照模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Lightmap Type",
+      "zh": "光照贴图类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Line Edge",
+      "zh": "线边缘"
+    },
+    {
+      "table": "option_label",
+      "key": "Line Width",
+      "zh": "线宽"
+    },
+    {
+      "table": "option_label",
+      "key": "Luminance Range",
+      "zh": "亮度范围"
+    },
+    {
+      "table": "option_label",
+      "key": "Mask Color",
+      "zh": "遮罩颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Mask Type",
+      "zh": "遮罩类型"
+    },
+    {
+      "table": "option_label",
+      "key": "Max Frame ID",
+      "zh": "最大帧 ID"
+    },
+    {
+      "table": "option_label",
+      "key": "Min Max",
+      "zh": "最小最大"
+    },
+    {
+      "table": "option_label",
+      "key": "Move Background",
+      "zh": "移动背景"
+    },
+    {
+      "table": "option_label",
+      "key": "Move Dir",
+      "zh": "移动方向"
+    },
+    {
+      "table": "option_label",
+      "key": "Move Distortion",
+      "zh": "移动扭曲"
+    },
+    {
+      "table": "option_label",
+      "key": "Move Distortion Vector",
+      "zh": "移动扭曲向量"
+    },
+    {
+      "table": "option_label",
+      "key": "Move Vector",
+      "zh": "移动向量"
+    },
+    {
+      "table": "option_label",
+      "key": "Noise Map",
+      "zh": "噪声图"
+    },
+    {
+      "table": "option_label",
+      "key": "Noise map panner speed",
+      "zh": "噪声图平移速度"
+    },
+    {
+      "table": "option_label",
+      "key": "Noise map size",
+      "zh": "噪声图尺寸"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal Scale",
+      "zh": "法线缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal TS",
+      "zh": "切线空间法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Normal WS",
+      "zh": "世界空间法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Normals",
+      "zh": "法线"
+    },
+    {
+      "table": "option_label",
+      "key": "NormalWorld",
+      "zh": "世界法线"
+    },
+    {
+      "table": "option_label",
+      "key": "Number",
+      "zh": "数量"
+    },
+    {
+      "table": "option_label",
+      "key": "Offset X",
+      "zh": "偏移 X"
+    },
+    {
+      "table": "option_label",
+      "key": "Offset Y",
+      "zh": "偏移 Y"
+    },
+    {
+      "table": "option_label",
+      "key": "Offsets",
+      "zh": "偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Option",
+      "zh": "选项"
+    },
+    {
+      "table": "option_label",
+      "key": "Outer Edge",
+      "zh": "外边缘"
+    },
+    {
+      "table": "option_label",
+      "key": "Parallax Scale",
+      "zh": "视差缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Pos",
+      "zh": "位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Position Scale",
+      "zh": "位置缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Radial Scale",
+      "zh": "径向缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Radius",
+      "zh": "半径"
+    },
+    {
+      "table": "option_label",
+      "key": "Range",
+      "zh": "范围"
+    },
+    {
+      "table": "option_label",
+      "key": "Red Shift",
+      "zh": "红色偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Reference Plane",
+      "zh": "参考平面"
+    },
+    {
+      "table": "option_label",
+      "key": "Refraction Strength",
+      "zh": "折射强度"
+    },
+    {
+      "table": "option_label",
+      "key": "Repetition",
+      "zh": "重复"
+    },
+    {
+      "table": "option_label",
+      "key": "Ring panner speed",
+      "zh": "环形平移速度"
+    },
+    {
+      "table": "option_label",
+      "key": "Rotation",
+      "zh": "旋转"
+    },
+    {
+      "table": "option_label",
+      "key": "Rotation Mask",
+      "zh": "旋转遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Rows",
+      "zh": "行"
+    },
+    {
+      "table": "option_label",
+      "key": "Sample Mode",
+      "zh": "采样模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Screen Pos",
+      "zh": "屏幕坐标"
+    },
+    {
+      "table": "option_label",
+      "key": "Seed",
+      "zh": "种子"
+    },
+    {
+      "table": "option_label",
+      "key": "Separate XY Time",
+      "zh": "分离 XY 时间"
+    },
+    {
+      "table": "option_label",
+      "key": "Separation",
+      "zh": "间距"
+    },
+    {
+      "table": "option_label",
+      "key": "Sides",
+      "zh": "边数"
+    },
+    {
+      "table": "option_label",
+      "key": "Specular Color",
+      "zh": "高光颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Specular Smoothness",
+      "zh": "高光光滑度"
+    },
+    {
+      "table": "option_label",
+      "key": "Speed",
+      "zh": "速度"
+    },
+    {
+      "table": "option_label",
+      "key": "Sphere Center",
+      "zh": "球心"
+    },
+    {
+      "table": "option_label",
+      "key": "Start Frame ID",
+      "zh": "起始帧 ID"
+    },
+    {
+      "table": "option_label",
+      "key": "Strength Scaling",
+      "zh": "强度缩放"
+    },
+    {
+      "table": "option_label",
+      "key": "Teeth",
+      "zh": "齿数"
+    },
+    {
+      "table": "option_label",
+      "key": "Temp",
+      "zh": "温度"
+    },
+    {
+      "table": "option_label",
+      "key": "Texture Coordination",
+      "zh": "纹理坐标"
+    },
+    {
+      "table": "option_label",
+      "key": "Thickness",
+      "zh": "厚度"
+    },
+    {
+      "table": "option_label",
+      "key": "Tint Color",
+      "zh": "着色颜色"
+    },
+    {
+      "table": "option_label",
+      "key": "Tint Effect",
+      "zh": "着色效果"
+    },
+    {
+      "table": "option_label",
+      "key": "Top",
+      "zh": "顶部"
+    },
+    {
+      "table": "option_label",
+      "key": "Unity 2018 or Higher",
+      "zh": "Unity 2018 或更高"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Distortion Mask",
+      "zh": "使用扭曲遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Mask",
+      "zh": "使用遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Middle Point Cut",
+      "zh": "使用中点裁切"
+    },
+    {
+      "table": "option_label",
+      "key": "Use Shadow Mask",
+      "zh": "使用阴影遮罩"
+    },
+    {
+      "table": "option_label",
+      "key": "UV Tiles",
+      "zh": "UV 平铺"
+    },
+    {
+      "table": "option_label",
+      "key": "Vector 1",
+      "zh": "向量 1"
+    },
+    {
+      "table": "option_label",
+      "key": "Vector 2",
+      "zh": "向量 2"
+    },
+    {
+      "table": "option_label",
+      "key": "Vector Offset",
+      "zh": "向量偏移"
+    },
+    {
+      "table": "option_label",
+      "key": "Vector Position",
+      "zh": "向量位置"
+    },
+    {
+      "table": "option_label",
+      "key": "Vertex Mode",
+      "zh": "顶点模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Vertex UVs",
+      "zh": "顶点 UV"
+    },
+    {
+      "table": "option_label",
+      "key": "Wavelength",
+      "zh": "波长"
+    },
+    {
+      "table": "option_label",
+      "key": "Weights",
+      "zh": "权重"
+    },
+    {
+      "table": "option_label",
+      "key": "World Space Normal",
+      "zh": "世界空间法线"
+    },
+    {
+      "table": "option_value",
+      "key": "2D Array",
+      "zh": "2D 数组"
+    },
+    {
+      "table": "option_value",
+      "key": "Additive With Alpha Blend",
+      "zh": "叠加并 Alpha 混合"
+    },
+    {
+      "table": "option_value",
+      "key": "Aluminium",
+      "zh": "铝"
+    },
+    {
+      "table": "option_value",
+      "key": "Bias",
+      "zh": "偏置"
+    },
+    {
+      "table": "option_value",
+      "key": "Bicubic",
+      "zh": "双三次"
+    },
+    {
+      "table": "option_value",
+      "key": "Bilinear",
+      "zh": "双线性"
+    },
+    {
+      "table": "option_value",
+      "key": "Chromium",
+      "zh": "铬"
+    },
+    {
+      "table": "option_value",
+      "key": "Cobalt",
+      "zh": "钴"
+    },
+    {
+      "table": "option_value",
+      "key": "Common",
+      "zh": "常用"
+    },
+    {
+      "table": "option_value",
+      "key": "Continous",
+      "zh": "连续"
+    },
+    {
+      "table": "option_value",
+      "key": "Copper",
+      "zh": "铜"
+    },
+    {
+      "table": "option_value",
+      "key": "Derivative",
+      "zh": "导数"
+    },
+    {
+      "table": "option_value",
+      "key": "Discontinous",
+      "zh": "不连续"
+    },
+    {
+      "table": "option_value",
+      "key": "Distortion",
+      "zh": "扭曲"
+    },
+    {
+      "table": "option_value",
+      "key": "Dynamic",
+      "zh": "动态"
+    },
+    {
+      "table": "option_value",
+      "key": "Fetch 2D",
+      "zh": "获取 2D"
+    },
+    {
+      "table": "option_value",
+      "key": "Fetch 2D Array",
+      "zh": "获取 2D 数组"
+    },
+    {
+      "table": "option_value",
+      "key": "Flat",
+      "zh": "平坦"
+    },
+    {
+      "table": "option_value",
+      "key": "Fragment",
+      "zh": "片元"
+    },
+    {
+      "table": "option_value",
+      "key": "Glass",
+      "zh": "玻璃"
+    },
+    {
+      "table": "option_value",
+      "key": "Gold",
+      "zh": "金"
+    },
+    {
+      "table": "option_value",
+      "key": "Ice",
+      "zh": "冰"
+    },
+    {
+      "table": "option_value",
+      "key": "Iron",
+      "zh": "铁"
+    },
+    {
+      "table": "option_value",
+      "key": "Level",
+      "zh": "级别"
+    },
+    {
+      "table": "option_value",
+      "key": "Nickel",
+      "zh": "镍"
+    },
+    {
+      "table": "option_value",
+      "key": "Planar 2D",
+      "zh": "平面 2D"
+    },
+    {
+      "table": "option_value",
+      "key": "Planar 2D Array",
+      "zh": "平面 2D 数组"
+    },
+    {
+      "table": "option_value",
+      "key": "Platinum",
+      "zh": "铂"
+    },
+    {
+      "table": "option_value",
+      "key": "Rotate",
+      "zh": "旋转"
+    },
+    {
+      "table": "option_value",
+      "key": "Rusted Metal",
+      "zh": "锈蚀金属"
+    },
+    {
+      "table": "option_value",
+      "key": "Scale with distance",
+      "zh": "随距离缩放"
+    },
+    {
+      "table": "option_value",
+      "key": "Sharp",
+      "zh": "锐利"
+    },
+    {
+      "table": "option_value",
+      "key": "Silver",
+      "zh": "银"
+    },
+    {
+      "table": "option_value",
+      "key": "Static",
+      "zh": "静态"
+    },
+    {
+      "table": "option_value",
+      "key": "Tangent Space",
+      "zh": "切线空间"
+    },
+    {
+      "table": "option_value",
+      "key": "Titanium",
+      "zh": "钛"
+    },
+    {
+      "table": "option_value",
+      "key": "Triplanar",
+      "zh": "三平面"
+    },
+    {
+      "table": "option_value",
+      "key": "Triplanar 2D",
+      "zh": "三平面 2D"
+    },
+    {
+      "table": "option_value",
+      "key": "Triplanar 2D Array",
+      "zh": "三平面 2D 数组"
+    },
+    {
+      "table": "option_value",
+      "key": "Triplanar Array",
+      "zh": "三平面数组"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 1",
+      "zh": "UV 集 1"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 2",
+      "zh": "UV 集 2"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 3",
+      "zh": "UV 集 3"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 4",
+      "zh": "UV 集 4"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 5",
+      "zh": "UV 集 5"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 6",
+      "zh": "UV 集 6"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 7",
+      "zh": "UV 集 7"
+    },
+    {
+      "table": "option_value",
+      "key": "UV Set 8",
+      "zh": "UV 集 8"
+    },
+    {
+      "table": "option_value",
+      "key": "Vertex",
+      "zh": "顶点"
+    },
+    {
+      "table": "option_value",
+      "key": "Water",
+      "zh": "水"
+    },
+    {
+      "table": "option_value",
+      "key": "World Space",
+      "zh": "世界空间"
+    }
+  ]
+}

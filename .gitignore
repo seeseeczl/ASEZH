@@ -1,0 +1,15 @@
+.DS_Store
+Library/
+Temp/
+Obj/
+obj/
+Logs/
+UserSettings/
+*.csproj
+*.sln
+*.userprefs
+.vs/
+.idea/
+*.pidb
+*.unityproj
+ASEZHDictionary.user.json
