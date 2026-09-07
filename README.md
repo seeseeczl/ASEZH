@@ -8,7 +8,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
 许可：MIT  
-当前版本：`0.0.6`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
+当前版本：`0.0.7`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 
@@ -90,15 +90,18 @@ Assets/AmplifyShaderEditor/Plugins/Editor/Localization/ASELocaleDictionary.json
 
 ASE 没有稳定的公共 UI API。装包之后还要在 ASE **显示路径**上调用本包 API。
 
-1. `Window → ASEZH → Install into Amplify Shader Editor`
+1. `Window → ASEZH → 接入 Amplify Shader Editor`
 2. 看扫描结果，点「应用可自动补丁」（会改 ASE 源码里的锚点片段，建议先备份或提交 ASE）
-3. `Window → ASEZH → Run Locale Tests`
+3. `Window → ASEZH → 运行本地化测试`
+
+要撤掉显示钩子：`Window → ASEZH → 移除汉化补丁`（会确认）。只还原安装器改过的 ASE 源码，不卸载本包。
 
 扫描状态：
 
 | 状态 | 含义 |
 | --- | --- |
 | `applied` / `patched` | 已接上 |
+| `removed` | 已撤回该钩子 |
 | `ready` | 锚点匹配，可以自动打 |
 | `mismatch` | 这份 ASE 和内置锚点不同，**不要强行套补丁**，按 `docs/hook-sites.md` 手工接 |
 | `missing` | 找不到对应文件（ASE 被裁剪或改名） |
@@ -128,9 +131,10 @@ Console 正常加载时会有类似日志：`ASEZH: entries=... collisions=... t
 
 | 菜单 | 作用 |
 | --- | --- |
-| `Window/ASEZH/Install into Amplify Shader Editor` | 扫描并打显示钩子 |
-| `Window/ASEZH/Reload Dictionary` | 重载 JSON 词表，无需域重载 |
-| `Window/ASEZH/Run Locale Tests` | 自测查找、clone、平台名、搜索 |
+| `Window/ASEZH/接入 Amplify Shader Editor` | 扫描并打显示钩子 |
+| `Window/ASEZH/移除汉化补丁` | 撤回安装器写入 ASE 的显示钩子，不卸载本包 |
+| `Window/ASEZH/重新加载词典` | 重载 JSON 词表，无需域重载 |
+| `Window/ASEZH/运行本地化测试` | 自测查找、clone、平台名、搜索 |
 
 ## 词表
 

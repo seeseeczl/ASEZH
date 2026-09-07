@@ -47,3 +47,11 @@ The installer SHALL patch `PaletteParent.cs` so category foldout labels look up 
 - **WHEN** a shader-function category key is already Chinese (such as `光照`)
 - **THEN** the foldout shows that Chinese key without changing the stored category
 
+#### Scenario: Empty Search still lists nodes
+- **WHEN** Chinese display is on and the Search field is empty or still holds the Search label `搜索`
+- **THEN** the node list still shows all categories and items
+
+#### Scenario: Palette build list does not skip the unfiltered pass
+- **WHEN** the installer applies `palette-build-list`
+- **THEN** it does not insert `if( !ASELocale.MatchesSearch(...) ) continue` before adding items in the empty-search loop
+

@@ -86,7 +86,8 @@ namespace AmplifyShaderEditor
 			s_collisionCount = 0;
 			LoadJson( LocateDictionaryPath(), false );
 			LoadJson( LocateUserOverlayPath(), true );
-			Debug.Log( string.Format( "ASEZH: entries={0} collisions={1} tables={2}", s_entryCount, s_collisionCount, s_tables.Count ) );
+			string loadMsg = string.Format( "ASEZH: entries={0} collisions={1} tables={2}", s_entryCount, s_collisionCount, s_tables.Count );
+			EditorApplication.delayCall += () => Debug.Log( loadMsg );
 		}
 
 		static string LocateDictionaryPath()
@@ -382,6 +383,8 @@ namespace AmplifyShaderEditor
 		{
 			if( string.IsNullOrEmpty( filter ) )
 				return true;
+			if( UseChinese && filter == T( "Search" ) )
+				return true;
 			string[] parts = filter.Trim().Split( new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries );
 			for( int i = 0; i < parts.Length; i++ )
 			{
@@ -411,7 +414,7 @@ namespace AmplifyShaderEditor
 			return false;
 		}
 
-		[MenuItem( "Window/ASEZH/Reload Dictionary", false, 2098 )]
+		[MenuItem( "Window/ASEZH/重新加载词典", false, 2098 )]
 		static void ReloadMenu()
 		{
 			Reload();
@@ -421,7 +424,7 @@ namespace AmplifyShaderEditor
 				"OK" );
 		}
 
-		[MenuItem( "Window/ASEZH/Run Locale Tests", false, 2099 )]
+		[MenuItem( "Window/ASEZH/运行本地化测试", false, 2099 )]
 		static void RunLocaleTestsMenu()
 		{
 			EnsureLoaded();
@@ -469,6 +472,8 @@ namespace AmplifyShaderEditor
 					return "T(Blackbody, node_title) expected 黑体, got " + T( "Blackbody", TableNodeTitle );
 				if( !MatchesSearch( "黑体", "Blackbody", "Functions", "blackbody" ) )
 					return "Search 黑体 should hit Blackbody";
+				if( !MatchesSearch( T( "Search" ), "Add", "Math Operators", "add math" ) )
+					return "Search label leak must not hide the node list";
 				if( T( "Effect" ) != "效果" )
 					return "T(Effect) expected 效果, got " + T( "Effect" );
 				if( T( "Distortion Amount" ) != "扭曲强度" )

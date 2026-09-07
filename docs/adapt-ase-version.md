@@ -23,6 +23,10 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 
 `zwrite-labels` 会按括号配对从 `ZWriteModeValues` 复制出 `ZWriteModeLabels` 再改 Popup，不会改 Values 里给 Shader 用的英文。若只改了 Popup 却没有数组，扫描不会标成 applied，再次应用会把数组补上。`0.0.4`/`0.0.5` 若把 `ZTestModeDict` 第一项写成 `{ZTestMode.Less,1 };`，`0.0.6` 再应用一次会改回逗号。
 
+`0.0.5` 的 `palette-build-list` 曾在空搜索循环里插入 `continue`，Search 框若被写进「搜索」会把列表筛空。`0.0.7` 的 `MatchesSearch` 会把该标签当成空搜索；再应用安装器会删掉那段 `continue`。
+
+`Window → ASEZH → 移除汉化补丁` 会把安装器写入的显示钩子撤回到接入前片段，不卸载 ASEZH 包。
+
 ## 3. 手工接入顺序
 
 1. `UndoParentNode` 的 Popup / EnumPopup / Toggle（覆盖 90% 设置项）

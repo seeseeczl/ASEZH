@@ -182,9 +182,9 @@ namespace AmplifyShaderEditor
 					Id = "palette-build-list",
 					Description = "Search 完整列表过滤支持中英文",
 					FileName = "PaletteParent.cs",
-					Marker = "if( !ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name",
-					Find = "m_currentItems.Add( allItems[ i ] );\n\t\t\t\t\tif( !m_currentCategories.ContainsKey( allItems[ i ].Category ) )",
-					Replace = "if( !ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags ) )\n\t\t\t\t\t\tcontinue;\n\t\t\t\t\tm_currentItems.Add( allItems[ i ] );\n\t\t\t\t\tif( !m_currentCategories.ContainsKey( allItems[ i ].Category ) )"
+					Marker = "ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags )",
+					Find = "allItems[ i ].Name.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0 ||\n\t\t\t\t\tallItems[ i ].Category.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0",
+					Replace = "ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags )"
 				}
 			};
 		}
@@ -230,6 +230,17 @@ namespace AmplifyShaderEditor
 			var catalog = Catalog();
 			for( int i = 0; i < catalog.Count; i++ )
 				results.Add( Evaluate( catalog[ i ], true ) );
+			AssetDatabase.Refresh();
+			return results;
+		}
+
+		public static List<ASEZHPatchResult> RemoveAll()
+		{
+			var results = new List<ASEZHPatchResult>();
+			var catalog = Catalog();
+			for( int i = catalog.Count - 1; i >= 0; i-- )
+				results.Add( Reverse( catalog[ i ] ) );
+			results.Add( ReverseAseAssemblyReference() );
 			AssetDatabase.Refresh();
 			return results;
 		}
@@ -289,12 +300,46 @@ namespace AmplifyShaderEditor
 			return result;
 		}
 
+		static ASEZHPatchResult ReverseAseAssemblyReference()
+		{
+			var result = new ASEZHPatchResult { Id = "ase-asmdef-ref", File = "AmplifyShaderEditor.asmdef", Detail = "撤回 ASEZH.Editor 程序集引用" };
+			string assetPath = FindAseAsmdef();
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "removed";
+				result.Detail = "ASE 无独立 asmdef";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			if( !text.Contains( "\"" + LocaleAssemblyName + "\"" ) )
+			{
+				result.Status = "removed";
+				result.Detail = "未引用 ASEZH.Editor";
+				return result;
+			}
+			string next = text.Replace( "\"references\": [ \"" + LocaleAssemblyName + "\" ]", "\"references\": []" )
+				.Replace( "\"references\":[\"" + LocaleAssemblyName + "\"]", "\"references\":[]" );
+			if( next == text )
+			{
+				result.Status = "mismatch";
+				result.Detail = "asmdef 还有其它 references，请手工删掉 ASEZH.Editor";
+				return result;
+			}
+			File.WriteAllText( abs, next, new UTF8Encoding( false ) );
+			result.Status = "removed";
+			return result;
+		}
+
 		static ASEZHPatchResult Evaluate( ASEZHPatch patch, bool apply )
 		{
 			if( patch.Id == "zwrite-labels" )
 				return EnsureZWriteLabels( apply );
 			if( patch.Id == "tools-language-toggle" )
 				return EnsureLanguageToggle( apply );
+			if( patch.Id == "palette-build-list" )
+				return EnsurePaletteBuildList( apply );
 
 			var result = new ASEZHPatchResult { Id = patch.Id, File = patch.FileName };
 			string assetPath = FindFile( patch.FileName );
@@ -337,6 +382,247 @@ namespace AmplifyShaderEditor
 			File.WriteAllText( abs, next, new UTF8Encoding( false ) );
 			result.Status = "patched";
 			result.Detail = patch.Description;
+			return result;
+		}
+
+		static ASEZHPatchResult Reverse( ASEZHPatch patch )
+		{
+			if( patch.Id == "zwrite-labels" )
+				return RemoveZWriteLabels();
+			if( patch.Id == "tools-language-toggle" )
+				return RemoveLanguageToggle();
+			if( patch.Id == "palette-build-list" )
+				return RemovePaletteBuildList();
+
+			var result = new ASEZHPatchResult { Id = patch.Id, File = patch.FileName, Detail = "撤回：" + patch.Description };
+			string assetPath = FindFile( patch.FileName );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 " + patch.FileName;
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			Match replaceMatch;
+			if( !string.IsNullOrEmpty( patch.Replace ) && TryMatchFlexible( text, patch.Replace, out replaceMatch ) )
+			{
+				string adapted = AdaptStyle( patch.Find, replaceMatch.Value );
+				string next = text.Remove( replaceMatch.Index, replaceMatch.Length ).Insert( replaceMatch.Index, adapted );
+				if( next != text )
+				{
+					File.WriteAllText( abs, next, new UTF8Encoding( false ) );
+					result.Status = "removed";
+					return result;
+				}
+			}
+			if( !string.IsNullOrEmpty( patch.Find ) && ContainsFlexible( text, patch.Find )
+				&& ( string.IsNullOrEmpty( patch.Marker ) || !ContainsFlexible( text, patch.Marker ) ) )
+			{
+				result.Status = "removed";
+				result.Detail = "源码已是接入前片段";
+				return result;
+			}
+			if( patch.Id == "palette-node-item" || patch.Id == "palette-node-item-content" )
+			{
+				result.Status = "removed";
+				result.Detail = "此 Toggle 重载未接入或已撤回";
+				return result;
+			}
+			if( !string.IsNullOrEmpty( patch.Marker ) && ContainsFlexible( text, patch.Marker ) )
+			{
+				result.Status = "mismatch";
+				result.Detail = "仍有钩子但无法按锚点撤回，需手工还原 " + patch.FileName;
+				return result;
+			}
+			result.Status = "removed";
+			result.Detail = "未找到对应钩子";
+			return result;
+		}
+
+		static ASEZHPatchResult RemoveZWriteLabels()
+		{
+			var result = new ASEZHPatchResult { Id = "zwrite-labels", File = "ZBufferOpHelper.cs", Detail = "撤回 ZWriteModeLabels，Popup 改回 Values" };
+			string assetPath = FindFile( "ZBufferOpHelper.cs" );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 ZBufferOpHelper.cs";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			bool changed = false;
+			int labelsStart, labelsEnd;
+			if( TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd ) && ArrayFieldIsClean( text, labelsStart, labelsEnd ) )
+			{
+				int from = labelsStart;
+				while( from > 0 && ( text[ from - 1 ] == ' ' || text[ from - 1 ] == '\t' ) )
+					from--;
+				if( from > 0 && text[ from - 1 ] == '\n' )
+					from--;
+				if( from > 0 && text[ from - 1 ] == '\r' )
+					from--;
+				text = text.Remove( from, labelsEnd - from + 1 );
+				changed = true;
+			}
+			string nextPopup = Regex.Replace( text, @"(EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*)ZWriteModeLabels", "$1ZWriteModeValues" );
+			nextPopup = Regex.Replace( nextPopup, @"(EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[^,]+,\s*)ZWriteModeLabels", "$1ZWriteModeValues" );
+			if( nextPopup != text )
+			{
+				text = nextPopup;
+				changed = true;
+			}
+			if( !changed )
+			{
+				result.Status = "removed";
+				result.Detail = "没有可撤回的 ZWrite Labels";
+				return result;
+			}
+			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
+			result.Status = "removed";
+			return result;
+		}
+
+		static ASEZHPatchResult RemoveLanguageToggle()
+		{
+			var result = new ASEZHPatchResult { Id = "tools-language-toggle", File = "ToolsWindow.cs", Detail = "撤回画布语言开关" };
+			string assetPath = FindFile( "ToolsWindow.cs" );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 ToolsWindow.cs";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			if( !ContainsFlexible( text, "ASELocale.DrawLanguageToggle" ) )
+			{
+				result.Status = "removed";
+				result.Detail = "未接入语言开关";
+				return result;
+			}
+			string next = Regex.Replace(
+				text,
+				@"\s*const float sourceIconW = 24f;[\s\S]*?if\s*\(\s*ASELocale\.DrawLanguageToggle\s*\(\s*languageRect\s*\)\s*\)\s*m_parentWindow\.RequestRepaint\s*\(\s*\)\s*;",
+				"" );
+			if( next == text )
+			{
+				result.Status = "mismatch";
+				result.Detail = "找到 DrawLanguageToggle 但无法按插入块撤回";
+				return result;
+			}
+			File.WriteAllText( abs, next, new UTF8Encoding( false ) );
+			result.Status = "removed";
+			return result;
+		}
+
+		static ASEZHPatchResult RemovePaletteBuildList()
+		{
+			var result = new ASEZHPatchResult { Id = "palette-build-list", File = "PaletteParent.cs", Detail = "撤回 BuildFullList 的 MatchesSearch" };
+			string assetPath = FindFile( "PaletteParent.cs" );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 PaletteParent.cs";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			bool changed = false;
+			if( BadPaletteSearchContinue.IsMatch( text ) )
+			{
+				text = BadPaletteSearchContinue.Replace( text, "" );
+				changed = true;
+			}
+			var buildIf = new Regex(
+				@"if\s*\(\s*ASELocale\.MatchesSearch\s*\(\s*m_searchFilter\s*,\s*allItems\[\s*i\s*\]\.Name\s*,\s*allItems\[\s*i\s*\]\.Category\s*,\s*allItems\[\s*i\s*\]\.Tags\s*\)\s*\)" );
+			Match m = buildIf.Match( text );
+			if( m.Success )
+			{
+				int after = m.Index + m.Length;
+				while( after < text.Length && char.IsWhiteSpace( text[ after ] ) )
+					after++;
+				if( after < text.Length && text[ after ] == '{' )
+				{
+					string nl = text.IndexOf( "\r\n" ) >= 0 ? "\r\n" : "\n";
+					string restored = "if( allItems[ i ].Name.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0 ||"
+						+ nl + "\t\t\t\t\tallItems[ i ].Category.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0 )";
+					text = text.Remove( m.Index, m.Length ).Insert( m.Index, restored );
+					changed = true;
+				}
+			}
+			if( !changed )
+			{
+				result.Status = "removed";
+				result.Detail = "BuildFullList 无需撤回";
+				return result;
+			}
+			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
+			result.Status = "removed";
+			return result;
+		}
+
+		static readonly Regex BadPaletteSearchContinue = new Regex(
+			@"if\s*\(\s*!ASELocale\.MatchesSearch\s*\(\s*m_searchFilter\s*,\s*allItems\[\s*i\s*\]\.Name\s*,\s*allItems\[\s*i\s*\]\.Category\s*,\s*allItems\[\s*i\s*\]\.Tags\s*\)\s*\)\s*continue\s*;\s*",
+			RegexOptions.Multiline );
+
+		static ASEZHPatchResult EnsurePaletteBuildList( bool apply )
+		{
+			var result = new ASEZHPatchResult { Id = "palette-build-list", File = "PaletteParent.cs", Detail = "Search 完整列表过滤支持中英文" };
+			string assetPath = FindFile( "PaletteParent.cs" );
+			if( string.IsNullOrEmpty( assetPath ) )
+			{
+				result.Status = "missing";
+				result.Detail = "未找到 PaletteParent.cs";
+				return result;
+			}
+			result.File = assetPath;
+			string abs = ToAbsolute( assetPath );
+			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			bool hasBadContinue = BadPaletteSearchContinue.IsMatch( text );
+			bool hasIndexOfFilter = ContainsFlexible( text, "allItems[ i ].Name.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase )" );
+			if( !hasBadContinue && !hasIndexOfFilter )
+			{
+				result.Status = "applied";
+				return result;
+			}
+			if( !apply )
+			{
+				result.Status = "ready";
+				result.Detail += hasBadContinue ? "（将去掉会清空空搜索列表的 continue）" : "（将把 BuildFullList 的 IndexOf 换成 MatchesSearch）";
+				return result;
+			}
+			if( hasBadContinue )
+				text = BadPaletteSearchContinue.Replace( text, "" );
+			Match indexMatch;
+			const string indexFind = "allItems[ i ].Name.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0 ||\n\t\t\t\t\tallItems[ i ].Category.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0";
+			if( TryMatchFlexible( text, indexFind, out indexMatch ) )
+			{
+				string adapted = AdaptStyle( "ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags )", indexMatch.Value );
+				text = text.Remove( indexMatch.Index, indexMatch.Length ).Insert( indexMatch.Index, adapted );
+			}
+			else
+			{
+				text = Regex.Replace(
+					text,
+					@"allItems\[\s*i\s*\]\.Name\.IndexOf\s*\(\s*m_searchFilter\s*,\s*StringComparison\.InvariantCultureIgnoreCase\s*\)\s*>=\s*0\s*\|\|\s*allItems\[\s*i\s*\]\.Category\.IndexOf\s*\(\s*m_searchFilter\s*,\s*StringComparison\.InvariantCultureIgnoreCase\s*\)\s*>=\s*0",
+					"ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags )" );
+			}
+			hasBadContinue = BadPaletteSearchContinue.IsMatch( text );
+			hasIndexOfFilter = ContainsFlexible( text, "allItems[ i ].Name.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase )" );
+			if( hasBadContinue || hasIndexOfFilter )
+			{
+				result.Status = "mismatch";
+				result.Detail = "无法去掉错误的 MatchesSearch continue，或 BuildFullList 的 IndexOf 未换成 MatchesSearch";
+				return result;
+			}
+			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
+			result.Status = "patched";
 			return result;
 		}
 

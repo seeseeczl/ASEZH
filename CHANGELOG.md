@@ -2,6 +2,11 @@
 
 本仓库版本以 `package.json` 的 `version` 为准。当前起点是 `0.0.2`，每次面向消费者的交付只增加 `0.0.1`。
 
+## 0.0.7 - 2026-09-07
+
+- Search 过滤不再把「搜索」标签当成关键词，避免节点列表被筛空。安装器会去掉 0.0.5 写进 `PaletteParent` 的错误 `continue`。词典加载日志改到 OnGUI 之后，避免第一次绘制把标签写进输入框。
+- `Window/ASEZH` 子菜单改为中文，并增加「移除汉化补丁」。
+
 ## 0.0.6 - 2026-09-07
 
 - 安装器不再用会跨过 `ZTestModeDict` 的正则补 `ZWriteModeLabels` 分号。`zwrite-labels` 按括号配对复制数组，并修复 `{ZTestMode.Less,1 };` 导致的 CS1513。

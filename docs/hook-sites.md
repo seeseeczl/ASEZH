@@ -19,7 +19,7 @@ ASEZH 本体不修改 ASE 生成逻辑。要让某个 ASE 版本显示中文，�
 | `ParentNode.cs` | `DrawTitle` | 只改 **显示** GUIContent，不要改 `m_content.text` |
 | `ParentNode.cs` | `CheckFindText` | `MatchesSearch`，中英都能搜到 |
 | `PaletteParent.cs` | 分类折叠 / 列表项 | `T(category, TableCategory)`；列表 `TNodeListLabel(Name, ItemUIContent.text)`；创建节点仍传英文 `Name`。安装器已覆盖。 |
-| `PaletteParent.cs` | 搜索 | `MatchesSearch` |
+| `PaletteParent.cs` | 搜索 | `MatchesSearch`；空搜索必须列出全部节点。禁止在未过滤分支插入 `if( !MatchesSearch ) continue`。过滤值等于「搜索」标签时视为空搜索。 |
 | `NodeUtils.cs` | 分组标题 | `T(sectionName)` |
 
 ## P2 — Shader 值与 UI 标签拆开
