@@ -21,6 +21,14 @@ The ZWrite installer step SHALL insert a `ZWriteModeLabels` array whose English 
 - **WHEN** Popup already mentions `ZWriteModeLabels` but the array is missing
 - **THEN** scan is not `applied` and apply inserts the array
 
+#### Scenario: ZWrite patch does not break ZTestModeDict
+- **WHEN** `ZBufferOpHelper.cs` already has `ZWriteModeValues` closed with `};` and `ZTestModeDict` follows
+- **THEN** apply does not insert a semicolon after `{ZTestMode.Less,1 }`
+
+#### Scenario: Broken ZTestModeDict semicolon is repaired
+- **WHEN** the first `ZTestModeDict` entry is `{ZTestMode.Less,1 };` from an older installer
+- **THEN** apply rewrites it to a comma so the file compiles
+
 ### Requirement: Language toggle hooks after the source-code icon
 The installer SHALL insert `ASELocale.DrawLanguageToggle` on the ASE canvas toolbar to the right of the source-code icon, after restoring `GUI.color`, at height 21.
 

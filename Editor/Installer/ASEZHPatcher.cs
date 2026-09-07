@@ -353,48 +353,62 @@ namespace AmplifyShaderEditor
 			result.File = assetPath;
 			string abs = ToAbsolute( assetPath );
 			string text = File.ReadAllText( abs, Encoding.UTF8 );
-			bool hasArray = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels\s*=\s*\{.*?\}\s*;", RegexOptions.Singleline );
+			bool dictBroken = Regex.IsMatch( text, @"\{\s*ZTestMode\.Less\s*,\s*1\s*\}\s*;" );
+			int labelsStart, labelsEnd, valuesStart, valuesEnd;
+			bool hasCleanLabels = TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd )
+				&& ArrayFieldIsClean( text, labelsStart, labelsEnd )
+				&& ArrayFieldHasSemicolon( text, labelsEnd );
 			bool popupLabels = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeLabels" )
 				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeLabels" );
-			bool needsSemicolonRepair = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteMode(?:Values|Labels)\s*=\s*\{.*?\}(?!\s*;)", RegexOptions.Singleline );
-			if( hasArray && popupLabels && !needsSemicolonRepair )
+			if( hasCleanLabels && popupLabels && !dictBroken )
 			{
 				result.Status = "applied";
 				return result;
 			}
-			bool canInsert = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeValues\s*=" );
+			bool canInsert = TryFindStringArrayField( text, "ZWriteModeValues", out valuesStart, out valuesEnd )
+				&& ArrayFieldIsClean( text, valuesStart, valuesEnd );
 			bool canRetarget = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeValues" )
 				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeValues" );
-			bool canFix = ( !hasArray && canInsert ) || ( !popupLabels && canRetarget ) || needsSemicolonRepair;
+			bool canFix = canInsert || ( !popupLabels && canRetarget ) || dictBroken
+				|| ( TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd ) && !ArrayFieldIsClean( text, labelsStart, labelsEnd ) );
 			if( !canFix )
 			{
 				result.Status = "mismatch";
-				result.Detail = "未找到 ZWriteModeValues 定义或 Popup 用法，需按 docs/hook-sites.md 手工接入";
+				result.Detail = "未找到完整的 ZWriteModeValues 数组，或 ZBufferOpHelper.cs 已被写坏，请从 ASE 备份恢复后再接入";
 				return result;
 			}
 			if( !apply )
 			{
 				result.Status = "ready";
-				if( needsSemicolonRepair )
-					result.Detail += "（将补数组末尾分号）";
-				else if( !hasArray )
-					result.Detail += "（将补数组定义）";
+				result.Detail += dictBroken ? "（将修复 ZTestModeDict 被误插入的分号）" : "（将按括号配对写入 Labels 数组）";
 				return result;
 			}
-			if( needsSemicolonRepair )
-				TryRepairZWriteArraySemicolons( ref text );
-			if( !hasArray && !TryInsertZWriteLabelsArray( ref text ) )
+			if( dictBroken )
+				text = Regex.Replace( text, @"(\{\s*ZTestMode\.Less\s*,\s*1\s*\})\s*;", "$1 ," );
+			StripOrphanZWriteLabelsAssignment( ref text );
+			if( TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd ) && !ArrayFieldIsClean( text, labelsStart, labelsEnd ) )
+				text = text.Remove( labelsStart, labelsEnd - labelsStart + 1 );
+			if( !TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd ) || !ArrayFieldIsClean( text, labelsStart, labelsEnd ) )
 			{
-				result.Status = "mismatch";
-				result.Detail = "无法从 ZWriteModeValues 复制 Labels 数组";
-				return result;
+				if( !TryInsertZWriteLabelsArray( ref text ) )
+				{
+					result.Status = "mismatch";
+					result.Detail = "无法从 ZWriteModeValues 复制 Labels 数组";
+					return result;
+				}
 			}
+			else if( !ArrayFieldHasSemicolon( text, labelsEnd ) )
+				text = text.Insert( labelsEnd + 1, ";" );
+			if( TryFindStringArrayField( text, "ZWriteModeValues", out valuesStart, out valuesEnd ) && !ArrayFieldHasSemicolon( text, valuesEnd ) )
+				text = text.Insert( valuesEnd + 1, ";" );
 			if( !popupLabels )
 				TryRetargetZWritePopup( ref text );
-			hasArray = Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels" );
+			hasCleanLabels = TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd )
+				&& ArrayFieldIsClean( text, labelsStart, labelsEnd )
+				&& ArrayFieldHasSemicolon( text, labelsEnd );
 			popupLabels = Regex.IsMatch( text, @"EnumTypePopup\s*\(\s*ref\s+owner\s*,\s*ZWriteModeStr\s*,\s*ZWriteModeLabels" )
 				|| Regex.IsMatch( text, @"EditorGUILayoutPopup\s*\(\s*ZWriteModeStr\s*,[\s\S]{0,80}?ZWriteModeLabels" );
-			if( !hasArray || !popupLabels )
+			if( !hasCleanLabels || !popupLabels )
 			{
 				result.Status = "mismatch";
 				result.Detail = "ZWrite Labels 未能完整写入";
@@ -405,29 +419,110 @@ namespace AmplifyShaderEditor
 			return result;
 		}
 
-		static bool TryInsertZWriteLabelsArray( ref string text )
+		static bool TryFindStringArrayField( string text, string fieldName, out int start, out int end )
 		{
-			if( Regex.IsMatch( text, @"string\s*\[\s*\]\s*ZWriteModeLabels\s*=\s*\{.*?\}\s*;", RegexOptions.Singleline ) )
-				return true;
-			var rx = new Regex( @"((?:public\s+)?static\s+readonly\s+string\s*\[\s*\]\s*ZWriteModeValues\s*=\s*\{.*?\}\s*;)", RegexOptions.Singleline );
-			Match m = rx.Match( text );
+			start = -1;
+			end = -1;
+			Match m = Regex.Match( text, @"(?:public\s+|private\s+|protected\s+)?(?:static\s+)?(?:readonly\s+)?string\s*\[\s*\]\s+" + Regex.Escape( fieldName ) + @"\s*=" );
 			if( !m.Success )
 				return false;
-			string labels = m.Value.Replace( "ZWriteModeValues", "ZWriteModeLabels" );
-			if( !labels.TrimEnd().EndsWith( ";" ) )
-				labels += ";";
-			string nl = text.IndexOf( "\r\n" ) >= 0 ? "\r\n" : "\n";
-			text = text.Insert( m.Index + m.Length, nl + nl + labels );
+			int brace = m.Index + m.Length;
+			while( brace < text.Length && char.IsWhiteSpace( text[ brace ] ) )
+				brace++;
+			if( brace >= text.Length || text[ brace ] != '{' )
+				return false;
+			int close = MatchBalancedBrace( text, brace );
+			if( close < 0 )
+				return false;
+			start = m.Index;
+			end = close;
+			int j = close + 1;
+			while( j < text.Length && char.IsWhiteSpace( text[ j ] ) )
+				j++;
+			if( j < text.Length && text[ j ] == ';' )
+				end = j;
 			return true;
 		}
 
-		static void TryRepairZWriteArraySemicolons( ref string text )
+		static int MatchBalancedBrace( string text, int openIndex )
+		{
+			int depth = 0;
+			bool inStr = false;
+			for( int i = openIndex; i < text.Length; i++ )
+			{
+				char c = text[ i ];
+				if( inStr )
+				{
+					if( c == '\\' && i + 1 < text.Length )
+					{
+						i++;
+						continue;
+					}
+					if( c == '"' )
+						inStr = false;
+					continue;
+				}
+				if( c == '"' )
+				{
+					inStr = true;
+					continue;
+				}
+				if( c == '{' )
+					depth++;
+				else if( c == '}' )
+				{
+					depth--;
+					if( depth == 0 )
+						return i;
+				}
+			}
+			return -1;
+		}
+
+		static bool ArrayFieldIsClean( string text, int start, int end )
+		{
+			if( start < 0 || end < start || end >= text.Length )
+				return false;
+			string span = text.Substring( start, end - start + 1 );
+			if( span.IndexOf( "Dictionary", StringComparison.Ordinal ) >= 0 )
+				return false;
+			if( span.IndexOf( "ZTestMode", StringComparison.Ordinal ) >= 0 )
+				return false;
+			return end - start < 800;
+		}
+
+		static bool ArrayFieldHasSemicolon( string text, int end )
+		{
+			return end >= 0 && end < text.Length && text[ end ] == ';';
+		}
+
+		static void StripOrphanZWriteLabelsAssignment( ref string text )
 		{
 			text = Regex.Replace(
 				text,
-				@"(string\s*\[\s*\]\s*ZWriteMode(?:Values|Labels)\s*=\s*\{.*?\})(\s*)(?!;)",
-				"$1;$2",
-				RegexOptions.Singleline );
+				@"(?:public\s+|private\s+|protected\s+)?(?:static\s+)?(?:readonly\s+)?string\s*\[\s*\]\s+ZWriteModeLabels\s*=\s*(?=(?:public|private|protected)\s)",
+				"" );
+		}
+
+		static bool TryInsertZWriteLabelsArray( ref string text )
+		{
+			int valuesStart, valuesEnd;
+			if( !TryFindStringArrayField( text, "ZWriteModeValues", out valuesStart, out valuesEnd ) )
+				return false;
+			if( !ArrayFieldIsClean( text, valuesStart, valuesEnd ) )
+				return false;
+			if( !ArrayFieldHasSemicolon( text, valuesEnd ) )
+			{
+				text = text.Insert( valuesEnd + 1, ";" );
+				valuesEnd++;
+			}
+			int labelsStart, labelsEnd;
+			if( TryFindStringArrayField( text, "ZWriteModeLabels", out labelsStart, out labelsEnd ) && ArrayFieldIsClean( text, labelsStart, labelsEnd ) )
+				return true;
+			string labels = text.Substring( valuesStart, valuesEnd - valuesStart + 1 ).Replace( "ZWriteModeValues", "ZWriteModeLabels" );
+			string nl = text.IndexOf( "\r\n" ) >= 0 ? "\r\n" : "\n";
+			text = text.Insert( valuesEnd + 1, nl + nl + labels );
+			return true;
 		}
 
 		static void TryRetargetZWritePopup( ref string text )

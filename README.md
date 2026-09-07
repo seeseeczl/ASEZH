@@ -8,7 +8,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
 许可：MIT  
-当前版本：`0.0.5`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
+当前版本：`0.0.6`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 
@@ -231,7 +231,7 @@ ASEZH/
 ## 限制与已知缺口
 
 - 自动补丁只覆盖锚点仍接近官方 ASE 的文件。P1/P2 部分钩子（调色板搜索、部分 Popup 重载等）可能要手工接。
-- ZWrite：必须先有 `ZWriteModeLabels` 数组，Popup 用 Labels、生成用 `ZWriteModeValues`。安装器目前主要改 Popup 调用；干净 ASE 若没有 Labels 数组，需要按 `hook-sites.md` 补定义，否则会编不过。
+- ZWrite：必须先有 `ZWriteModeLabels` 数组，Popup 用 Labels、生成用 `ZWriteModeValues`。安装器按括号配对复制数组，不会改 `ZWriteModeValues` 的 Shader 输出。若 `ZBufferOpHelper.cs` 已编不过，先 Update 到 `0.0.6` 再执行一次接入；仍失败则从 ASE 备份恢复该文件后重新接入。
 - 用户自己做的 Shader Function 没有词条时保持英文（fail-open），这是预期行为。
 - 函数节点**画布引脚名**（如 Tex）默认仍走 `port.Name`，未接显示钩子；设置面板里的开关名 / 内部数据已走 `T()`。
 - 不要把 ASEZH 和工程内嵌的 `ASELocale.cs` 同时启用。

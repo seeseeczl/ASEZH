@@ -2,6 +2,10 @@
 
 本仓库版本以 `package.json` 的 `version` 为准。当前起点是 `0.0.2`，每次面向消费者的交付只增加 `0.0.1`。
 
+## 0.0.6 - 2026-09-07
+
+- 安装器不再用会跨过 `ZTestModeDict` 的正则补 `ZWriteModeLabels` 分号。`zwrite-labels` 按括号配对复制数组，并修复 `{ZTestMode.Less,1 };` 导致的 CS1513。
+
 ## 0.0.5 - 2026-09-07
 
 - 安装器接入 `PaletteParent.cs`：Search 窗口内置分类（Camera And Screen 等）与节点行走显示层词典。

@@ -21,7 +21,7 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 
 不要对 `mismatch` 强行套补丁。安装器会忽略 tab/空格/换行差异；仍 mismatch 才需要手工改。
 
-`zwrite-labels` 会从 `ZWriteModeValues` 复制出 `ZWriteModeLabels` 再改 Popup。若只改了 Popup 却没有数组，扫描不会标成 applied，再次应用会把数组补上。
+`zwrite-labels` 会按括号配对从 `ZWriteModeValues` 复制出 `ZWriteModeLabels` 再改 Popup，不会改 Values 里给 Shader 用的英文。若只改了 Popup 却没有数组，扫描不会标成 applied，再次应用会把数组补上。`0.0.4`/`0.0.5` 若把 `ZTestModeDict` 第一项写成 `{ZTestMode.Less,1 };`，`0.0.6` 再应用一次会改回逗号。
 
 ## 3. 手工接入顺序
 
