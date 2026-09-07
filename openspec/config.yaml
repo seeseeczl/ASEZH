@@ -1,0 +1,30 @@
+schema: spec-driven
+
+context: |
+  ASEZH is a Unity Editor UPM package (com.asezh.locale) that overlays Chinese display
+  text onto Amplify Shader Editor. It is not a fork of ASE.
+
+  Tech: C# Editor-only asmdef ASEZH.Editor, namespace AmplifyShaderEditor, class ASELocale.
+  Dictionary JSON is the translation source of truth. Distribution is Git URL via Package Manager.
+
+  Version: package.json version is the published version. Every consumer-facing push increments
+  patch by 0.0.1. Do not skip patch numbers. Do not bump minor/major unless the maintainer
+  explicitly asks.
+
+  Hard rules: English keys stay English; generated Shader/Keyword/Define/property/Pass names
+  stay English; render platform names are not translated; localization must fail open;
+  dropdowns translate a cloned display copy by index; one canvas language Toggle only;
+  do not T() TextField values.
+
+  Workflow: OpenSpec spec-driven. Current behavior lives in openspec/specs/. Semantic changes
+  go through openspec/changes/<name>/ then archive. Cursor commands: /opsx-propose, /opsx-apply,
+  /opsx-archive.
+
+rules:
+  proposal:
+    - Keep proposals under 500 words
+    - Always include Non-goals via What Changes or Impact if scope could expand
+  specs:
+    - Observable editor behavior only; do not specify C# class internals unless they are the public API
+  tasks:
+    - Include the package.json 0.0.1 bump whenever the change is meant for Package Manager Update

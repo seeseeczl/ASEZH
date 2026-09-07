@@ -7,7 +7,8 @@ Amplify Shader Editor（ASE）的**显示层中文包**。
 ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 ASE」。官方 ASE 仍放在工程原来的位置；本包叠在上面做显示，升级 ASE 时只重新接入钩子，不必把译文写进 ASE 本体。
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
-许可：MIT
+许可：MIT  
+当前版本：`0.0.2`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 
@@ -168,6 +169,19 @@ Console 正常加载时会有类似日志：`ASEZH: entries=... collisions=... t
 
 可选本地覆盖：把 `Editor/ASEZHDictionary.user.json.example` 复制为 `ASEZHDictionary.user.json`（已被 `.gitignore`）。覆盖文件**只能改已有 table+key**，不能新增条目。
 
+## 治理
+
+需求与变更用 [OpenSpec](https://github.com/Fission-AI/OpenSpec) 管理。
+
+- 当前批准行为：[`openspec/specs/`](openspec/specs/)
+- 进行中的变更：`openspec/changes/<name>/`（proposal → specs → design → tasks）
+- 完成后归档，规格合入 `openspec/specs/`
+- Cursor：`/opsx-propose`、`/opsx-apply`、`/opsx-archive`
+
+未写入规格的语义不要当成已批准需求。聊天记录不能替代 `openspec/`。
+
+版本号只改 `package.json` 的 `version`，每次可更新交付 `+0.0.1`。需要升 minor/major 时必须明确说。
+
 ## 架构
 
 ```
@@ -199,8 +213,10 @@ ASEZH（本仓库）                         目标 Unity 工程
 
 ```
 ASEZH/
-  package.json                         UPM：com.asezh.locale
+  package.json                         UPM：com.asezh.locale，version 每次 +0.0.1
+  CHANGELOG.md
   LICENSE                              MIT
+  openspec/                            需求基线与变更
   Editor/
     ASELocale.cs                       引擎
     ASEZHDictionary.json               词表
@@ -247,3 +263,5 @@ ASEZH/
 - [架构](docs/architecture.md)
 - [钩子清单](docs/hook-sites.md)
 - [适配其他 ASE 版本](docs/adapt-ase-version.md)
+- [变更记录](CHANGELOG.md)
+- [OpenSpec 规格](openspec/specs/)

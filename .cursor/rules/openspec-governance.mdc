@@ -1,0 +1,10 @@
+---
+description: OpenSpec 治理与 0.0.1 版本递增
+alwaysApply: true
+---
+
+# ASEZH 治理
+
+- 已批准行为以 `openspec/specs/` 为准。改产品语义先 `/opsx-propose`（或继续已有 `openspec/changes/`），再实现，完成后 `/opsx-archive`。
+- 面向 Package Manager Update 的交付必须把 `package.json` 的 `version` 增加 `0.0.1`，并在 `CHANGELOG.md` 记一笔。禁止跳号。未获明确要求时不要升 minor/major。
+- 显示层：KEY 英文；Shader / Keyword / 平台名不汉化；下拉只 clone；语言开关只留画布一颗；不要 `T()` TextField 的值。
