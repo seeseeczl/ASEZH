@@ -1,9 +1,9 @@
 {
   "name": "com.asezh.locale",
   "displayName": "ASEZH",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Amplify Shader Editor 中文显示层。只翻译编辑器 UI，不改 Shader / Keyword / 平台名。可接入不同版本的 ASE 源码。",
-  "unity": "2019.4",
+  "unity": "2022.3",
   "documentationUrl": "https://github.com/seeseeczl/ASEZH",
   "changelogUrl": "https://github.com/seeseeczl/ASEZH/blob/main/CHANGELOG.md",
   "licensesUrl": "https://github.com/seeseeczl/ASEZH/blob/main/LICENSE",

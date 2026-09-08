@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using AmplifyShaderEditor;
+using UnityEditor;
+using UnityEngine;
+
+public static class ASEZHGateProbe
+{
+    public static void Locale()
+    {
+        Exit( "locale", ASELocale.RunSelfTests() );
+    }
+
+    public static void Baseline()
+    {
+        AssertStatuses( "baseline", ASEZHPatcher.Scan(), "ready", "applied", "not-applicable" );
+        Exit( "baseline", null );
+    }
+
+    public static void Apply()
+    {
+        AssertStatuses( "apply", ASEZHPatcher.ApplyAll(), "patched", "applied", "not-applicable" );
+        AssertSession( "apply" );
+        Exit( "apply", null );
+    }
+
+    public static void VerifyApplied()
+    {
+        AssertStatuses( "verify-applied", ASEZHPatcher.Scan(), "applied", "not-applicable" );
+        Exit( "verify-applied", null );
+    }
+
+    public static void Remove()
+    {
+        AssertStatuses( "remove", ASEZHPatcher.RemoveAll(), "removed" );
+        AssertSession( "remove" );
+        Exit( "remove", null );
+    }
+
+    public static void VerifyRemoved()
+    {
+        AssertStatuses( "verify-removed", ASEZHPatcher.Scan(), "ready", "applied", "not-applicable" );
+        Exit( "verify-removed", null );
+    }
+
+    static void AssertSession( string stage )
+    {
+        if( !ASEZHPatcher.LastSessionSucceeded )
+            throw new Exception( stage + ": session=" + ASEZHPatcher.LastSessionStatus + " " + ASEZHPatcher.LastSessionDetail );
+        Debug.Log( "ASEZH_GATE_SESSION stage=" + stage + " status=" + ASEZHPatcher.LastSessionStatus
+            + " target=" + ASEZHPatcher.LastSessionTarget + " backup=" + ASEZHPatcher.LastSessionBackup );
+    }
+
+    static void AssertStatuses( string stage, List<ASEZHPatchResult> results, params string[] allowed )
+    {
+        if( results == null || results.Count != 18 )
+            throw new Exception( stage + ": expected 18 results, got " + ( results == null ? -1 : results.Count ) );
+        for( int i = 0; i < results.Count; i++ )
+        {
+            bool ok = false;
+            for( int j = 0; j < allowed.Length; j++ )
+                ok |= results[ i ].Status == allowed[ j ];
+            if( !ok )
+                throw new Exception( stage + ": " + results[ i ].Id + "=" + results[ i ].Status + " " + results[ i ].Detail );
+        }
+    }
+
+    static void Exit( string stage, string error )
+    {
+        if( !string.IsNullOrEmpty( error ) )
+            throw new Exception( stage + ": " + error );
+        Debug.Log( "ASEZH_GATE_OK stage=" + stage );
+        EditorApplication.Exit( 0 );
+    }
+}

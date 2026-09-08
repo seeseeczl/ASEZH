@@ -1,0 +1,20 @@
+#if false
+public int EditorGUILayoutPopup( string label, int selectedIndex, string[] displayedOptions, params GUILayoutOption[] options )
+		{
+			int newValue = EditorGUILayout.Popup( label, selectedIndex, displayedOptions, options );
+public int EditorGUILayoutPopup( int selectedIndex, string[] displayedOptions, params GUILayoutOption[] options )
+		{
+			int newValue = EditorGUILayout.Popup( selectedIndex, displayedOptions, options );
+public Enum EditorGUILayoutEnumPopup( string label, Enum selected, params GUILayoutOption[] options )
+		{
+			Enum newValue = EditorGUILayout.EnumPopup( label, selected, options );
+public Enum EditorGUILayoutEnumPopup( Enum selected, params GUILayoutOption[] options )
+		{
+			Enum newValue = EditorGUILayout.EnumPopup( selected, options );
+public bool EditorGUILayoutToggle( string label, bool value, params GUILayoutOption[] options )
+		{
+			bool newValue = EditorGUILayout.Toggle( label, value, options );
+public bool EditorGUILayoutToggleLeft( string label, bool value, params GUILayoutOption[] options )
+		{
+			bool newValue = EditorGUILayout.ToggleLeft( label, value, options );
+#endif

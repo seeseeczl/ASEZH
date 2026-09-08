@@ -1,0 +1,10 @@
+#if false
+m_searchFilter = EditorGUILayout.TextField( m_searchFilterStr, m_searchFilter );
+m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( m_searchFilterStr ) ).x;
+bool visible = GUILayout.Toggle( current.Value.Visible, current.Key, m_foldoutStyle );
+EditorGUI.Toggle( thisRect, current.Value.Contents[ i ].ItemUIContent.text, false, EditorStyles.label );
+EditorGUI.Toggle( thisRect, current.Value.Contents[ i ].ItemUIContent, false, EditorStyles.label );
+if( searchList.Length == matchesFound )
+if( allItems[ i ].Name.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0 ||
+    allItems[ i ].Category.IndexOf( m_searchFilter, StringComparison.InvariantCultureIgnoreCase ) >= 0 )
+#endif

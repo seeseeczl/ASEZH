@@ -1,0 +1,32 @@
+name: Public delivery gates
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  redistributable-static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19.0"
+      - name: Install the pinned OpenSpec validator
+        run: npm install --global @fission-ai/openspec@1.7.0
+      - name: Validate redistributable package facts
+        run: python3 scripts/validate_delivery.py --evidence "$RUNNER_TEMP/asezh-evidence"
+      - name: Upload static evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: asezh-public-gate-evidence
+          path: ${{ runner.temp }}/asezh-evidence

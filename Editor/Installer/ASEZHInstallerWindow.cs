@@ -8,6 +8,7 @@ namespace AmplifyShaderEditor
 	{
 		Vector2 m_scroll;
 		List<ASEZHPatchResult> m_results;
+		bool m_showDiagnostics;
 
 		[MenuItem( "Window/ASEZH/接入 Amplify Shader Editor", false, 2090 )]
 		static void Open()
@@ -15,19 +16,23 @@ namespace AmplifyShaderEditor
 			GetWindow<ASEZHInstallerWindow>( true, "ASEZH 接入" );
 		}
 
-		[MenuItem( "Window/ASEZH/移除汉化补丁", false, 2091 )]
-		static void RemoveMenu()
+		static void ShowSessionDialog( string operation )
 		{
-			if( !EditorUtility.DisplayDialog( "ASEZH", "将从 ASE 源码中移除 ASEZH 显示钩子。ASE 本体和本包都会保留，可稍后再次接入。", "移除", "取消" ) )
-				return;
-			List<ASEZHPatchResult> results = ASEZHPatcher.RemoveAll();
-			int n = 0;
-			for( int i = 0; i < results.Count; i++ )
+			ASEZHPatchSessionResult session = ASEZHPatcher.LastSession;
+			if( session == null )
 			{
-				if( results[ i ].Status == "removed" )
-					n++;
+				EditorUtility.DisplayDialog( "ASEZH", operation + "没有产生可核验结果。", "确定" );
+				return;
 			}
-			EditorUtility.DisplayDialog( "ASEZH", "已撤回 " + n + " 处钩子。请等编译结束后再打开 ASE。", "确定" );
+			string target = string.IsNullOrEmpty( session.TargetRoot ) ? "未锁定" : session.TargetRoot;
+			string backup = string.IsNullOrEmpty( session.BackupPath ) ? "未创建" : session.BackupPath;
+			string summary = "状态：" + session.State
+				+ "\n目标：" + target
+				+ "\n备份：" + backup
+				+ "\n结论：" + session.Detail;
+			if( session.IsSuccess )
+				summary += "\n\n请等编译结束后再打开 ASE。";
+			EditorUtility.DisplayDialog( "ASEZH " + operation, summary, "确定" );
 		}
 
 		void OnEnable()
@@ -40,7 +45,17 @@ namespace AmplifyShaderEditor
 			EditorGUILayout.LabelField( "把 ASEZH 显示层接到当前工程里的 Amplify Shader Editor。", EditorStyles.wordWrappedLabel );
 			EditorGUILayout.Space();
 			string root = ASEZHPatcher.FindAseRoot();
-			EditorGUILayout.LabelField( "ASE 根目录", string.IsNullOrEmpty( root ) ? "未找到 UndoParentNode.cs" : root );
+			EditorGUILayout.LabelField( "ASE 根目录", string.IsNullOrEmpty( root ) ? "未找到唯一且可安全写入的 ASE" : root );
+			ASEZHPatchSessionResult session = ASEZHPatcher.LastSession;
+			if( session != null && !string.IsNullOrEmpty( session.Detail ) )
+			{
+				MessageType type = session.State == ASEZHPatchSessionState.PreflightRejected
+					|| session.State == ASEZHPatchSessionState.FailedRestored
+					|| session.State == ASEZHPatchSessionState.FailedRecoveryIncomplete
+					? MessageType.Warning
+					: MessageType.Info;
+				EditorGUILayout.HelpBox( "会话状态：" + session.State + "\n" + session.Detail, type );
+			}
 
 			EditorGUILayout.Space();
 			if( GUILayout.Button( "重新扫描", GUILayout.Height( 24 ) ) )
@@ -48,12 +63,39 @@ namespace AmplifyShaderEditor
 			if( GUILayout.Button( "应用可自动补丁", GUILayout.Height( 28 ) ) )
 			{
 				if( EditorUtility.DisplayDialog( "ASEZH", "将改写 ASE 源码中的锚点片段。已打过的补丁会跳过。建议先提交或备份 ASE。", "应用", "取消" ) )
+				{
 					m_results = ASEZHPatcher.ApplyAll();
+					ShowSessionDialog( "应用" );
+				}
 			}
 			if( GUILayout.Button( "移除汉化补丁", GUILayout.Height( 24 ) ) )
 			{
 				if( EditorUtility.DisplayDialog( "ASEZH", "将从 ASE 源码中移除 ASEZH 显示钩子。ASE 本体和本包都会保留，可稍后再次接入。", "移除", "取消" ) )
+				{
 					m_results = ASEZHPatcher.RemoveAll();
+					ShowSessionDialog( "撤回" );
+				}
+			}
+
+			EditorGUILayout.Space();
+			m_showDiagnostics = EditorGUILayout.Foldout( m_showDiagnostics, "高级/诊断" );
+			if( m_showDiagnostics )
+			{
+				EditorGUILayout.BeginVertical( EditorStyles.helpBox );
+				if( GUILayout.Button( "重新加载词典", GUILayout.Height( 24 ) ) )
+				{
+					ASELocale.Reload();
+					string error = ASELocale.RunSelfTests();
+					EditorUtility.DisplayDialog( "ASEZH 重新加载词典",
+						string.IsNullOrEmpty( error ) ? "已重新加载 " + ASELocale.EntryCount + " 条词典并通过本地化测试。" : error,
+						"确定" );
+				}
+				if( GUILayout.Button( "运行本地化测试", GUILayout.Height( 24 ) ) )
+				{
+					string error = ASELocale.RunSelfTests();
+					EditorUtility.DisplayDialog( "ASEZH 本地化测试", string.IsNullOrEmpty( error ) ? "本地化测试通过。" : error, "确定" );
+				}
+				EditorGUILayout.EndVertical();
 			}
 
 			EditorGUILayout.Space();

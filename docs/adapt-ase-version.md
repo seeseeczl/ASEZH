@@ -10,7 +10,7 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 
 ## 2. 扫描
 
-`Window → ASEZH → Install into Amplify Shader Editor`
+`Window → ASEZH → 接入 Amplify Shader Editor`
 
 | 状态 | 含义 |
 | --- | --- |
@@ -25,7 +25,7 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 
 `0.0.5` 的 `palette-build-list` 曾在空搜索循环里插入 `continue`，Search 框若被写进「搜索」会把列表筛空。`0.0.7` 的 `MatchesSearch` 会把该标签当成空搜索；再应用安装器会删掉那段 `continue`。
 
-`Window → ASEZH → 移除汉化补丁` 会把安装器写入的显示钩子撤回到接入前片段，不卸载 ASEZH 包。
+接入窗口中的「移除汉化补丁」会把安装器写入的显示钩子撤回到接入前片段，不卸载 ASEZH 包。
 
 ## 3. 手工接入顺序
 
@@ -38,7 +38,7 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 
 ## 4. 验收
 
-1. `Window → ASEZH → Run Locale Tests` 全过。
+1. 接入窗口「高级/诊断 → 运行本地化测试」全过。
 2. 打开一张含 ZWrite / Blend / 平台 / Keyword 的 Shader。切「中文」再切「EN」，生成文本 diff 为空。
 3. 平台复选框仍为 Direct3D / Vulkan / PlayStation。
 4. 只点语言开关，Shader 不应进入 dirty / Live 编译。

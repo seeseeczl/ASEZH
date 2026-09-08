@@ -8,7 +8,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
 许可：MIT  
-当前版本：`0.0.7`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
+当前版本：`0.0.8`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 
@@ -39,7 +39,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 ## 要求
 
-- Unity / 团结 2019.4 或更高（本包 `unity` 字段为 `2019.4`）
+- 团结引擎 2022.3.61t9（当前正式发布验证目标；本包 `unity` 字段为 `2022.3`）
 - 工程里已安装 **Amplify Shader Editor**（通常在 `Assets/AmplifyShaderEditor/`）
 - 能访问 GitHub（包管理器按 Git URL 拉取）
 
@@ -92,9 +92,9 @@ ASE 没有稳定的公共 UI API。装包之后还要在 ASE **显示路径**上
 
 1. `Window → ASEZH → 接入 Amplify Shader Editor`
 2. 看扫描结果，点「应用可自动补丁」（会改 ASE 源码里的锚点片段，建议先备份或提交 ASE）
-3. `Window → ASEZH → 运行本地化测试`
+3. 在接入窗口展开「高级/诊断」，点击「运行本地化测试」
 
-要撤掉显示钩子：`Window → ASEZH → 移除汉化补丁`（会确认）。只还原安装器改过的 ASE 源码，不卸载本包。
+要撤掉显示钩子：在接入窗口点击「移除汉化补丁」（会确认）。只还原安装器改过的 ASE 源码，不卸载本包。
 
 扫描状态：
 
@@ -127,14 +127,13 @@ Console 正常加载时会有类似日志：`ASEZH: entries=... collisions=... t
 - 创建节点、连线、生成 Shader 仍使用英文内部名。
 - 官方 Shader Function 的 GUID、`FunctionName` 不会因切语言而改变；换一台没装 ASEZH 的机器，图还能打开，只是界面变回英文。
 
-菜单：
+菜单只保留一个日常入口：
 
 | 菜单 | 作用 |
 | --- | --- |
 | `Window/ASEZH/接入 Amplify Shader Editor` | 扫描并打显示钩子 |
-| `Window/ASEZH/移除汉化补丁` | 撤回安装器写入 ASE 的显示钩子，不卸载本包 |
-| `Window/ASEZH/重新加载词典` | 重载 JSON 词表，无需域重载 |
-| `Window/ASEZH/运行本地化测试` | 自测查找、clone、平台名、搜索 |
+
+接入窗口的主操作还包含「移除汉化补丁」。维护者可展开「高级/诊断」，使用「重新加载词典」和「运行本地化测试」。
 
 ## 词表
 
@@ -169,7 +168,7 @@ Console 正常加载时会有类似日志：`ASEZH: entries=... collisions=... t
 
 同 table+key 出现不同 `zh` 时会 `LogError`。查不到则显示原文。
 
-改完 JSON 后执行 `Window → ASEZH → Reload Dictionary`。
+改完 JSON 后打开接入窗口，在「高级/诊断」中执行「重新加载词典」。
 
 可选本地覆盖：把 `Editor/ASEZHDictionary.user.json.example` 复制为 `ASEZHDictionary.user.json`（已被 `.gitignore`）。覆盖文件**只能改已有 table+key**，不能新增条目。
 
@@ -244,7 +243,7 @@ ASEZH/
 
 装好并打完钩子后建议确认：
 
-- [ ] `Run Locale Tests` 通过
+- [ ] 接入窗口「高级/诊断 → 运行本地化测试」通过
 - [ ] 画布左上角只有一颗中文 / EN 开关
 - [ ] 切语言后，含 ZWrite / Blend / 平台 / Keyword 的 Shader 生成文本无 diff
 - [ ] 平台名仍为 Direct3D / Vulkan / PlayStation

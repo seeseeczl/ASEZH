@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "source_roots": [ "Editor", "scripts" ],
+  "extensions": [ ".cs", ".py" ],
+  "ignore_dirs": [ ".git", "Library", "Temp", "build", "dist", "coverage", "__pycache__", ".codegraph" ],
+  "thresholds": {
+    "ui": { "warning": 180, "limit": 300 },
+    "service": { "warning": 200, "limit": 300 },
+    "source": { "warning": 360, "limit": 400 },
+    "test": { "warning": 400, "limit": 600 },
+    "config": { "warning": 160, "limit": 200 }
+  },
+  "module_roots": [ "Editor" ],
+  "module_public_patterns": [ "ASELocale.cs", "Installer/ASEZHPatcher.cs" ],
+  "module_import_aliases": {},
+  "fitness": {
+    "module_dependency_warning": 8,
+    "module_dependency_limit": 12
+  },
+  "audit": {
+    "output_dir": "docs/05-audits",
+    "reuse_legacy_history": true
+  }
+}
