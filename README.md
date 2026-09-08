@@ -8,7 +8,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
 许可：MIT  
-当前版本：`0.0.9`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
+当前版本：`0.0.10`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 
@@ -100,7 +100,7 @@ ASE 没有稳定的公共 UI API。装包之后还要在 ASE **显示路径**上
 
 | 状态 | 含义 |
 | --- | --- |
-| `applied` / `patched` | 已接上 |
+| `applied` / `patched` | 已接上；也包括安装器确认语义等价且无需重写的实现 |
 | `removed` | 已撤回该钩子 |
 | `ready` | 锚点匹配，可以自动打 |
 | `mismatch` | 这份 ASE 和内置锚点不同，**不要强行套补丁**，按 `docs/hook-sites.md` 手工接 |

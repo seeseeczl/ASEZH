@@ -102,6 +102,12 @@ namespace AmplifyShaderEditor
 			result.File = assetPath;
 			string abs = ASEZHPatcher.ToAbsolute( assetPath );
 			string text = File.ReadAllText( abs, Encoding.UTF8 );
+			if( patch.Id == "palette-search-width" && ASEZHPaletteSearchEquivalence.HasEquivalentLabelWidth( text ) )
+			{
+				result.Status = "applied";
+				result.Detail = patch.Description + "（已识别等价局部变量写法）";
+				return result;
+			}
 			if( !string.IsNullOrEmpty( patch.Marker ) && ContainsFlexible( text, patch.Marker ) )
 			{
 				result.Status = "applied";
@@ -178,6 +184,12 @@ namespace AmplifyShaderEditor
 			{
 				result.Status = "removed";
 				result.Detail = "源码已是接入前片段";
+				return result;
+			}
+			if( ASEZHPaletteSearchEquivalence.IsEquivalentHook( patch.Id, text ) )
+			{
+				result.Status = "removed";
+				result.Detail = "检测到非内联等价写法，保留源码；仅安装回执可恢复接入前内容";
 				return result;
 			}
 			if( patch.Id == "palette-node-item" || patch.Id == "palette-node-item-content" )

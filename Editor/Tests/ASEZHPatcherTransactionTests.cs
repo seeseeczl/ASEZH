@@ -42,6 +42,46 @@ namespace AmplifyShaderEditor.Tests
 		}
 
 		[Test]
+		public void PaletteSearchWidth_AcceptsTranslatedLocalVariableUsedByWidth()
+		{
+			string text = "string searchLabel = ASELocale.T( m_searchFilterStr );\n"
+				+ "if( m_searchLabelSize < 0 )\n{\n"
+				+ "    m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( searchLabel ) ).x;\n}";
+
+			Assert.That( ASEZHPaletteSearchEquivalence.HasEquivalentLabelWidth( text ), Is.True );
+			Assert.That( ASEZHPaletteSearchEquivalence.IsEquivalentHook( "palette-search-width", text ), Is.True );
+			Assert.That( ASEZHPaletteSearchEquivalence.IsEquivalentHook( "palette-search-label", text ), Is.True );
+		}
+
+		[Test]
+		public void PaletteSearchWidth_RejectsDifferentOrUntranslatedVariables()
+		{
+			string different = "string searchLabel = ASELocale.T( m_searchFilterStr );\n"
+				+ "m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( otherLabel ) ).x;";
+			string untranslated = "string searchLabel = m_searchFilterStr;\n"
+				+ "m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( searchLabel ) ).x;";
+			string reassigned = "string searchLabel = ASELocale.T( m_searchFilterStr );\n"
+				+ "searchLabel = m_searchFilterStr;\n"
+				+ "m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( searchLabel ) ).x;";
+
+			Assert.That( ASEZHPaletteSearchEquivalence.HasEquivalentLabelWidth( different ), Is.False );
+			Assert.That( ASEZHPaletteSearchEquivalence.HasEquivalentLabelWidth( untranslated ), Is.False );
+			Assert.That( ASEZHPaletteSearchEquivalence.HasEquivalentLabelWidth( reassigned ), Is.False );
+		}
+
+		[Test]
+		public void ReceiptFreeRemove_PreservesEquivalentSourceAndResidualGateSeesIt()
+		{
+			string text = "string searchLabel = ASELocale.T( m_searchFilterStr );\n"
+				+ "m_searchLabelSize = GUI.skin.label.CalcSize( new GUIContent( searchLabel ) ).x;";
+			string palette = CreateFile( "PaletteParent.cs", text );
+
+			Assert.That( ASEZHPaletteSearchEquivalence.IsEquivalentHook( "palette-search-width", text ), Is.True );
+			Assert.That( File.ReadAllText( palette ), Is.EqualTo( text ) );
+			Assert.That( File.ReadAllText( palette ), Does.Contain( "ASELocale." ) );
+		}
+
+		[Test]
 		public void Commit_WhenSecondWriteFails_RestoresEveryTouchedPreimage()
 		{
 			string first = CreateFile( "first.cs", "first-before" );
