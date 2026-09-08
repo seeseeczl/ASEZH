@@ -32,8 +32,11 @@
 
 团结 2022.3.61t9 + ASE 1.9.81 的必选门禁为 `pass`，因此 `v0.0.8` 可发布。扩展观察项继续以 `unverified` / `not-run` 保留，不阻止本次团结目标发布。公开 CI 仅执行可再分发静态门禁，不声称团结正式门禁通过。
 
+`v0.0.9` 仅修复 Git 包内 OpenSpec 文档的非法 Unity GUID；全仓库 GUID 格式/重复检查、团结包导入、合成与真实 ASE 生命周期均已重新执行并通过，Editor 日志中无 GUID/YAML Parser 警告。
+
 ## 最小追溯链
 
 | 交付 ID / 版本 | OpenSpec change | 需求 / 回归 ID | 实现 revision | 验证证据 |
 | --- | --- | --- | --- | --- |
 | `REL-ASEZH-0008` / `0.0.8` | `harden-patcher-and-regression-gates` | `AUD-FLOW-001`、`AUD-TARGET-001`、`REG-PATCH-TRANSACTION-001`、`REG-ASE-LIFECYCLE-001` | `v0.0.8` / `Tuanjie 2022.3.61t9` / `pass` | 正式发布复验写入 `/private/tmp/asezh-release-gate-0.0.8/delivery-manifest.json`；扩展观察状态见上表 |
+| `REL-ASEZH-0009` / `0.0.9` | 主规范 `release-regression-gates` | `BUG-META-GUID-001`、`REG-META-GUID-001` | `v0.0.9` / `Tuanjie 2022.3.61t9` / `pass` | `/private/tmp/asezh-release-gate-0.0.9/delivery-manifest.json`；合成/真实 ASE 六阶段通过，GUID/YAML 警告扫描为零 |

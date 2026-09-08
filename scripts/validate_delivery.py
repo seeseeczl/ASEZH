@@ -74,8 +74,9 @@ def static_checks() -> dict[str, Any]:
            f"menus={menu_paths} missing_actions={missing_actions} removed_docs={removed_doc_paths} stale={stale_menus}")
 
     matrix = (ROOT / "docs" / "04-delivery" / "2026-09-08-regression-matrix.md").read_text(encoding="utf-8")
-    trace_tokens = ["REL-ASEZH-0008", version, "harden-patcher-and-regression-gates",
-                    "REG-PATCH-TRANSACTION-001", "v0.0.8", "Tuanjie 2022.3.61t9", "pass"]
+    version_parts = version.split(".")
+    release_id = f"REL-ASEZH-{int(version_parts[2]):04d}" if len(version_parts) == 3 else ""
+    trace_tokens = [release_id, version, f"v{version}", "Tuanjie 2022.3.61t9", "pass"]
     missing_trace = [token for token in trace_tokens if token not in matrix]
     record(checks, "delivery_traceability", not missing_trace, f"missing={missing_trace}")
 
@@ -90,9 +91,14 @@ def static_checks() -> dict[str, Any]:
            f"entries={len(entries)} tables={sorted(tables)}")
     record(checks, "dictionary_duplicate_keys", not duplicates, f"duplicates={len(duplicates)}")
 
+    inventory = subprocess.run(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        cwd=ROOT, check=False, text=True, capture_output=True,
+    ).stdout.splitlines()
+    inventory = [name for name in inventory if not name.startswith(".agents/")]
+
     imported_roots = [ROOT / "Editor", ROOT / "Tests", ROOT / "scripts"]
     missing_meta: list[str] = []
-    guids: list[str] = []
     for imported_root in imported_roots:
         if not imported_root.exists():
             continue
@@ -101,18 +107,21 @@ def static_checks() -> dict[str, Any]:
                 continue
             if not Path(str(path) + ".meta").exists():
                 missing_meta.append(path.relative_to(ROOT).as_posix())
-        for meta in imported_root.rglob("*.meta"):
-            match = re.search(r"^guid:\s*([0-9a-f]{32})\s*$", meta.read_text(encoding="utf-8"), re.M)
-            if match:
-                guids.append(match.group(1))
-    duplicate_guids = [guid for guid, count in Counter(guids).items() if count > 1]
+    guid_paths: dict[str, list[str]] = {}
+    malformed_guids: list[str] = []
+    for name in (item for item in inventory if item.endswith(".meta")):
+        text = (ROOT / name).read_text(encoding="utf-8", errors="replace")
+        match = re.search(r"^guid:\s*([0-9a-f]{32})\s*$", text, re.M)
+        if not match:
+            malformed_guids.append(name)
+            continue
+        guid_paths.setdefault(match.group(1), []).append(name)
+    duplicate_guids = {
+        guid: paths for guid, paths in guid_paths.items() if len(paths) > 1
+    }
     record(checks, "unity_meta_pairs", not missing_meta, f"missing={missing_meta}")
-    record(checks, "unity_meta_guids", not duplicate_guids, f"duplicates={duplicate_guids}")
-
-    inventory = subprocess.run(
-        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
-        cwd=ROOT, check=False, text=True, capture_output=True,
-    ).stdout.splitlines()
+    record(checks, "unity_meta_guids", not malformed_guids and not duplicate_guids,
+           f"malformed={malformed_guids} duplicates={duplicate_guids}")
     sensitive = [name for name in inventory if SENSITIVE_NAMES.search(name)]
     record(checks, "sensitive_file_names", not sensitive, f"matches={sensitive}")
 
