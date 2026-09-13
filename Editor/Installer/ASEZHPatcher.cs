@@ -24,6 +24,8 @@ namespace AmplifyShaderEditor
 		public string Find;
 		public string Replace;
 		public string Marker;
+		public string LegacyReplace;
+		public bool ReplaceAll;
 	}
 
 	public static class ASEZHPatcher
@@ -38,7 +40,7 @@ namespace AmplifyShaderEditor
 
 		public static List<ASEZHPatch> Catalog()
 		{
-			return new List<ASEZHPatch>
+			var patches = new List<ASEZHPatch>
 			{
 				new ASEZHPatch
 				{
@@ -117,9 +119,10 @@ namespace AmplifyShaderEditor
 					Id = "parentnode-title",
 					Description = "画布节点标题",
 					FileName = "ParentNode.cs",
-					Marker = "ASELocale.T( m_content.text, ASELocale.TableNodeTitle )",
+					Marker = "GUI.Label( titlePos, ASENativeDisplay.TitleContent( this, m_content ), UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );",
 					Find = "GUI.Label( titlePos, m_content, UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );",
-					Replace = "GUI.Label( titlePos, new GUIContent( ASELocale.T( m_content.text, ASELocale.TableNodeTitle ), m_content.image, m_content.tooltip ), UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );"
+					LegacyReplace = "GUI.Label( titlePos, new GUIContent( ASELocale.T( m_content.text, ASELocale.TableNodeTitle ), m_content.image, m_content.tooltip ), UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );",
+					Replace = "GUI.Label( titlePos, ASENativeDisplay.TitleContent( this, m_content ), UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );"
 				},
 				new ASEZHPatch
 				{
@@ -194,6 +197,8 @@ namespace AmplifyShaderEditor
 					Replace = "ASELocale.MatchesSearch( m_searchFilter, allItems[ i ].Name, allItems[ i ].Category, allItems[ i ].Tags )"
 				}
 			};
+			ASENativePatchCatalog.AddTo( patches );
+			return patches;
 		}
 
 		public static string FindAseRoot()

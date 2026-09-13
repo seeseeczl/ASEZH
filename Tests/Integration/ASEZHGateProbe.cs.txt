@@ -53,8 +53,8 @@ public static class ASEZHGateProbe
 
     static void AssertStatuses( string stage, List<ASEZHPatchResult> results, params string[] allowed )
     {
-        if( results == null || results.Count != 18 )
-            throw new Exception( stage + ": expected 18 results, got " + ( results == null ? -1 : results.Count ) );
+        if( results == null || results.Count != ASEZHPatcher.Catalog().Count + 1 )
+            throw new Exception( stage + ": unexpected result count " + ( results == null ? -1 : results.Count ) );
         for( int i = 0; i < results.Count; i++ )
         {
             bool ok = false;

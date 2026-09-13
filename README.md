@@ -8,7 +8,7 @@ ASEZH 是独立 UPM 包（`com.asezh.locale`），不是一份「已汉化的 AS
 
 仓库：<https://github.com/seeseeczl/ASEZH>  
 许可：MIT  
-当前版本：`0.0.10`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
+当前版本：`0.0.11`（每次面向 Package Manager 的交付只加 `0.0.1`，见 [`CHANGELOG.md`](CHANGELOG.md)）
 
 ## 适合做什么 / 不做什么
 
@@ -154,6 +154,7 @@ Console 正常加载时会有类似日志：`ASEZH: entries=... collisions=... t
 | `option_label` | 设置项名称、函数开关标签 |
 | `option_value` | 下拉选项显示文本 |
 | `panel` | 面板、分组等壳层文案 |
+| `port_label` | 原生节点输入/输出端口显示名；可用类型/方向/端口 ID/原名覆盖通用译文 |
 
 同一英文可以出现在不同 table，译文可以不同：
 
@@ -236,7 +237,8 @@ ASEZH/
 - 自动补丁只覆盖锚点仍接近官方 ASE 的文件。P1/P2 部分钩子（调色板搜索、部分 Popup 重载等）可能要手工接。
 - ZWrite：必须先有 `ZWriteModeLabels` 数组，Popup 用 Labels、生成用 `ZWriteModeValues`。安装器按括号配对复制数组，不会改 `ZWriteModeValues` 的 Shader 输出。若 `ZBufferOpHelper.cs` 已编不过，先 Update 到 `0.0.6` 再执行一次接入；仍失败则从 ASE 备份恢复该文件后重新接入。
 - 用户自己做的 Shader Function 没有词条时保持英文（fail-open），这是预期行为。
-- 函数节点**画布引脚名**（如 Tex）默认仍走 `port.Name`，未接显示钩子；设置面板里的开关名 / 内部数据已走 `T()`。
+- 原生节点标题与端口已接显示和尺寸钩子。Flyme（不区分大小写，包括子分组）、非原生类型及用户 Shader Function 保留原文；变量、可编辑接口名、技术符号和缺失词条不改写。
+- 默认属性标题（如 `Color 0`）显示为「颜色 0」，用户重命名的标题保持原值。切换语言只刷新显示尺寸，不改端口 Name、ID、连线、数值及生成算法。
 - 不要把 ASEZH 和工程内嵌的 `ASELocale.cs` 同时启用。
 
 ## 验收清单

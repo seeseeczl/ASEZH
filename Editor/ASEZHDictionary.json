@@ -1,6 +1,971 @@
 {
   "entries": [
     {
+      "table": "port_label",
+      "key": "(VS) In",
+      "zh": "顶点阶段输入"
+    },
+    {
+      "table": "port_label",
+      "key": "Ambient light ( Legacy )",
+      "zh": "环境光（旧版）"
+    },
+    {
+      "table": "port_label",
+      "key": "Array Index",
+      "zh": "数组索引"
+    },
+    {
+      "table": "port_label",
+      "key": "Back",
+      "zh": "背面"
+    },
+    {
+      "table": "port_label",
+      "key": "Camera Projection",
+      "zh": "摄像机投影"
+    },
+    {
+      "table": "port_label",
+      "key": "Fade[0...1]",
+      "zh": "渐隐 [0…1]"
+    },
+    {
+      "table": "port_label",
+      "key": "Fade[16Lvl]",
+      "zh": "渐隐 [16级]"
+    },
+    {
+      "table": "port_label",
+      "key": "Far Plane",
+      "zh": "远裁剪面"
+    },
+    {
+      "table": "port_label",
+      "key": "Flipped",
+      "zh": "翻转"
+    },
+    {
+      "table": "port_label",
+      "key": "Front",
+      "zh": "正面"
+    },
+    {
+      "table": "port_label",
+      "key": "Min Old",
+      "zh": "原范围最小值"
+    },
+    {
+      "table": "port_label",
+      "key": "Model View Projection",
+      "zh": "模型视图投影"
+    },
+    {
+      "table": "port_label",
+      "key": "Near Plane",
+      "zh": "近裁剪面"
+    },
+    {
+      "table": "port_label",
+      "key": "None",
+      "zh": "无"
+    },
+    {
+      "table": "port_label",
+      "key": "Normalized Rotation Axis",
+      "zh": "归一化旋转轴"
+    },
+    {
+      "table": "port_label",
+      "key": "Ortho Cam Height",
+      "zh": "正交摄像机高度"
+    },
+    {
+      "table": "port_label",
+      "key": "Ortho Cam Width",
+      "zh": "正交摄像机宽度"
+    },
+    {
+      "table": "port_label",
+      "key": "Projection Mode",
+      "zh": "投影模式"
+    },
+    {
+      "table": "port_label",
+      "key": "Range Min",
+      "zh": "范围最小值"
+    },
+    {
+      "table": "port_label",
+      "key": "RT Height",
+      "zh": "渲染纹理高度"
+    },
+    {
+      "table": "port_label",
+      "key": "RT Width",
+      "zh": "渲染纹理宽度"
+    },
+    {
+      "table": "port_label",
+      "key": "Sign",
+      "zh": "符号"
+    },
+    {
+      "table": "port_label",
+      "key": "Tex (R)",
+      "zh": "纹理 (R)"
+    },
+    {
+      "table": "port_label",
+      "key": "Unused",
+      "zh": "未使用"
+    },
+    {
+      "table": "port_label",
+      "key": "Layer Base",
+      "zh": "基础层"
+    },
+    {
+      "table": "port_label",
+      "key": "In",
+      "zh": "输入"
+    },
+    {
+      "table": "port_label",
+      "key": "Key",
+      "zh": "键"
+    },
+    {
+      "table": "port_label",
+      "key": "Layer",
+      "zh": "图层"
+    },
+    {
+      "table": "node_title",
+      "key": "[Old]Texture Array",
+      "zh": "[旧版] 纹理数组"
+    },
+    {
+      "table": "port_label",
+      "key": "Ambient Occlusion",
+      "zh": "环境遮蔽"
+    },
+    {
+      "table": "port_label",
+      "key": "Refraction",
+      "zh": "折射"
+    },
+    {
+      "table": "port_label",
+      "key": "Opacity",
+      "zh": "不透明度"
+    },
+    {
+      "table": "port_label",
+      "key": "Opacity Mask",
+      "zh": "不透明度遮罩"
+    },
+    {
+      "table": "port_label",
+      "key": "Custom Lighting",
+      "zh": "自定义光照"
+    },
+    {
+      "table": "port_label",
+      "key": "Local Vertex Offset",
+      "zh": "局部顶点偏移"
+    },
+    {
+      "table": "port_label",
+      "key": "Local Vertex Normal",
+      "zh": "局部顶点法线"
+    },
+    {
+      "table": "port_label",
+      "key": "Local Vertex Tangent",
+      "zh": "局部顶点切线"
+    },
+    {
+      "table": "port_label",
+      "key": "Tessellation",
+      "zh": "曲面细分"
+    },
+    {
+      "table": "port_label",
+      "key": "Debug",
+      "zh": "调试"
+    },
+    {
+      "table": "port_label",
+      "key": "Base Color",
+      "zh": "基础色"
+    },
+    {
+      "table": "port_label",
+      "key": "Alpha Clip Threshold",
+      "zh": "透明裁剪阈值"
+    },
+    {
+      "table": "port_label",
+      "key": "Alpha Clip Threshold Shadow",
+      "zh": "阴影透明裁剪阈值"
+    },
+    {
+      "table": "port_label",
+      "key": "Vertex Offset",
+      "zh": "顶点偏移"
+    },
+    {
+      "table": "port_label",
+      "key": "Vertex Tangent",
+      "zh": "顶点切线"
+    },
+    {
+      "table": "port_label",
+      "key": "Depth Value",
+      "zh": "深度值"
+    },
+    {
+      "table": "port_label",
+      "key": "Specular",
+      "zh": "高光"
+    },
+    {
+      "table": "port_label",
+      "key": "Baked GI",
+      "zh": "烘焙全局光照"
+    },
+    {
+      "table": "port_label",
+      "key": "Refraction Color",
+      "zh": "折射颜色"
+    },
+    {
+      "table": "port_label",
+      "key": "Refraction Index",
+      "zh": "折射率"
+    },
+    {
+      "table": "port_label",
+      "key": "Transmission",
+      "zh": "透射"
+    },
+    {
+      "table": "port_label",
+      "key": "Translucency",
+      "zh": "半透明散射"
+    },
+    {
+      "table": "port_label",
+      "key": "Coat Mask",
+      "zh": "清漆遮罩"
+    },
+    {
+      "table": "port_label",
+      "key": "Coat Smoothness",
+      "zh": "清漆平滑度"
+    },
+    {
+      "table": "node_title",
+      "key": "Vector",
+      "zh": "向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Color",
+      "zh": "颜色"
+    },
+    {
+      "table": "node_title",
+      "key": "Time",
+      "zh": "时间"
+    },
+    {
+      "table": "node_title",
+      "key": "Projection Matrix",
+      "zh": "投影矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "Switch",
+      "zh": "切换"
+    },
+    {
+      "table": "node_title",
+      "key": "Encode Float RG ",
+      "zh": "浮点编码 RG"
+    },
+    {
+      "table": "node_title",
+      "key": "[Deprecated] Simplex Noise",
+      "zh": "[已弃用] 单纯形噪声"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare (A = B)",
+      "zh": "比较 (A = B)"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare (A ≥ B)",
+      "zh": "比较 (A ≥ B)"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare (A ≤ B)",
+      "zh": "比较 (A ≤ B)"
+    },
+    {
+      "table": "node_title",
+      "key": "Compare (A ≠ B)",
+      "zh": "比较 (A ≠ B)"
+    },
+    {
+      "table": "node_title",
+      "key": "[Old]Append",
+      "zh": "[旧版] 分量拼接"
+    },
+    {
+      "table": "node_title",
+      "key": "Normalize",
+      "zh": "归一化"
+    },
+    {
+      "table": "node_title",
+      "key": "Power",
+      "zh": "幂"
+    },
+    {
+      "table": "node_title",
+      "key": "Saturate",
+      "zh": "限制到 0–1"
+    },
+    {
+      "table": "node_title",
+      "key": "Scale",
+      "zh": "缩放"
+    },
+    {
+      "table": "node_title",
+      "key": "Exposure",
+      "zh": "曝光"
+    },
+    {
+      "table": "node_title",
+      "key": "Max",
+      "zh": "最大值"
+    },
+    {
+      "table": "node_title",
+      "key": "Min",
+      "zh": "最小值"
+    },
+    {
+      "table": "node_title",
+      "key": "[Deprecated] Local Position",
+      "zh": "[已弃用] 局部位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Screen Position",
+      "zh": "屏幕位置"
+    },
+    {
+      "table": "node_title",
+      "key": "[Old]Texture Coordinates",
+      "zh": "[旧版] 纹理坐标"
+    },
+    {
+      "table": "node_title",
+      "key": "[Deprecated] World Normal",
+      "zh": "[已弃用] 世界法线"
+    },
+    {
+      "table": "node_title",
+      "key": "[Deprecated] World Reflection",
+      "zh": "[已弃用] 世界反射"
+    },
+    {
+      "table": "node_title",
+      "key": "Billboard",
+      "zh": "公告板"
+    },
+    {
+      "table": "node_title",
+      "key": "[VS] Vertex Color",
+      "zh": "[VS] 顶点颜色"
+    },
+    {
+      "table": "node_title",
+      "key": "Outline",
+      "zh": "描边"
+    },
+    {
+      "table": "node_title",
+      "key": "Vertex Position",
+      "zh": "顶点位置"
+    },
+    {
+      "table": "node_title",
+      "key": "[VS] Vertex TexCoord1",
+      "zh": "[VS] 顶点纹理坐标1"
+    },
+    {
+      "table": "port_label",
+      "key": "Albedo",
+      "zh": "基础色"
+    },
+    {
+      "table": "port_label",
+      "key": "Alpha",
+      "zh": "透明度"
+    },
+    {
+      "table": "port_label",
+      "key": "Anchor",
+      "zh": "锚点"
+    },
+    {
+      "table": "port_label",
+      "key": "Angle",
+      "zh": "角度"
+    },
+    {
+      "table": "port_label",
+      "key": "Array Length",
+      "zh": "数组长度"
+    },
+    {
+      "table": "port_label",
+      "key": "Array Length Y",
+      "zh": "数组长度 Y"
+    },
+    {
+      "table": "port_label",
+      "key": "Base",
+      "zh": "底数"
+    },
+    {
+      "table": "port_label",
+      "key": "BiRP Surface",
+      "zh": "内置管线表面"
+    },
+    {
+      "table": "port_label",
+      "key": "BiRP VertFrag",
+      "zh": "内置管线顶点/片元"
+    },
+    {
+      "table": "port_label",
+      "key": "Bias",
+      "zh": "偏移"
+    },
+    {
+      "table": "port_label",
+      "key": "BlendStrength",
+      "zh": "混合强度"
+    },
+    {
+      "table": "port_label",
+      "key": "Bot Index",
+      "zh": "底部索引"
+    },
+    {
+      "table": "port_label",
+      "key": "Bottom",
+      "zh": "底部"
+    },
+    {
+      "table": "port_label",
+      "key": "Color",
+      "zh": "颜色"
+    },
+    {
+      "table": "port_label",
+      "key": "Columns",
+      "zh": "列数"
+    },
+    {
+      "table": "port_label",
+      "key": "Curvature",
+      "zh": "曲率"
+    },
+    {
+      "table": "port_label",
+      "key": "Depth",
+      "zh": "深度"
+    },
+    {
+      "table": "port_label",
+      "key": "Destiny",
+      "zh": "目标"
+    },
+    {
+      "table": "port_label",
+      "key": "Dir/Pos",
+      "zh": "方向/位置"
+    },
+    {
+      "table": "port_label",
+      "key": "Distance",
+      "zh": "距离"
+    },
+    {
+      "table": "port_label",
+      "key": "Dynamic UV",
+      "zh": "动态 UV"
+    },
+    {
+      "table": "port_label",
+      "key": "Edge Length",
+      "zh": "边长"
+    },
+    {
+      "table": "port_label",
+      "key": "Emission",
+      "zh": "自发光"
+    },
+    {
+      "table": "port_label",
+      "key": "Encoded",
+      "zh": "编码值"
+    },
+    {
+      "table": "port_label",
+      "key": "Equal Threshold",
+      "zh": "相等阈值"
+    },
+    {
+      "table": "port_label",
+      "key": "Eta",
+      "zh": "折射率比"
+    },
+    {
+      "table": "port_label",
+      "key": "Exp",
+      "zh": "指数"
+    },
+    {
+      "table": "port_label",
+      "key": "Exposition Weight",
+      "zh": "曝光权重"
+    },
+    {
+      "table": "port_label",
+      "key": "Factor",
+      "zh": "系数"
+    },
+    {
+      "table": "port_label",
+      "key": "Falloff",
+      "zh": "衰减"
+    },
+    {
+      "table": "port_label",
+      "key": "False",
+      "zh": "假"
+    },
+    {
+      "table": "port_label",
+      "key": "Fraction",
+      "zh": "小数部分"
+    },
+    {
+      "table": "port_label",
+      "key": "Frame",
+      "zh": "帧"
+    },
+    {
+      "table": "port_label",
+      "key": "Height",
+      "zh": "高度"
+    },
+    {
+      "table": "port_label",
+      "key": "HeightMap",
+      "zh": "高度图"
+    },
+    {
+      "table": "port_label",
+      "key": "High",
+      "zh": "高"
+    },
+    {
+      "table": "port_label",
+      "key": "Hue",
+      "zh": "色相"
+    },
+    {
+      "table": "port_label",
+      "key": "ID",
+      "zh": "标识"
+    },
+    {
+      "table": "port_label",
+      "key": "Incident",
+      "zh": "入射方向"
+    },
+    {
+      "table": "port_label",
+      "key": "Index",
+      "zh": "索引"
+    },
+    {
+      "table": "port_label",
+      "key": "Index Y",
+      "zh": "索引 Y"
+    },
+    {
+      "table": "port_label",
+      "key": "Instructions",
+      "zh": "指令"
+    },
+    {
+      "table": "port_label",
+      "key": "Intensity",
+      "zh": "强度"
+    },
+    {
+      "table": "port_label",
+      "key": "Length",
+      "zh": "长度"
+    },
+    {
+      "table": "port_label",
+      "key": "Level",
+      "zh": "级别"
+    },
+    {
+      "table": "port_label",
+      "key": "Lhs",
+      "zh": "左操作数"
+    },
+    {
+      "table": "port_label",
+      "key": "Low",
+      "zh": "低"
+    },
+    {
+      "table": "port_label",
+      "key": "Max",
+      "zh": "最大值"
+    },
+    {
+      "table": "port_label",
+      "key": "Max Disp.",
+      "zh": "最大位移"
+    },
+    {
+      "table": "port_label",
+      "key": "Max Dist",
+      "zh": "最大距离"
+    },
+    {
+      "table": "port_label",
+      "key": "Max Frame",
+      "zh": "最大帧"
+    },
+    {
+      "table": "port_label",
+      "key": "Max New",
+      "zh": "新范围最大值"
+    },
+    {
+      "table": "port_label",
+      "key": "Max Old",
+      "zh": "原范围最大值"
+    },
+    {
+      "table": "port_label",
+      "key": "Max Samples",
+      "zh": "最大采样数"
+    },
+    {
+      "table": "port_label",
+      "key": "Medium",
+      "zh": "中"
+    },
+    {
+      "table": "port_label",
+      "key": "Metallic",
+      "zh": "金属度"
+    },
+    {
+      "table": "port_label",
+      "key": "Mid Index",
+      "zh": "中部索引"
+    },
+    {
+      "table": "port_label",
+      "key": "Middle",
+      "zh": "中部"
+    },
+    {
+      "table": "port_label",
+      "key": "Min",
+      "zh": "最小值"
+    },
+    {
+      "table": "port_label",
+      "key": "Min Dist",
+      "zh": "最小距离"
+    },
+    {
+      "table": "port_label",
+      "key": "Min New",
+      "zh": "新范围最小值"
+    },
+    {
+      "table": "port_label",
+      "key": "Min Samples",
+      "zh": "最小采样数"
+    },
+    {
+      "table": "port_label",
+      "key": "Multiplier",
+      "zh": "乘数"
+    },
+    {
+      "table": "port_label",
+      "key": "Normal",
+      "zh": "法线"
+    },
+    {
+      "table": "port_label",
+      "key": "Normal A",
+      "zh": "法线 A"
+    },
+    {
+      "table": "port_label",
+      "key": "Normal B",
+      "zh": "法线 B"
+    },
+    {
+      "table": "port_label",
+      "key": "Occlusion",
+      "zh": "遮蔽"
+    },
+    {
+      "table": "port_label",
+      "key": "Offset",
+      "zh": "偏移"
+    },
+    {
+      "table": "port_label",
+      "key": "One Minus Reflectivity",
+      "zh": "1 − 反射率"
+    },
+    {
+      "table": "port_label",
+      "key": "Out",
+      "zh": "输出"
+    },
+    {
+      "table": "port_label",
+      "key": "Pattern",
+      "zh": "图案"
+    },
+    {
+      "table": "port_label",
+      "key": "Pivot Point",
+      "zh": "轴心"
+    },
+    {
+      "table": "port_label",
+      "key": "Pixels X",
+      "zh": "像素数 X"
+    },
+    {
+      "table": "port_label",
+      "key": "Pixels Y",
+      "zh": "像素数 Y"
+    },
+    {
+      "table": "port_label",
+      "key": "Pos",
+      "zh": "位置"
+    },
+    {
+      "table": "port_label",
+      "key": "Position",
+      "zh": "位置"
+    },
+    {
+      "table": "port_label",
+      "key": "Power",
+      "zh": "指数"
+    },
+    {
+      "table": "port_label",
+      "key": "Range Max",
+      "zh": "范围最大值"
+    },
+    {
+      "table": "port_label",
+      "key": "Ref Plane",
+      "zh": "参考平面"
+    },
+    {
+      "table": "port_label",
+      "key": "Rhs",
+      "zh": "右操作数"
+    },
+    {
+      "table": "port_label",
+      "key": "Rotation Angle",
+      "zh": "旋转角度"
+    },
+    {
+      "table": "port_label",
+      "key": "Rows",
+      "zh": "行数"
+    },
+    {
+      "table": "port_label",
+      "key": "Saturation",
+      "zh": "饱和度"
+    },
+    {
+      "table": "port_label",
+      "key": "Scale",
+      "zh": "缩放"
+    },
+    {
+      "table": "port_label",
+      "key": "Screen Position",
+      "zh": "屏幕位置"
+    },
+    {
+      "table": "port_label",
+      "key": "Sidewall Steps",
+      "zh": "侧壁步数"
+    },
+    {
+      "table": "port_label",
+      "key": "Size",
+      "zh": "尺寸"
+    },
+    {
+      "table": "port_label",
+      "key": "Smoothness",
+      "zh": "平滑度"
+    },
+    {
+      "table": "port_label",
+      "key": "Source",
+      "zh": "源"
+    },
+    {
+      "table": "port_label",
+      "key": "Spec Color",
+      "zh": "高光颜色"
+    },
+    {
+      "table": "port_label",
+      "key": "Speed",
+      "zh": "速度"
+    },
+    {
+      "table": "port_label",
+      "key": "SplatMask",
+      "zh": "混合遮罩"
+    },
+    {
+      "table": "port_label",
+      "key": "Start Frame",
+      "zh": "起始帧"
+    },
+    {
+      "table": "port_label",
+      "key": "Static UV",
+      "zh": "静态 UV"
+    },
+    {
+      "table": "port_label",
+      "key": "Tex",
+      "zh": "纹理"
+    },
+    {
+      "table": "port_label",
+      "key": "Threshold",
+      "zh": "阈值"
+    },
+    {
+      "table": "port_label",
+      "key": "Tiling",
+      "zh": "平铺"
+    },
+    {
+      "table": "port_label",
+      "key": "Time",
+      "zh": "时间"
+    },
+    {
+      "table": "port_label",
+      "key": "Top",
+      "zh": "顶部"
+    },
+    {
+      "table": "port_label",
+      "key": "Top Index",
+      "zh": "顶部索引"
+    },
+    {
+      "table": "port_label",
+      "key": "True",
+      "zh": "真"
+    },
+    {
+      "table": "port_label",
+      "key": "Type",
+      "zh": "类型"
+    },
+    {
+      "table": "port_label",
+      "key": "Value",
+      "zh": "数值"
+    },
+    {
+      "table": "port_label",
+      "key": "Vertex Normal",
+      "zh": "顶点法线"
+    },
+    {
+      "table": "port_label",
+      "key": "Vertex Position",
+      "zh": "顶点位置"
+    },
+    {
+      "table": "port_label",
+      "key": "View Dir",
+      "zh": "视线方向"
+    },
+    {
+      "table": "port_label",
+      "key": "ViewDir (tan)",
+      "zh": "视线方向（切线空间）"
+    },
+    {
+      "table": "port_label",
+      "key": "Weights",
+      "zh": "权重"
+    },
+    {
+      "table": "port_label",
+      "key": "Width",
+      "zh": "宽度"
+    },
+    {
+      "table": "port_label",
+      "key": "World Normal",
+      "zh": "世界法线"
+    },
+    {
+      "table": "port_label",
+      "key": "World Position",
+      "zh": "世界位置"
+    },
+    {
       "table": "category",
       "key": "Camera And Screen",
       "zh": "摄像机与屏幕"
@@ -2333,12 +3298,12 @@
     {
       "table": "node_title",
       "key": "DDX",
-      "zh": "DDX"
+      "zh": "X 方向导数 (DDX)"
     },
     {
       "table": "node_title",
       "key": "DDY",
-      "zh": "DDY"
+      "zh": "Y 方向导数 (DDY)"
     },
     {
       "table": "node_title",
@@ -2473,7 +3438,7 @@
     {
       "table": "node_title",
       "key": "FWidth",
-      "zh": "FWidth"
+      "zh": "屏幕变化幅度 (FWidth)"
     },
     {
       "table": "node_title",
@@ -3133,7 +4098,7 @@
     {
       "table": "node_title",
       "key": "Tau",
-      "zh": "Tau"
+      "zh": "圆周常量 τ"
     },
     {
       "table": "node_title",

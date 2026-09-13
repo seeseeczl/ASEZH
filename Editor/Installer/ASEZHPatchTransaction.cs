@@ -77,6 +77,7 @@ namespace AmplifyShaderEditor
 					return session;
 				}
 
+				if( apply && ASEZHPatchReceiptStore.RejectUnsafeUpgrade( projectRoot, target, session ) ) return session;
 				CommitSession( session, projectRoot, target, plans, apply );
 				TryWriteManifest( sessionRoot, session, plans );
 				return session;
@@ -211,7 +212,8 @@ namespace AmplifyShaderEditor
 			{
 				string path = installation.AbsolutePathFor( fileName );
 				string text = File.ReadAllText( path, Encoding.UTF8 );
-				if( text.IndexOf( "ASELocale.", StringComparison.Ordinal ) >= 0 )
+				if( text.IndexOf( "ASELocale.", StringComparison.Ordinal ) >= 0
+					|| text.IndexOf( "ASENativeDisplay.", StringComparison.Ordinal ) >= 0 )
 					return fileName;
 			}
 			return null;

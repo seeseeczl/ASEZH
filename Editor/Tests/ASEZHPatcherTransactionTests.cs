@@ -164,6 +164,23 @@ namespace AmplifyShaderEditor.Tests
 				candidates[ "UndoParentNode.cs" ][ 0 ], required, candidates, out root, out files ), Is.False );
 		}
 
+		[Test]
+		public void Upgrade_PreservesOriginalReceiptAndRequiresRemovalFirst()
+		{
+			string path = CreateFile( "ParentNode.cs", "original" );
+			var target = AseInstallation.CreateMapped( m_root, new Dictionary<string, string> { { "ParentNode.cs", path } }, null );
+			var plans = new List<PatchFilePlan> { ASEZHPatchTransaction.CreatePlanForTests( path, Path.Combine( m_root, "backup.cs" ), Bytes( "patched" ) ) };
+			ASEZHPatchReceiptStore.Save( m_root, target, plans );
+			File.WriteAllBytes( path, plans[ 0 ].Output );
+			var session = new ASEZHPatchSessionResult();
+			Assert.That( ASEZHPatchReceiptStore.RejectUnsafeUpgrade( m_root, target, session ), Is.True );
+			string error;
+			var receipt = ASEZHPatchReceiptStore.Load( m_root, target, out error );
+			Assert.That( error, Is.Null );
+			Assert.That( File.ReadAllText( receipt[ 0 ].PreimagePath ), Is.EqualTo( "original" ) );
+			Assert.That( File.ReadAllText( path ), Is.EqualTo( "patched" ) );
+		}
+
 		string CreateFile( string name, string content )
 		{
 			string path = Path.Combine( m_root, name );

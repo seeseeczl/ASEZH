@@ -15,6 +15,17 @@ namespace AmplifyShaderEditor
 
 	internal static class ASEZHPatchReceiptStore
 	{
+		internal static bool RejectUnsafeUpgrade( string projectRoot, AseInstallation target, ASEZHPatchSessionResult session )
+		{
+			// Keep the original-byte receipt; never replace it with an already-patched preimage.
+			string error;
+			var installed = Load( projectRoot, target, out error );
+			if( installed == null && string.IsNullOrEmpty( error ) ) return false;
+			session.State = ASEZHPatchSessionState.PreflightRejected;
+			session.Detail = "请先移除旧版汉化补丁，再接入当前版本；原始回执和目标文件均已保留。" + ( error ?? string.Empty );
+			return true;
+		}
+
 		static string ReceiptRoot( string projectRoot, AseInstallation target )
 		{
 			string key = Sha256( Encoding.UTF8.GetBytes( target.AssetRoot ?? target.AbsoluteRoot ) ).Substring( 0, 24 );

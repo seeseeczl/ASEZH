@@ -1,0 +1,3 @@
+#if false
+GUI.Label( titlePos, "Grab Screen Color", UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );
+#endif

@@ -36,6 +36,8 @@ STAGE_MARKERS = {
 MANAGED_NAMES = {
     "AmplifyShaderEditor.asmdef", "UndoParentNode.cs", "ToolsWindow.cs",
     "NodeUtils.cs", "ParentNode.cs", "ZBufferOpHelper.cs", "PaletteParent.cs",
+    "PropertyNode.cs", "FunctionInput.cs", "FunctionOutput.cs", "CustomExpressionNode.cs",
+    "NodeParametersWindow.cs", "ScreenColorNode.cs", "StaticSwitch.cs", "WireNode.cs",
 }
 
 

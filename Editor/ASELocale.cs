@@ -28,7 +28,12 @@ namespace AmplifyShaderEditor
 		public static bool UseChinese
 		{
 			get { return EditorPrefs.GetBool( LanguagePrefsKey, true ); }
-			set { EditorPrefs.SetBool( LanguagePrefsKey, value ); }
+			set
+			{
+				if( UseChinese == value ) return;
+				EditorPrefs.SetBool( LanguagePrefsKey, value );
+				ASENativeDisplay.Invalidate();
+			}
 		}
 
 		public static int EntryCount { get { return ASELocaleStore.EntryCount; } }
@@ -37,6 +42,7 @@ namespace AmplifyShaderEditor
 		{
 			ASELocaleStore.Reload();
 			ASELocaleGuiAdapters.Reset();
+			ASENativeDisplay.Invalidate();
 		}
 
 		public static string T( string key )

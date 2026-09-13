@@ -108,14 +108,16 @@ namespace AmplifyShaderEditor
 				result.Detail = patch.Description + "（已识别等价局部变量写法）";
 				return result;
 			}
-			if( !string.IsNullOrEmpty( patch.Marker ) && ContainsFlexible( text, patch.Marker ) )
+			if( !string.IsNullOrEmpty( patch.Marker ) && ContainsFlexible( text, patch.Marker )
+				&& ( !patch.ReplaceAll || !ContainsFlexible( text, patch.Find ) ) )
 			{
 				result.Status = "applied";
 				result.Detail = patch.Description;
 				return result;
 			}
 			Match findMatch;
-			if( string.IsNullOrEmpty( patch.Find ) || !TryMatchFlexible( text, patch.Find, out findMatch ) )
+			if( string.IsNullOrEmpty( patch.Find ) || ( !TryMatchFlexible( text, patch.Find, out findMatch )
+				&& ( string.IsNullOrEmpty( patch.LegacyReplace ) || !TryMatchFlexible( text, patch.LegacyReplace, out findMatch ) ) ) )
 			{
 				if( ASEZHSpecialPatchTransforms.IsAlternatePaletteItemOverload( patch.Id, text ) )
 				{
@@ -135,6 +137,9 @@ namespace AmplifyShaderEditor
 			}
 			string adapted = AdaptStyle( patch.Replace, findMatch.Value );
 			string next = text.Remove( findMatch.Index, findMatch.Length ).Insert( findMatch.Index, adapted );
+			if( patch.ReplaceAll )
+				while( TryMatchFlexible( next, patch.Find, out findMatch ) )
+					next = next.Remove( findMatch.Index, findMatch.Length ).Insert( findMatch.Index, AdaptStyle( patch.Replace, findMatch.Value ) );
 			if( next == text )
 			{
 				result.Status = "mismatch";
@@ -172,6 +177,9 @@ namespace AmplifyShaderEditor
 			{
 				string adapted = AdaptStyle( patch.Find, replaceMatch.Value );
 				string next = text.Remove( replaceMatch.Index, replaceMatch.Length ).Insert( replaceMatch.Index, adapted );
+				if( patch.ReplaceAll )
+					while( TryMatchFlexible( next, patch.Replace, out replaceMatch ) )
+						next = next.Remove( replaceMatch.Index, replaceMatch.Length ).Insert( replaceMatch.Index, AdaptStyle( patch.Find, replaceMatch.Value ) );
 				if( next != text )
 				{
 					File.WriteAllText( abs, next, new UTF8Encoding( false ) );

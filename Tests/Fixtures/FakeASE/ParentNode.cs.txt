@@ -1,3 +1,12 @@
 #if false
 GUI.Label( titlePos, m_content, UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );
+GUI.Label( m_inputPorts[ i ].LabelPosition, m_inputPorts[ i ].Name, UIUtils.InputPortLabel );
+GUI.Label( m_inputPorts[ i ].LabelPosition, m_inputPorts[ i ].Name, UIUtils.InputPortLabel );
+m_sizeContentAux.text = m_inputPorts[ i ].Name;
+GUI.Label( m_outputPorts[ i ].LabelPosition, m_outputPorts[ i ].Name, UIUtils.OutputPortLabel );
+GUI.Label( m_outputPorts[ i ].LabelPosition, m_outputPorts[ i ].Name, UIUtils.OutputPortLabel );
+m_sizeContentAux.text = m_outputPorts[ i ].Name;
+UIUtils.UnZoomedNodeTitleStyle.CalcSize( m_content )
+public virtual void OnNodeLayout( DrawInfo drawInfo )
+		{
 #endif

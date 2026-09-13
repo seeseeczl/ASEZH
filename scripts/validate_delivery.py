@@ -16,7 +16,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_TABLES = {"category", "node_title", "option_label", "option_value", "panel"}
+EXPECTED_TABLES = {"category", "node_title", "option_label", "option_value", "panel", "port_label"}
 SENSITIVE_NAMES = re.compile(r"(^|/)(\.env($|\.)|id_rsa|.*\.(p12|pfx|pem|key)|credentials?\.json)$", re.I)
 CURRENT_MENU_PATH = "Window/ASEZH/接入 Amplify Shader Editor"
 REMOVED_MENU_PATHS = (
@@ -73,7 +73,10 @@ def static_checks() -> dict[str, Any]:
     record(checks, "current_menu_paths", valid_menu and not missing_actions and not removed_doc_paths and not stale_menus,
            f"menus={menu_paths} missing_actions={missing_actions} removed_docs={removed_doc_paths} stale={stale_menus}")
 
-    matrix = (ROOT / "docs" / "04-delivery" / "2026-09-08-regression-matrix.md").read_text(encoding="utf-8")
+    evidence_doc = ROOT / "docs" / "04-delivery" / f"native-node-display-{version}.md"
+    if not evidence_doc.is_file():
+        evidence_doc = ROOT / "docs" / "04-delivery" / "2026-09-08-regression-matrix.md"
+    matrix = evidence_doc.read_text(encoding="utf-8")
     version_parts = version.split(".")
     release_id = f"REL-ASEZH-{int(version_parts[2]):04d}" if len(version_parts) == 3 else ""
     trace_tokens = [release_id, version, f"v{version}", "Tuanjie 2022.3.61t9", "pass"]
