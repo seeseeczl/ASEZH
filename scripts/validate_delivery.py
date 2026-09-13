@@ -75,6 +75,8 @@ def static_checks() -> dict[str, Any]:
 
     evidence_doc = ROOT / "docs" / "04-delivery" / f"native-node-display-{version}.md"
     if not evidence_doc.is_file():
+        evidence_doc = ROOT / "docs" / "04-delivery" / f"shader-settings-{version}.md"
+    if not evidence_doc.is_file():
         evidence_doc = ROOT / "docs" / "04-delivery" / "2026-09-08-regression-matrix.md"
     matrix = evidence_doc.read_text(encoding="utf-8")
     version_parts = version.split(".")

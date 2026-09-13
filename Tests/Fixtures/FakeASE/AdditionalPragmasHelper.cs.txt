@@ -1,0 +1,3 @@
+#if false
+EditorGUILayout.HelpBox( "Please add your pragmas without the #pragma keywords",
+#endif

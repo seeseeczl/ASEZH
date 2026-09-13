@@ -1,3 +1,4 @@
 #if false
 m_dummyContent.text = selectedNode.Attributes.Name;
+m_dummyContent.text = "Output Node";
 #endif

@@ -1,0 +1,6 @@
+#if false
+GUILayout.Button( OpenTemplateStr )
+GUILayout.Button( ReloadTemplateStr )
+EditorGUILayout.HelpBox( NoSubShaderPropertyStr ,
+EditorGUILayout.HelpBox( WarningMessage, MessageType.Warning )
+#endif

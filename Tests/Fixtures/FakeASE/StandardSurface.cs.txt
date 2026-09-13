@@ -1,0 +1,4 @@
+#if false
+GUILayout.Toggle( ContainerGraph.ParentWindow.InnerWindowVariables.ExpandedBlendOptions, AlphaModeContent,
+EditorGUILayout.HelpBox( "Advanced options are only available for Custom blend modes",
+#endif

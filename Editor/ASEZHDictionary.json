@@ -1243,7 +1243,7 @@
     {
       "table": "option_label",
       "key": "Forward Only",
-      "zh": "仅 Forward"
+      "zh": "仅前向渲染"
     },
     {
       "table": "option_label",
@@ -1318,7 +1318,7 @@
     {
       "table": "option_label",
       "key": "LOD CrossFade",
-      "zh": "LOD 交叉淡入"
+      "zh": "LOD 交叉淡化"
     },
     {
       "table": "option_label",
@@ -1328,12 +1328,12 @@
     {
       "table": "option_label",
       "key": "Meta Pass",
-      "zh": "Meta 通道"
+      "zh": "材质烘焙通道"
     },
     {
       "table": "option_label",
       "key": "Override Baked GI",
-      "zh": "覆盖烘焙 GI"
+      "zh": "覆盖烘焙全局光照"
     },
     {
       "table": "option_label",
@@ -2703,7 +2703,7 @@
     {
       "table": "option_label",
       "key": "Alpha",
-      "zh": "Alpha"
+      "zh": "透明度"
     },
     {
       "table": "option_label",
@@ -6359,6 +6359,731 @@
       "table": "option_value",
       "key": "World Space",
       "zh": "世界空间"
+    },
+    {
+      "table": "option_value",
+      "key": "Output Node",
+      "zh": "输出节点"
+    },
+    {
+      "table": "option_value",
+      "key": "Common Properties",
+      "zh": "通用属性"
+    },
+    {
+      "table": "option_value",
+      "key": "Shader Name",
+      "zh": "着色器名称"
+    },
+    {
+      "table": "option_value",
+      "key": "Shader Type",
+      "zh": "着色器类型"
+    },
+    {
+      "table": "option_value",
+      "key": "Fallback",
+      "zh": "备用着色器"
+    },
+    {
+      "table": "option_value",
+      "key": "Custom Editor",
+      "zh": "自定义编辑器"
+    },
+    {
+      "table": "option_value",
+      "key": "Additional Options",
+      "zh": "附加选项"
+    },
+    {
+      "table": "option_value",
+      "key": "Dependencies",
+      "zh": "依赖项"
+    },
+    {
+      "table": "option_value",
+      "key": "LODs",
+      "zh": "细节级别"
+    },
+    {
+      "table": "option_value",
+      "key": "Edit Template",
+      "zh": "编辑模板"
+    },
+    {
+      "table": "option_value",
+      "key": "Reload Template",
+      "zh": "重新加载模板"
+    },
+    {
+      "table": "option_value",
+      "key": "SubShader",
+      "zh": "子着色器"
+    },
+    {
+      "table": "option_value",
+      "key": "Pass",
+      "zh": "通道"
+    },
+    {
+      "table": "option_value",
+      "key": "Depth",
+      "zh": "深度"
+    },
+    {
+      "table": "option_value",
+      "key": "Stencil Buffer",
+      "zh": "模板缓冲"
+    },
+    {
+      "table": "option_value",
+      "key": "Tags",
+      "zh": "标签"
+    },
+    {
+      "table": "option_value",
+      "key": "Rendering Platforms",
+      "zh": "渲染平台"
+    },
+    {
+      "table": "option_value",
+      "key": "Available Passes",
+      "zh": "可用通道"
+    },
+    {
+      "table": "option_value",
+      "key": "Material Properties",
+      "zh": "材质属性"
+    },
+    {
+      "table": "option_value",
+      "key": "Add Precomputed Velocity",
+      "zh": "叠加预计算速度"
+    },
+    {
+      "table": "option_value",
+      "key": "Additional Defines",
+      "zh": "附加宏定义"
+    },
+    {
+      "table": "option_value",
+      "key": "Additional Includes",
+      "zh": "附加包含文件"
+    },
+    {
+      "table": "option_value",
+      "key": "Additional Pragmas",
+      "zh": "附加编译指令"
+    },
+    {
+      "table": "option_value",
+      "key": "Advanced options are only available for Custom blend modes",
+      "zh": "高级选项仅适用于自定义混合模式"
+    },
+    {
+      "table": "option_value",
+      "key": "Affect AO",
+      "zh": "影响环境遮蔽"
+    },
+    {
+      "table": "option_value",
+      "key": "Affect Metal",
+      "zh": "影响金属度"
+    },
+    {
+      "table": "option_value",
+      "key": "Affect Smoothness",
+      "zh": "影响平滑度"
+    },
+    {
+      "table": "option_value",
+      "key": "After Post-Process",
+      "zh": "后处理之后"
+    },
+    {
+      "table": "option_value",
+      "key": "Alpha",
+      "zh": "透明度"
+    },
+    {
+      "table": "option_value",
+      "key": "Alpha Clipping",
+      "zh": "透明度裁剪"
+    },
+    {
+      "table": "option_value",
+      "key": "Anisotropy",
+      "zh": "各向异性"
+    },
+    {
+      "table": "option_value",
+      "key": "Approximate",
+      "zh": "近似"
+    },
+    {
+      "table": "option_value",
+      "key": "Back Then Front Rendering",
+      "zh": "先渲染背面再渲染正面"
+    },
+    {
+      "table": "option_value",
+      "key": "Before Refraction",
+      "zh": "折射之前"
+    },
+    {
+      "table": "option_value",
+      "key": "Blend Preserves Specular",
+      "zh": "混合时保留高光"
+    },
+    {
+      "table": "option_value",
+      "key": "Blending Mode",
+      "zh": "混合模式"
+    },
+    {
+      "table": "option_value",
+      "key": "Card",
+      "zh": "发片"
+    },
+    {
+      "table": "option_value",
+      "key": "Conserative",
+      "zh": "保守"
+    },
+    {
+      "table": "option_value",
+      "key": "Cotton Wool",
+      "zh": "棉毛"
+    },
+    {
+      "table": "option_value",
+      "key": "Depth Offset",
+      "zh": "深度偏移"
+    },
+    {
+      "table": "option_value",
+      "key": "Depth Test",
+      "zh": "深度测试"
+    },
+    {
+      "table": "option_value",
+      "key": "Depth Write",
+      "zh": "深度写入"
+    },
+    {
+      "table": "option_value",
+      "key": "Depth Writing is only available for Opaque or Custom blend modes",
+      "zh": "深度写入仅适用于不透明或自定义混合模式"
+    },
+    {
+      "table": "option_value",
+      "key": "Disabled",
+      "zh": "禁用"
+    },
+    {
+      "table": "option_value",
+      "key": "Distance Based",
+      "zh": "基于距离"
+    },
+    {
+      "table": "option_value",
+      "key": "Distortion Mode",
+      "zh": "扭曲模式"
+    },
+    {
+      "table": "option_value",
+      "key": "Distortion Only",
+      "zh": "仅扭曲"
+    },
+    {
+      "table": "option_value",
+      "key": "Double-Sided",
+      "zh": "双面"
+    },
+    {
+      "table": "option_value",
+      "key": "Edge Length Cull",
+      "zh": "边长与剔除"
+    },
+    {
+      "table": "option_value",
+      "key": "Enabled",
+      "zh": "启用"
+    },
+    {
+      "table": "option_value",
+      "key": "Energy Conserving Specular",
+      "zh": "能量守恒高光"
+    },
+    {
+      "table": "option_value",
+      "key": "Exclude From Temporal Upscalers and Anti Aliasing",
+      "zh": "排除时域升采样与抗锯齿"
+    },
+    {
+      "table": "option_value",
+      "key": "Final Color x Alpha",
+      "zh": "最终颜色乘以透明度"
+    },
+    {
+      "table": "option_value",
+      "key": "Fixed",
+      "zh": "固定"
+    },
+    {
+      "table": "option_value",
+      "key": "Flipped Normals",
+      "zh": "翻转法线"
+    },
+    {
+      "table": "option_value",
+      "key": "From AO",
+      "zh": "来自环境遮蔽"
+    },
+    {
+      "table": "option_value",
+      "key": "From AO And Bent Normal",
+      "zh": "来自环境遮蔽与弯曲法线"
+    },
+    {
+      "table": "option_value",
+      "key": "Geometric Specular AA",
+      "zh": "几何高光抗锯齿"
+    },
+    {
+      "table": "option_value",
+      "key": "Geometry Type",
+      "zh": "几何类型"
+    },
+    {
+      "table": "option_value",
+      "key": "Greater Equal",
+      "zh": "大于等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Iridescence",
+      "zh": "虹彩"
+    },
+    {
+      "table": "option_value",
+      "key": "LOD Value",
+      "zh": "细节级别值"
+    },
+    {
+      "table": "option_value",
+      "key": "Legacy",
+      "zh": "旧版"
+    },
+    {
+      "table": "option_value",
+      "key": "Less Equal",
+      "zh": "小于等于"
+    },
+    {
+      "table": "option_value",
+      "key": "Low Resolution",
+      "zh": "低分辨率"
+    },
+    {
+      "table": "option_value",
+      "key": "Mirrored Normals",
+      "zh": "镜像法线"
+    },
+    {
+      "table": "option_value",
+      "key": "Motion Vectors",
+      "zh": "运动矢量"
+    },
+    {
+      "table": "option_value",
+      "key": "Multiple Scattering Visibility",
+      "zh": "多重散射可见性"
+    },
+    {
+      "table": "option_value",
+      "key": "Native",
+      "zh": "内置"
+    },
+    {
+      "table": "option_value",
+      "key": "No Sub-Shader properties available",
+      "zh": "没有可用的子着色器属性"
+    },
+    {
+      "table": "option_value",
+      "key": "Physical",
+      "zh": "物理"
+    },
+    {
+      "table": "option_value",
+      "key": "PhysicalCinematic",
+      "zh": "电影级物理"
+    },
+    {
+      "table": "option_value",
+      "key": "Planar",
+      "zh": "平面"
+    },
+    {
+      "table": "option_value",
+      "key": "Please add your defines without the #define keywords",
+      "zh": "填写宏定义时不要包含 #define 关键字"
+    },
+    {
+      "table": "option_value",
+      "key": "Please add your includes without the #include \"\" keywords",
+      "zh": "填写包含文件时不要包含 #include 关键字及双引号"
+    },
+    {
+      "table": "option_value",
+      "key": "Please add your pragmas without the #pragma keywords",
+      "zh": "填写编译指令时不要包含 #pragma 关键字"
+    },
+    {
+      "table": "option_value",
+      "key": "Preserve Specular Lighting",
+      "zh": "保留高光照明"
+    },
+    {
+      "table": "option_value",
+      "key": "Receive Decals",
+      "zh": "接收贴花"
+    },
+    {
+      "table": "option_value",
+      "key": "Receive Fog",
+      "zh": "接收雾效"
+    },
+    {
+      "table": "option_value",
+      "key": "Receive SSR",
+      "zh": "接收屏幕空间反射"
+    },
+    {
+      "table": "option_value",
+      "key": "Receive SSR Transparent",
+      "zh": "透明材质接收屏幕空间反射"
+    },
+    {
+      "table": "option_value",
+      "key": "Receives SSR",
+      "zh": "接收屏幕空间反射"
+    },
+    {
+      "table": "option_value",
+      "key": "Rendering Pass",
+      "zh": "渲染通道"
+    },
+    {
+      "table": "option_value",
+      "key": "SRPVersion",
+      "zh": "SRP 版本"
+    },
+    {
+      "table": "option_value",
+      "key": "Scattering Mode",
+      "zh": "散射模式"
+    },
+    {
+      "table": "option_value",
+      "key": "Shadow Matte",
+      "zh": "阴影遮罩"
+    },
+    {
+      "table": "option_value",
+      "key": "Shadowmap",
+      "zh": "阴影贴图"
+    },
+    {
+      "table": "option_value",
+      "key": "Silk",
+      "zh": "丝绸"
+    },
+    {
+      "table": "option_value",
+      "key": "Simple",
+      "zh": "简化"
+    },
+    {
+      "table": "option_value",
+      "key": "Specify the shader type you want to be working on",
+      "zh": "选择要编辑的着色器类型"
+    },
+    {
+      "table": "option_value",
+      "key": "Specular AA",
+      "zh": "高光抗锯齿"
+    },
+    {
+      "table": "option_value",
+      "key": "Specular Occlusion Mode",
+      "zh": "高光遮蔽模式"
+    },
+    {
+      "table": "option_value",
+      "key": "Sphere",
+      "zh": "球体"
+    },
+    {
+      "table": "option_value",
+      "key": "Standard",
+      "zh": "标准"
+    },
+    {
+      "table": "option_value",
+      "key": "StrandProbe",
+      "zh": "发丝探针"
+    },
+    {
+      "table": "option_value",
+      "key": "Strands",
+      "zh": "发丝"
+    },
+    {
+      "table": "option_value",
+      "key": "Subsurface Scattering",
+      "zh": "次表面散射"
+    },
+    {
+      "table": "option_value",
+      "key": "Surface Type",
+      "zh": "表面类型"
+    },
+    {
+      "table": "option_value",
+      "key": "Tangent",
+      "zh": "切线"
+    },
+    {
+      "table": "option_value",
+      "key": "Thin",
+      "zh": "薄片"
+    },
+    {
+      "table": "option_value",
+      "key": "Transparent Depth Postpass",
+      "zh": "透明深度后置通道"
+    },
+    {
+      "table": "option_value",
+      "key": "Transparent Depth Prepass",
+      "zh": "透明深度预通道"
+    },
+    {
+      "table": "option_value",
+      "key": "Transparent Writes Motion Vectors",
+      "zh": "透明材质写入运动矢量"
+    },
+    {
+      "table": "option_value",
+      "key": "World",
+      "zh": "世界"
+    },
+    {
+      "table": "option_value",
+      "key": "Z Test",
+      "zh": "深度测试"
+    },
+    {
+      "table": "option_value",
+      "key": "ZWrite",
+      "zh": "深度写入"
+    },
+    {
+      "table": "option_value",
+      "key": "false",
+      "zh": "关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "true",
+      "zh": "开启"
+    },
+    {
+      "table": "option_value",
+      "key": "to",
+      "zh": "至"
+    },
+    {
+      "table": "option_value",
+      "key": "Your list is Empty!\nUse the plus button to add one.",
+      "zh": "列表为空！\n点击加号添加条目。"
+    },
+    {
+      "table": "option_value",
+      "key": "Template pass names separated by semicolon (;). Empty means it will be included in all passes.",
+      "zh": "用分号（;）分隔模板通道名称。留空表示应用于所有通道。"
+    },
+    {
+      "table": "option_value",
+      "key": "Valid SRP version numbers must have 6 digits and be equal or higher than 100000, the lowest supported version.",
+      "zh": "有效 SRP 版本号必须为六位数字，且不小于最低支持版本 100000。"
+    },
+    {
+      "table": "option_value",
+      "key": "Activates the use of tessellation which subdivides polygons to increase geometry detail using a set of rules\nDefault: OFF",
+      "zh": "启用曲面细分，按照指定规则细分多边形以增加几何细节。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "An 8 bit mask as an 0-255 integer, used when comparing the reference value with the contents of the buffer (referenceValue & readMask) comparisonFunction (stencilBufferValue & readMask)",
+      "zh": "用于比较参考值与缓冲内容的 8 位读取掩码（0–255）：先分别与读取掩码进行按位与运算，再执行比较。"
+    },
+    {
+      "table": "option_value",
+      "key": "An 8 bit mask as an 0-255 integer, used when writing to the buffer",
+      "zh": "写入模板缓冲时使用的 8 位掩码，取值为 0–255。"
+    },
+    {
+      "table": "option_value",
+      "key": "Applies a dither crossfade to be used with LOD groups for smoother transitions. Uses one interpolator\nDefault: OFF",
+      "zh": "为 LOD 组应用抖动交叉淡化，使切换更平滑。占用一个插值器。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "Base rendering queue index\n(Background = 1000, Geometry = 2000, AlphaTest = 2450, Transparent = 3000, Overlay = 4000)\nDefault: Geometry",
+      "zh": "基础渲染队列索引\n背景 = 1000，几何 = 2000，透明度测试 = 2450，透明 = 3000，覆盖 = 4000。\n默认：几何"
+    },
+    {
+      "table": "option_value",
+      "key": "Categorizes shaders into several predefined groups, usually to be used with screen shader effects\nDefault: Opaque",
+      "zh": "将着色器划分为预定义类型，通常用于屏幕特效。\n默认：不透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Default clip value to be compared with opacity alpha ( 0 = fully Opaque, 1 = fully Masked )\nDefault: 0.5",
+      "zh": "与不透明度比较的默认裁剪阈值（0 = 完全不透明，1 = 完全裁剪）。\n默认：0.5"
+    },
+    {
+      "table": "option_value",
+      "key": "Defines how the surface blends with the background\nDefault: Opaque",
+      "zh": "定义表面与背景的混合方式。\n默认：不透明"
+    },
+    {
+      "table": "option_value",
+      "key": "Disables objects to be batched and used with DrawCallBatching Default: False",
+      "zh": "禁止该物体参与绘制调用合批。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "Generates a shadow caster pass for vertex modifications and point lights in forward rendering\nDefault: ON",
+      "zh": "为顶点修改和前向渲染中的点光源生成阴影投射通道。\n默认：开启"
+    },
+    {
+      "table": "option_value",
+      "key": "If True always use surface default shadow caster Default: False",
+      "zh": "始终使用表面着色器的默认阴影投射通道。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "If True creates a material toggle to set Unity's internal reflections rendering keyword",
+      "zh": "创建材质开关，用于控制 Unity 内置反射渲染关键字。"
+    },
+    {
+      "table": "option_value",
+      "key": "If True creates a material toggle to set Unity's internal specular highlight rendering keyword",
+      "zh": "创建材质开关，用于控制 Unity 内置镜面高光渲染关键字。"
+    },
+    {
+      "table": "option_value",
+      "key": "If True forces disable instancing on shader independent of having instanced properties",
+      "zh": "无论是否存在实例化属性，均强制禁用着色器实例化。"
+    },
+    {
+      "table": "option_value",
+      "key": "If True forces instancing on shader independent of having instanced properties",
+      "zh": "无论是否存在实例化属性，均强制启用着色器实例化。"
+    },
+    {
+      "table": "option_value",
+      "key": "If True then an object that is rendered using this subshader will never cast shadows Default: False",
+      "zh": "使用此子着色器的物体不投射阴影。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "If True then an object that uses this shader will not be affected by Projectors Default: False",
+      "zh": "使用此着色器的物体不受投影器影响。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "Maximum tessellation distance\nDefault: 25",
+      "zh": "曲面细分的最大距离。\n默认：25"
+    },
+    {
+      "table": "option_value",
+      "key": "Minimum tessellation distance\nDefault: 10",
+      "zh": "曲面细分的最小距离。\n默认：10"
+    },
+    {
+      "table": "option_value",
+      "key": "Modifies Emission GI flags",
+      "zh": "修改自发光的全局光照标记。"
+    },
+    {
+      "table": "option_value",
+      "key": "Modifies positions of the subdivided faces so that the resulting surface follows the mesh normals a bit\nDefault: OFF",
+      "zh": "沿网格法线调整细分后的顶点位置，使表面更平滑。\n默认：关闭"
+    },
+    {
+      "table": "option_value",
+      "key": "Polygon culling mode prevents rendering of either back-facing or front-facing polygons to save performance, turn it off if you want to render both sides\nDefault: Back",
+      "zh": "剔除背面或正面多边形以节省性能；若要双面渲染，请关闭剔除。\n默认：背面"
+    },
+    {
+      "table": "option_value",
+      "key": "Selects and generates passes for the supported rendering paths\nDefault: All",
+      "zh": "选择并生成支持的渲染路径所需的通道。\n默认：全部"
+    },
+    {
+      "table": "option_value",
+      "key": "Sets color channel writing mask, turning all off makes the object completely invisible\nDefault: RGBA",
+      "zh": "设置颜色通道写入掩码；关闭所有通道会使物体完全不可见。\n默认：RGBA"
+    },
+    {
+      "table": "option_value",
+      "key": "Strength\nDefault: 0.5",
+      "zh": "强度。\n默认：0.5"
+    },
+    {
+      "table": "option_value",
+      "key": "Surface shader lighting model defines how the surface reflects light\nDefault: Standard",
+      "zh": "表面着色器的光照模型决定表面如何反射光线。\n默认：标准"
+    },
+    {
+      "table": "option_value",
+      "key": "Templates is a feature that is still heavily under development and users may experience some problems.\nPlease email support@amplify.pt if any issue occurs.",
+      "zh": "模板功能仍在持续开发中，可能遇到问题。\n如有问题，请联系 support@amplify.pt。"
+    },
+    {
+      "table": "option_value",
+      "key": "Tessellation factor\nDefault: 4",
+      "zh": "曲面细分因子。\n默认：4"
+    },
+    {
+      "table": "option_value",
+      "key": "Tessellation levels ccomputed based on triangle edge length on the screen\nDefault: 4",
+      "zh": "根据屏幕上的三角形边长计算曲面细分级别。\n默认：4"
+    },
+    {
+      "table": "option_value",
+      "key": "The value to be compared against (if Comparison is anything else than always) and/or the value to be written to the buffer (if either Pass, Fail or ZFail is set to replace)",
+      "zh": "用于模板比较的参考值（比较模式不是“始终通过”时）；当通过、失败或深度失败操作设为“替换”时，也用作写入缓冲的值。"
+    },
+    {
+      "table": "option_value",
+      "key": "Untick it to disable shadow receiving, this includes self-shadowing (only for forward rendering) \nDefault: ON",
+      "zh": "关闭阴影接收，包括自阴影；仅适用于前向渲染。\n默认：开启"
+    },
+    {
+      "table": "option_value",
+      "key": "Use it to group or ungroup different refraction shaders into the same or different grabpass (only for forward rendering) \nDefault: 0",
+      "zh": "通过相同或不同的抓屏通道编号，对折射着色器进行分组；仅适用于前向渲染。\n默认：0"
+    },
+    {
+      "table": "option_value",
+      "key": "Value to offset the render queue, accepts both positive values to render later and negative values to render sooner\nDefault: 0",
+      "zh": "渲染队列偏移：正值延后渲染，负值提前渲染。\n默认：0"
     }
   ]
 }

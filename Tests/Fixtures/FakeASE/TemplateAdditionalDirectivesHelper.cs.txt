@@ -1,0 +1,6 @@
+#if false
+EditorGUILayout.HelpBox( "Your list is Empty!\nUse the plus button to add one.",
+EditorGUI.LabelField( condPos, "to" )
+EditorGUI.LabelField( condPos, new GUIContent( "Passes", "Template pass names separated by semicolon (;). Empty means it will be included in all passes." ) )
+EditorGUI.LabelField( condPos, new GUIContent( "SRPVersion", "Valid SRP version numbers must have 6 digits and be equal or higher than 100000, the lowest supported version." ) )
+#endif

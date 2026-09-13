@@ -34,10 +34,12 @@ STAGE_MARKERS = {
     "VerifyRemoved": "verify-removed",
 }
 MANAGED_NAMES = {
+    "TemplateColorMaskModule.cs",
     "AmplifyShaderEditor.asmdef", "UndoParentNode.cs", "ToolsWindow.cs",
     "NodeUtils.cs", "ParentNode.cs", "ZBufferOpHelper.cs", "PaletteParent.cs",
     "PropertyNode.cs", "FunctionInput.cs", "FunctionOutput.cs", "CustomExpressionNode.cs",
     "NodeParametersWindow.cs", "ScreenColorNode.cs", "StaticSwitch.cs", "WireNode.cs",
+"TemplateMasterNode.cs", "TemplateMultiPassMasterNode.cs", "ColorMaskHelper.cs", "StandardSurface.cs", "TessellationOpHelper.cs", "MasterNode.cs", "CustomTagsHelper.cs", "DependenciesHelper.cs", "AdditionalPragmasHelper.cs", "AdditionalDefinesHelper.cs", "AdditionalIncludesHelper.cs", "TemplateTagsModule.cs", "TemplateAdditionalDirectivesHelper.cs", "AdditionalSurfaceOptionsHelper.cs", "UsePassHelper.cs",
 }
 
 

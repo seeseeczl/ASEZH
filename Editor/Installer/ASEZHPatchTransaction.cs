@@ -213,7 +213,7 @@ namespace AmplifyShaderEditor
 				string path = installation.AbsolutePathFor( fileName );
 				string text = File.ReadAllText( path, Encoding.UTF8 );
 				if( text.IndexOf( "ASELocale.", StringComparison.Ordinal ) >= 0
-					|| text.IndexOf( "ASENativeDisplay.", StringComparison.Ordinal ) >= 0 )
+					|| text.IndexOf( "ASENativeDisplay.", StringComparison.Ordinal ) >= 0 || text.IndexOf( "ASESettingsDisplay.", StringComparison.Ordinal ) >= 0 )
 					return fileName;
 			}
 			return null;

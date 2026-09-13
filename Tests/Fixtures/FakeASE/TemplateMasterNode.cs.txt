@@ -1,0 +1,4 @@
+#if false
+GUILayout.Button( OpenTemplateStr )
+EditorGUILayout.HelpBox( WarningMessage, MessageType.Warning )
+#endif

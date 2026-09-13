@@ -103,7 +103,7 @@ namespace AmplifyShaderEditor
 
 		public static GUIContent GUI( GUIContent src )
 		{
-			return src == null ? null : new GUIContent( T( src.text ), src.image, src.tooltip );
+			return ASESettingsDisplay.Label( src );
 		}
 
 		/// <summary>Clones when translating. Never mutates the source array.</summary>
@@ -139,7 +139,7 @@ namespace AmplifyShaderEditor
 				string text = ASELocaleStore.TryOrdered( source.text, ValueLookupOrder, out translated )
 					? ASELocaleStore.ApplyTranslation( source.text, translated )
 					: source.text;
-				result[ i ] = new GUIContent( text, source.image, source.tooltip );
+				result[ i ] = new GUIContent( text, source.image, T( source.tooltip ) );
 			}
 			return result;
 		}
