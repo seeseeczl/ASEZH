@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.16 — 2026-09-29
+
+- 不再汉化 FAGUI 属性名。`PropertyNode.cs` 的 FAGUI 属性勾选列表走 `EditorGUILayoutToggleLeft`，会被 `ASELocale.T` 翻成「折叠 / 渐变条 / 矢量 / 帮助框 / 提示」等；现在这一处改为直接调用 Unity 原生 `EditorGUILayout.ToggleLeft`，FAGUI 名称始终按 ASE 源码里的写法显示。
+- FAGUI 是外部框架的标识，不是界面词汇，按既有「Flyme / 自定义内容不翻译」的边界处理。
+- 普通属性列表（非 FAGUI）与其它界面文案的汉化不受影响。
+- 变更：`keep-fagui-attribute-names`；证据见 `docs/04-delivery/localization-coverage-0.0.16.md`。
+
 ## 0.0.15 — 2026-09-29
 
 - 节点标题覆盖补齐：`Camera Direction`、`Eye Index`、`View Vector`、`Matrix2X2`、`NaN`、`Matrix Split`、`Inverse Model Matrix`、`Position` 这 8 个内置节点此前不在原生白名单里，标题与 Search 列表始终显示英文；现已纳入白名单并补词条。

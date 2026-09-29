@@ -98,3 +98,14 @@ The repository SHALL provide a read-only command that, pointed at a licensed ASE
 #### Scenario: Display site without hook
 - **WHEN** a user-visible caption is drawn with no ASEZH hook
 - **THEN** the command lists it under `unhooked` with file and line number
+
+### Requirement: Framework-owned identifiers stay untranslated
+Attribute names and other identifiers owned by an external framework SHALL be displayed exactly as the ASE source provides them. The FAGUI property attribute list SHALL bypass the display overlay while the ordinary property attribute list keeps its translations.
+
+#### Scenario: FAGUI attribute list
+- **WHEN** the FAGUI attribute checklist is drawn in Chinese mode
+- **THEN** every entry keeps the name from the ASE source and is not translated
+
+#### Scenario: Ordinary property attributes stay translated
+- **WHEN** the standard property attribute list is drawn in Chinese mode
+- **THEN** its known captions are still translated

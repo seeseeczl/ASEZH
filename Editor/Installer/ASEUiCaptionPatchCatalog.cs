@@ -15,6 +15,14 @@ namespace AmplifyShaderEditor
 				patches.Add( new ASEZHPatch {
 					Id = "ui-caption-" + index++, FileName = row[ 0 ], Description = "界面文案：" + row[ 0 ],
 					Find = row[ 1 ], Replace = row[ 2 ], Marker = row[ 2 ], ReplaceAll = true } );
+			// FAGUI 的属性名是框架自己的标识，不是界面词汇；这里改成直接调用 Unity 原生 API，
+			// 让它们不经过 ASELocale.T，保持 ASE 源码里原本的写法。
+			patches.Add( new ASEZHPatch {
+				Id = "ui-optout-fagui-attribs", FileName = "PropertyNode.cs",
+				Description = "FAGUI 属性名保持原文（不汉化）",
+				Find = "m_selectedFaguiAttribsArr[ i ] = EditorGUILayoutToggleLeft(",
+				Replace = "m_selectedFaguiAttribsArr[ i ] = EditorGUILayout.ToggleLeft(",
+				Marker = "m_selectedFaguiAttribsArr[ i ] = EditorGUILayout.ToggleLeft(", ReplaceAll = true } );
 		}
 
 		static readonly string[][] Rows =

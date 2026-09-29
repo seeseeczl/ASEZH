@@ -1,4 +1,7 @@
 #if false
 GUI.Label( m_titleClickArea, m_content, UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );
 EditorGUILayout.HelpBox( "Your list is Empty!\nUse the plus button to add more.", MessageType.Info );
+m_selectedFaguiAttribsArr[ i ] = EditorGUILayoutToggleLeft(
+	displayName,
+	m_selectedFaguiAttribsArr[ i ] );
 #endif
