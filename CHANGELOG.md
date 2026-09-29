@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.13 — 2026-09-29
+
+- ASE 1.9.9 把 `ParentNode.OnNodeLayout` 改成 `OnNodeLayout( DrawInfo, NodeUpdateCache cache = null )`，旧锚点因此被判 `mismatch`、整次预检拒绝写入。安装器现在允许一个钩子声明多套同语义签名锚点，命中哪套就保留哪套签名行，`native-language-layout` 恢复正常接入。
+- 未声明的签名漂移仍然 fail-closed：照旧拒绝写入并提示按 `docs/adapt-ase-version.md` 手工接入，不做猜测。
+- 正式发布门禁的外部 ASE fixture 目标由 1.9.81 更新为当前在用的 1.9.9.5（团结 2022.3.61t9）。
+- 变更：`ase-199-native-layout-anchor`；证据见 `docs/04-delivery/native-node-display-0.0.13.md`。
+
 ## 0.0.12 — 2026-09-14
 
 - 审计 Built-in、Legacy、UI、Custom RT、URP 及 HDRP 设置面板；补齐字段标签、折叠分组、按钮、提示和模板选项的显示汉化。

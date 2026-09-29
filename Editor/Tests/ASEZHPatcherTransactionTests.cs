@@ -149,6 +149,55 @@ namespace AmplifyShaderEditor.Tests
 		}
 
 		[Test]
+		public void NativeLayoutAnchor_MatchesLegacyAndCachedOnNodeLayoutSignatures()
+		{
+			ASEZHPatch patch = FindPatch( "native-language-layout" );
+			string[] signatures =
+			{
+				"public virtual void OnNodeLayout( DrawInfo drawInfo )",
+				"public virtual void OnNodeLayout( DrawInfo drawInfo, NodeUpdateCache cache = null )"
+			};
+			foreach( string signature in signatures )
+			{
+				string text = signature + "\n\t\t{\n\t\t\tif( ContainerGraph.ChangedLightingModel )";
+				System.Text.RegularExpressions.Match match;
+				string replace;
+
+				Assert.That( ASEZHPatchAnchors.TryMatch( patch, text, out match, out replace ), Is.True, signature );
+				Assert.That( text.Substring( match.Index, match.Length ), Is.EqualTo( signature + "\n\t\t{" ) );
+				Assert.That( replace, Does.StartWith( signature + "\n\t\t{" ), signature );
+				Assert.That( replace, Does.Contain( "ASENativeDisplay.NeedsLayout( this )" ), signature );
+
+				string applied = text.Remove( match.Index, match.Length ).Insert( match.Index, replace );
+				Assert.That( applied, Does.Contain( signature + "\n\t\t{" ), "改写后签名行必须保持原样" );
+				Assert.That( ASEZHPatchAnchors.IsApplied( patch, applied ), Is.True, "再次扫描不得报 mismatch" );
+				Assert.That( ASEZHPatchAnchors.IsRemoved( patch, applied ), Is.False );
+			}
+		}
+
+		[Test]
+		public void NativeLayoutAnchor_LeavesUndeclaredSignatureAsMismatch()
+		{
+			ASEZHPatch patch = FindPatch( "native-language-layout" );
+			string text = "public virtual void OnNodeLayout( DrawInfo drawInfo, int unknown )\n\t\t{\n\t\t\tif( ContainerGraph.ChangedLightingModel )";
+			System.Text.RegularExpressions.Match match;
+			string replace;
+
+			Assert.That( ASEZHPatchAnchors.TryMatch( patch, text, out match, out replace ), Is.False );
+			Assert.That( ASEZHPatchAnchors.IsApplied( patch, text ), Is.False );
+			Assert.That( ASEZHPatchAnchors.IsRemoved( patch, text ), Is.False );
+		}
+
+		static ASEZHPatch FindPatch( string id )
+		{
+			foreach( ASEZHPatch patch in ASEZHPatcher.Catalog() )
+				if( patch.Id == id )
+					return patch;
+			Assert.Fail( "catalog 缺少 " + id );
+			return null;
+		}
+
+		[Test]
 		public void TargetResolver_RejectsCrossRootRequiredFiles()
 		{
 			var required = new List<string> { "UndoParentNode.cs", "PaletteParent.cs" };

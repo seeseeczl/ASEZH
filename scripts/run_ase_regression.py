@@ -73,6 +73,18 @@ def tree_hashes(root: Path) -> dict[str, str]:
 def fixture_version(source: Path | None, explicit: str | None) -> str:
     if explicit:
         return explicit
+    if source:
+        info = source / "Plugins" / "Editor" / "Version" / "VersionInfo.cs"
+        if info.is_file():
+            text = info.read_text(encoding="utf-8", errors="ignore")
+            parts = []
+            for name in ("Major", "Minor", "Release", "Revision"):
+                match = re.search(rf"(?:const|static)\s+byte\s+{name}\s*=\s*(\d+)", text)
+                if not match:
+                    break
+                parts.append(match.group(1))
+            if len(parts) == 4:
+                return ".".join(parts[:3] + ([parts[3]] if parts[3] != "0" else []))
     if source and (source / "package.json").is_file():
         return str(json.loads((source / "package.json").read_text(encoding="utf-8")).get("version", "unknown"))
     return "synthetic"

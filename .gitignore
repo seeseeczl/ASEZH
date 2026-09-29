@@ -13,3 +13,4 @@ UserSettings/
 *.pidb
 *.unityproj
 ASEZHDictionary.user.json
+__pycache__/

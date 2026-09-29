@@ -4,7 +4,7 @@
 
 - 真实 ASE 必须来自维护者有权使用的外部副本，通过 `--ase-source` 注入隔离临时工程。
 - 脚本只修改临时副本；ASE 源码、完整 Editor.log 和用户工程内容不得进入仓库或公共 CI artifact。
-- 正式发布目标固定为团结引擎 2022.3.61t9 + ASE 1.9.81；其必选项使用 `pass` / `fail`。
+- 正式发布目标固定为团结引擎 2022.3.61t9 + ASE 1.9.9.5；其必选项使用 `pass` / `fail`。
 - Shader 对比、真实画布交互、完整无障碍、其他 Unity 和 Windows 是扩展观察项，未执行时必须记录为 `not-run` 或 `unverified`，不得伪装成通过。
 
 ## 统一命令
@@ -30,7 +30,7 @@ python3 scripts/run_ase_regression.py \
 python3 scripts/run_ase_regression.py \
   --editor /Applications/Tuanjie/Hub/Editor/2022.3.61t9/Tuanjie.app/Contents/MacOS/Tuanjie \
   --ase-source /licensed/path/AmplifyShaderEditor \
-  --ase-version 1.9.81 \
+  --ase-version 1.9.9.5 \
   --evidence /safe/output/real-ase
 ```
 
@@ -70,7 +70,7 @@ python3 scripts/validate_delivery.py \
 
 ## 发布判定
 
-- 团结 2022.3.61t9 + ASE 1.9.81 的任一必选项 `fail` 或不可用：发布失败。
+- 团结 2022.3.61t9 + ASE 1.9.9.5 的任一必选项 `fail` 或不可用：发布失败。
 - 团结正式目标的全部必选项为 `pass`：允许更新不可变版本引用。
 - 扩展观察项即使是 `not-run` / `unverified` 也不阻止该团结目标发布，但必须原样披露。
 - tag、GitHub Release、分支保护和远端发布仍需维护者单独授权。

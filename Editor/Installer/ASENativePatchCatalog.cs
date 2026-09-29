@@ -28,8 +28,13 @@ namespace AmplifyShaderEditor
 			}
 			Add( patches, "native-title-measure", "ParentNode.cs", "UIUtils.UnZoomedNodeTitleStyle.CalcSize( m_content )",
 				"UIUtils.UnZoomedNodeTitleStyle.CalcSize( ASENativeDisplay.TitleContent( this, m_content ) )" );
-			Add( patches, "native-language-layout", "ParentNode.cs", "public virtual void OnNodeLayout( DrawInfo drawInfo )\n\t\t{",
-				"public virtual void OnNodeLayout( DrawInfo drawInfo )\n\t\t{\n\t\t\tif( ASENativeDisplay.NeedsLayout( this ) )\n\t\t\t{\n\t\t\t\tm_sizeIsDirty = true;\n\t\t\t\tforeach( var port in m_inputPorts ) port.DirtyLabelSize = true;\n\t\t\t\tforeach( var port in m_outputPorts ) port.DirtyLabelSize = true;\n\t\t\t}" );
+			string layoutGuard = "\n\t\t\tif( ASENativeDisplay.NeedsLayout( this ) )\n\t\t\t{\n\t\t\t\tm_sizeIsDirty = true;\n\t\t\t\tforeach( var port in m_inputPorts ) port.DirtyLabelSize = true;\n\t\t\t\tforeach( var port in m_outputPorts ) port.DirtyLabelSize = true;\n\t\t\t}";
+			string layoutFind = "public virtual void OnNodeLayout( DrawInfo drawInfo )\n\t\t{";
+			// ASE 1.9.9 起 OnNodeLayout 多出 NodeUpdateCache 参数：同一语义挂两套签名锚点，命中哪套就保留哪套签名行。
+			string layoutAltFind = "public virtual void OnNodeLayout( DrawInfo drawInfo, NodeUpdateCache cache = null )\n\t\t{";
+			ASEZHPatch layoutPatch = Add( patches, "native-language-layout", "ParentNode.cs", layoutFind, layoutFind + layoutGuard );
+			layoutPatch.AltFind = layoutAltFind;
+			layoutPatch.AltReplace = layoutAltFind + layoutGuard;
 			foreach( string file in new[] { "PropertyNode.cs", "FunctionInput.cs", "FunctionOutput.cs" } )
 				Add( patches, "native-title-" + file, file,
 					"GUI.Label( m_titleClickArea, m_content, UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );",
@@ -51,10 +56,12 @@ namespace AmplifyShaderEditor
 				"GUI.Label( m_outputPorts[ i ].LabelPosition, ASENativeDisplay.Port( this, false, m_outputPorts[ i ].PortId, m_outputPorts[ i ].Name, m_outputPorts[ i ].IsEditable ), UIUtils.OutputPortLabel );" );
 		}
 
-		static void Add( List<ASEZHPatch> patches, string id, string file, string find, string replace )
+		static ASEZHPatch Add( List<ASEZHPatch> patches, string id, string file, string find, string replace )
 		{
-			patches.Add( new ASEZHPatch { Id = id, FileName = file, Description = "原生节点显示：" + id,
-				Find = find, Replace = replace, Marker = replace, ReplaceAll = id != "native-language-layout" } );
+			var patch = new ASEZHPatch { Id = id, FileName = file, Description = "原生节点显示：" + id,
+				Find = find, Replace = replace, Marker = replace, ReplaceAll = id != "native-language-layout" };
+			patches.Add( patch );
+			return patch;
 		}
 	}
 }

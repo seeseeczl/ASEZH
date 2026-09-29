@@ -9,6 +9,8 @@ namespace AmplifyShaderEditor
 	internal static class ASEZHPatchTransforms
 	{
 		const string LocaleAssemblyName = "ASEZH.Editor";
+		static readonly Regex s_aseReferences = new Regex( "\"references\"\\s*:\\s*\\[(?<body>[^\\]]*)\\]", RegexOptions.Singleline );
+
 		internal static ASEZHPatchResult EnsureAseAssemblyReference( bool apply )
 		{
 			var result = new ASEZHPatchResult { Id = "ase-asmdef-ref", File = "AmplifyShaderEditor.asmdef" };
@@ -34,16 +36,15 @@ namespace AmplifyShaderEditor
 				result.Detail = "ASE 使用独立程序集，必须引用 ASEZH.Editor，否则 ASELocale 找不到";
 				return result;
 			}
-			if( text.Contains( "\"references\": []" ) )
-				text = text.Replace( "\"references\": []", "\"references\": [ \"" + LocaleAssemblyName + "\" ]" );
-			else if( text.Contains( "\"references\":[]" ) )
-				text = text.Replace( "\"references\":[]", "\"references\":[\"" + LocaleAssemblyName + "\"]" );
-			else
+			Match emptyReferences = s_aseReferences.Match( text );
+			if( !emptyReferences.Success || emptyReferences.Groups[ "body" ].Value.Trim( ' ', '\t', '\r', '\n', ',' ).Length != 0 )
 			{
 				result.Status = "mismatch";
 				result.Detail = "无法自动写入 references，请在 AmplifyShaderEditor.asmdef 中手动加入 ASEZH.Editor";
 				return result;
 			}
+			text = text.Remove( emptyReferences.Index, emptyReferences.Length )
+				.Insert( emptyReferences.Index, "\"references\": [ \"" + LocaleAssemblyName + "\" ]" );
 			File.WriteAllText( abs, text, new UTF8Encoding( false ) );
 			result.Status = "patched";
 			result.Detail = "已让 AmplifyShaderEditor 引用 ASEZH.Editor";
@@ -69,8 +70,17 @@ namespace AmplifyShaderEditor
 				result.Detail = "未引用 ASEZH.Editor";
 				return result;
 			}
-			string next = text.Replace( "\"references\": [ \"" + LocaleAssemblyName + "\" ]", "\"references\": []" )
-				.Replace( "\"references\":[\"" + LocaleAssemblyName + "\"]", "\"references\":[]" );
+			Match references = s_aseReferences.Match( text );
+			string body = references.Success ? references.Groups[ "body" ].Value : string.Empty;
+			// Unity 会按自己的风格重写 asmdef（引用数组可能是多行），所以按数组内容判断而不是按原始写法。
+			if( !references.Success
+				|| body.Replace( "\"" + LocaleAssemblyName + "\"", string.Empty ).Replace( ",", string.Empty ).Trim().Length != 0 )
+			{
+				result.Status = "mismatch";
+				result.Detail = "asmdef 还有其它 references，请手工删掉 ASEZH.Editor";
+				return result;
+			}
+			string next = text.Remove( references.Index, references.Length ).Insert( references.Index, "\"references\": []" );
 			if( next == text )
 			{
 				result.Status = "mismatch";
@@ -108,16 +118,15 @@ namespace AmplifyShaderEditor
 				result.Detail = patch.Description + "（已识别等价局部变量写法）";
 				return result;
 			}
-			if( !string.IsNullOrEmpty( patch.Marker ) && ContainsFlexible( text, patch.Marker )
-				&& ( !patch.ReplaceAll || !ContainsFlexible( text, patch.Find ) ) )
+			if( ASEZHPatchAnchors.IsApplied( patch, text ) )
 			{
 				result.Status = "applied";
 				result.Detail = patch.Description;
 				return result;
 			}
 			Match findMatch;
-			if( string.IsNullOrEmpty( patch.Find ) || ( !TryMatchFlexible( text, patch.Find, out findMatch )
-				&& ( string.IsNullOrEmpty( patch.LegacyReplace ) || !TryMatchFlexible( text, patch.LegacyReplace, out findMatch ) ) ) )
+			string replaceText;
+			if( !ASEZHPatchAnchors.TryMatch( patch, text, out findMatch, out replaceText ) )
 			{
 				if( ASEZHSpecialPatchTransforms.IsAlternatePaletteItemOverload( patch.Id, text ) )
 				{
@@ -135,11 +144,12 @@ namespace AmplifyShaderEditor
 				result.Detail = patch.Description;
 				return result;
 			}
-			string adapted = AdaptStyle( patch.Replace, findMatch.Value );
+			string adapted = AdaptStyle( replaceText, findMatch.Value );
 			string next = text.Remove( findMatch.Index, findMatch.Length ).Insert( findMatch.Index, adapted );
 			if( patch.ReplaceAll )
-				while( TryMatchFlexible( next, patch.Find, out findMatch ) )
-					next = next.Remove( findMatch.Index, findMatch.Length ).Insert( findMatch.Index, AdaptStyle( patch.Replace, findMatch.Value ) );
+				foreach( KeyValuePair<string, string> variant in ASEZHPatchAnchors.Variants( patch ) )
+					while( TryMatchFlexible( next, variant.Key, out findMatch ) )
+						next = next.Remove( findMatch.Index, findMatch.Length ).Insert( findMatch.Index, AdaptStyle( variant.Value, findMatch.Value ) );
 			if( next == text )
 			{
 				result.Status = "mismatch";
@@ -172,14 +182,9 @@ namespace AmplifyShaderEditor
 			result.File = assetPath;
 			string abs = ASEZHPatcher.ToAbsolute( assetPath );
 			string text = File.ReadAllText( abs, Encoding.UTF8 );
-			Match replaceMatch;
-			if( !string.IsNullOrEmpty( patch.Replace ) && TryMatchFlexible( text, patch.Replace, out replaceMatch ) )
+			foreach( KeyValuePair<string, string> variant in ASEZHPatchAnchors.Variants( patch ) )
 			{
-				string adapted = AdaptStyle( patch.Find, replaceMatch.Value );
-				string next = text.Remove( replaceMatch.Index, replaceMatch.Length ).Insert( replaceMatch.Index, adapted );
-				if( patch.ReplaceAll )
-					while( TryMatchFlexible( next, patch.Replace, out replaceMatch ) )
-						next = next.Remove( replaceMatch.Index, replaceMatch.Length ).Insert( replaceMatch.Index, AdaptStyle( patch.Find, replaceMatch.Value ) );
+				string next = ASEZHPatchAnchors.ReverseVariant( text, variant.Value, variant.Key, patch.ReplaceAll );
 				if( next != text )
 				{
 					File.WriteAllText( abs, next, new UTF8Encoding( false ) );
@@ -187,8 +192,7 @@ namespace AmplifyShaderEditor
 					return result;
 				}
 			}
-			if( !string.IsNullOrEmpty( patch.Find ) && ContainsFlexible( text, patch.Find )
-				&& ( string.IsNullOrEmpty( patch.Marker ) || !ContainsFlexible( text, patch.Marker ) ) )
+			if( ASEZHPatchAnchors.IsRemoved( patch, text ) )
 			{
 				result.Status = "removed";
 				result.Detail = "源码已是接入前片段";

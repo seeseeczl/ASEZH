@@ -33,7 +33,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--real-ase", type=Path, help="Also copy and test this licensed ASE source")
     parser.add_argument("--evidence", type=Path)
     parser.add_argument("--release", action="store_true",
-                        help="Require the Tuanjie 2022.3.61t9 + ASE 1.9.81 release target")
+                        help="Require the Tuanjie 2022.3.61t9 + ASE 1.9.9.5 release target")
     parser.add_argument("--allow-blocked", action="store_true", help=argparse.SUPPRESS)
     return parser.parse_args()
 
@@ -203,9 +203,9 @@ def main() -> int:
                 status, detail, _ = run_gate(args.editor, None, evidence / "synthetic")
                 report["gates"]["synthetic_tuanjie"] = {"status": status, "detail": detail}
                 status, detail, real = run_gate(args.editor, args.real_ase, evidence / "real-ase")
-                if real.get("ase_version") != "1.9.81":
+                if real.get("ase_version") != "1.9.9.5":
                     status = "fail"
-                    detail += f" ase_version={real.get('ase_version')} expected=1.9.81"
+                    detail += f" ase_version={real.get('ase_version')} expected=1.9.9.5"
                 report["gates"]["tuanjie_real_ase"] = {"status": status, "detail": detail}
     else:
         report["gates"]["tuanjie_release_target"] = {

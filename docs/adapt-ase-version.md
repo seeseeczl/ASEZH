@@ -48,7 +48,10 @@ ASE 没有稳定的公共 UI API。版本差异几乎都在 `UndoParentNode` 和
 1. 用官方 ASE 覆盖源码前，备份已打补丁的文件或重新从 git 提交。
 2. 覆盖后重新打开 Installer 扫描。
 3. `applied` 变 `mismatch` 的条目，按新源码把同一语义接回去。
-4. 词典一般不用改；只有新节点英文文案才需要加 `ASEZHDictionary.json` 条目。
+4. 如果新版本只是给被挂钩的方法加了参数（例如 1.9.9 给 `OnNodeLayout` 加 `NodeUpdateCache`），
+   目录里已有备用锚点，扫描会是 `ready` / `applied`；命中哪套签名就保留哪套签名行。
+   没被备用锚点覆盖的签名不要猜，按第 3 步补锚点并保持 fail-closed 拒绝。
+5. 词典一般不用改；只有新节点英文文案才需要加 `ASEZHDictionary.json` 条目。
 
 ## 6. 词典与引擎分离
 

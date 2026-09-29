@@ -2,7 +2,9 @@
 
 ## Purpose
 Defines how the ASEZH installer attaches display hooks to Amplify Shader Editor source without breaking compilation across ASE formatting variants.
+
 ## Requirements
+
 ### Requirement: Hook matching ignores whitespace
 The installer SHALL treat tab/space and newline differences as the same when matching Find and Marker text. A stock ASE method whose tokens match a catalog Find SHALL be `ready` or `patched`, not `mismatch`, solely because indent differs.
 
@@ -132,3 +134,22 @@ The Installer SHALL distinguish success, safe no-op, preflight refusal, failed-a
 #### Scenario: Restored failure is not shown as success
 - **WHEN** a patch session fails and restores all pre-operation content
 - **THEN** the summary states that no change was committed and does not display an Apply or Remove success message
+
+### Requirement: Hook anchors survive ASE signature drift
+When a supported ASE release changes only the parameter list of a hooked method, the installer SHALL try every anchor declared for that hook and SHALL preserve the source's own signature line in the replacement. It SHALL report such a hook as `ready` before Apply and as `applied` after Apply, never `mismatch`. Signature drift that no declared anchor covers SHALL remain `mismatch` and SHALL write nothing.
+
+#### Scenario: OnNodeLayout with an added cache parameter
+- **WHEN** `ParentNode.cs` declares `public virtual void OnNodeLayout( DrawInfo drawInfo, NodeUpdateCache cache = null )`
+- **THEN** `native-language-layout` is `ready`, Apply inserts the layout guard after the opening brace, and the signature line is unchanged
+
+#### Scenario: Previous OnNodeLayout signature stays ready
+- **WHEN** `ParentNode.cs` declares `public virtual void OnNodeLayout( DrawInfo drawInfo )`
+- **THEN** `native-language-layout` is still `ready` or `applied`
+
+#### Scenario: Rescan after apply on the drifted signature
+- **WHEN** the layout guard was applied on the drifted signature
+- **THEN** Scan reports `applied` and does not report `mismatch`
+
+#### Scenario: Undeclared signature drift stays fail-closed
+- **WHEN** `ParentNode.cs` declares an `OnNodeLayout` parameter list that no declared anchor covers
+- **THEN** the installer reports `mismatch` and writes nothing

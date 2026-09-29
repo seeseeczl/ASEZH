@@ -25,6 +25,8 @@ namespace AmplifyShaderEditor
 		public string Replace;
 		public string Marker;
 		public string LegacyReplace;
+		public string AltFind;
+		public string AltReplace;
 		public bool ReplaceAll;
 	}
 

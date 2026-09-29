@@ -36,6 +36,8 @@
 
 `v0.0.10` 修复 ASE 1.9.81 已有等价局部变量实现被 `palette-search-width` 误判为 `mismatch` 的问题；变量数据流负例、无回执撤回保护和真实 ASE 生命周期纳入同一团结发布门禁。截图工程的 ASE 副本在隔离工程扫描得到 `ASEZH_GATE_OK stage=baseline`，未修改原工程。
 
+`v0.0.13` 修复 ASE 1.9.9 给 `OnNodeLayout` 增加 `NodeUpdateCache` 参数后 `native-language-layout` 被判 `mismatch` 的问题：钩子现在可以声明同一语义的多套签名锚点，命中哪套就保留哪套签名行；同时让 `AmplifyShaderEditor.asmdef` 的引用增删兼容 Unity 自己重写的多行格式。正式目标随之更新为团结 2022.3.61t9 + ASE 1.9.9.5，合成与许可 ASE 六阶段、preimage 恢复和 EditMode 23/23 全部通过，证据见 `docs/04-delivery/native-node-display-0.0.13.md`。
+
 ## 最小追溯链
 
 | 交付 ID / 版本 | OpenSpec change | 需求 / 回归 ID | 实现 revision | 验证证据 |
@@ -43,3 +45,4 @@
 | `REL-ASEZH-0008` / `0.0.8` | `harden-patcher-and-regression-gates` | `AUD-FLOW-001`、`AUD-TARGET-001`、`REG-PATCH-TRANSACTION-001`、`REG-ASE-LIFECYCLE-001` | `v0.0.8` / `Tuanjie 2022.3.61t9` / `pass` | 正式发布复验写入 `/private/tmp/asezh-release-gate-0.0.8/delivery-manifest.json`；扩展观察状态见上表 |
 | `REL-ASEZH-0009` / `0.0.9` | 主规范 `release-regression-gates` | `BUG-META-GUID-001`、`REG-META-GUID-001` | `v0.0.9` / `Tuanjie 2022.3.61t9` / `pass` | `/private/tmp/asezh-release-gate-0.0.9/delivery-manifest.json`；合成/真实 ASE 六阶段通过，GUID/YAML 警告扫描为零 |
 | `REL-ASEZH-0010` / `0.0.10` | `recognize-equivalent-palette-search-width` | `BUG-PALETTE-WIDTH-001`、`REG-PALETTE-WIDTH-001` | `v0.0.10` / `Tuanjie 2022.3.61t9` / `pass` | `/private/tmp/asezh-release-gate-0.0.10/delivery-manifest.json`；合成/真实 ASE 六阶段与 preimage 恢复通过，EditMode 9/9，截图工程 ASE 隔离扫描通过 |
+| `REL-ASEZH-0013` / `0.0.13` | `ase-199-native-layout-anchor` | `BUG-ASE-199-NODELAYOUT-001`、`BUG-ASMDEF-REFS-001` | `v0.0.13` / `Tuanjie 2022.3.61t9` / `pass` | `/private/tmp/asezh-evidence-final/manifest.json`；团结 2022.3.61t9 + ASE 1.9.9.5 六阶段与 preimage 恢复通过，见 `docs/04-delivery/native-node-display-0.0.13.md` |
