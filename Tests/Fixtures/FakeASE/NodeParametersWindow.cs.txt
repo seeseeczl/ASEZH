@@ -1,4 +1,6 @@
 #if false
 m_dummyContent.text = selectedNode.Attributes.Name;
 m_dummyContent.text = "Output Node";
+EditorGUILayout.PropertyField( temo, new GUIContent( "    Description" ) );
+EditorGUILayout.PropertyField( url , new GUIContent( "Custom URL" ) );
 #endif

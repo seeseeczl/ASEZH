@@ -1,0 +1,10 @@
+#if false
+public static GUIContent showCurrent = new GUIContent( "Compile and show code | ▾" );
+GUI.enabled = m_allowOpenInCanvas;
+if( GUILayout.Button( "Open in Shader Editor" ) )
+{
+}
+if( GUILayout.Button( "Open in Text Editor" ) )
+{
+}
+#endif

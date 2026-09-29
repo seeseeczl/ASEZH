@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.0.15 — 2026-09-29
+
+- 节点标题覆盖补齐：`Camera Direction`、`Eye Index`、`View Vector`、`Matrix2X2`、`NaN`、`Matrix Split`、`Inverse Model Matrix`、`Position` 这 8 个内置节点此前不在原生白名单里，标题与 Search 列表始终显示英文；现已纳入白名单并补词条。
+- 补 5 个白名单节点的缺失词条：`Camera Position`、`View Direction`、`Main Light Attenuation`、`Main Light Color`、`Matrix Create`；补 `Debug` 分类词条。
+- `Toggle Switch` 节点自己绘制标题、绕过 `ParentNode` 的钩子，现按 `ScreenColor` / `StaticSwitch` 的同样方式接入。
+- `scripts/audit_localization.py` 增加节点标题三类检查（类型白名单、节点词条、分类词条），可重复验证不再回到英文。
+- 只改显示：节点重命名、自定义节点、Flyme 分类、Shader 标识符与平台名不变。
+- 变更：`native-node-title-coverage`；证据见 `docs/04-delivery/native-node-display-0.0.15.md`。
+
+## 0.0.14 — 2026-09-29
+
+- 新增 `scripts/audit_localization.py`：指向许可 ASE 源码即可只读列出三类显示层缺口——已挂钩但词典缺词、包装方法缺词、完全没有钩子的显示点。
+- 补齐节点检视面板、画布与 Inspector 上仍显示英文的 13 处固定文案：数组列表空状态提示、`Description` / `Custom URL`、Triplanar 的空贴图与 `Select`、Shader/Material Inspector 的打开与编译按钮、`Set as Preview`、`Get Local Var` 提示，以及端口图例窗口的 `Helper` / `Wiki Page`。
+- 补齐 3 条"接了钩子但词典没有词"的静默漏译：`Assign Keyword`、`Depth Mode`、`Keys`。
+- 仍是只改显示：`TextField` 值、Shader 标识符、Keyword、平台名与序列化数据不变。
+- 变更：`localization-gap-audit`；证据见 `docs/04-delivery/localization-coverage-0.0.14.md`。
+
 ## 0.0.13 — 2026-09-29
 
 - ASE 1.9.9 把 `ParentNode.OnNodeLayout` 改成 `OnNodeLayout( DrawInfo, NodeUpdateCache cache = null )`，旧锚点因此被判 `mismatch`、整次预检拒绝写入。安装器现在允许一个钩子声明多套同语义签名锚点，命中哪套就保留哪套签名行，`native-language-layout` 恢复正常接入。

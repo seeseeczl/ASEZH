@@ -1,0 +1,6 @@
+#if false
+GUI.Label( startPickerClone, "None (Texture2D)", UIUtils.MiniObjectFieldThumbOverlay );
+GUI.Label( pickerButtonClone, "Select", UIUtils.MiniSamplerButton );
+GUI.Label( secondPickerClone, "None (Texture2D)", UIUtils.MiniObjectFieldThumbOverlay );
+GUI.Label( thirdPickerClone, "None (Texture2D)", UIUtils.MiniObjectFieldThumbOverlay );
+#endif

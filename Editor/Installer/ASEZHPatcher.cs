@@ -200,6 +200,7 @@ namespace AmplifyShaderEditor
 				}
 			};
 			ASENativePatchCatalog.AddTo( patches );
+			ASEUiCaptionPatchCatalog.AddTo( patches );
 			ASESettingsUndoCatalog.AddTo( patches );
 			ASESettingsPatchCatalog.AddTo( patches );
 			return patches;

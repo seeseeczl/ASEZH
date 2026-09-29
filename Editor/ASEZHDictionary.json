@@ -7084,6 +7084,156 @@
       "table": "option_value",
       "key": "Value to offset the render queue, accepts both positive values to render later and negative values to render sooner\nDefault: 0",
       "zh": "渲染队列偏移：正值延后渲染，负值提前渲染。\n默认：0"
+    },
+    {
+      "table": "option_label",
+      "key": "Assign Keyword",
+      "zh": "指定关键字"
+    },
+    {
+      "table": "option_label",
+      "key": "Depth Mode",
+      "zh": "深度模式"
+    },
+    {
+      "table": "option_label",
+      "key": "Keys",
+      "zh": "关键点"
+    },
+    {
+      "table": "option_label",
+      "key": "Description",
+      "zh": "说明"
+    },
+    {
+      "table": "option_label",
+      "key": "Custom URL",
+      "zh": "自定义 URL"
+    },
+    {
+      "table": "option_label",
+      "key": "None (Texture2D)",
+      "zh": "无（Texture2D）"
+    },
+    {
+      "table": "option_label",
+      "key": "Select",
+      "zh": "选择"
+    },
+    {
+      "table": "option_label",
+      "key": "Compile and show code | ▾",
+      "zh": "编译并显示代码 | ▾"
+    },
+    {
+      "table": "option_label",
+      "key": "Open in Shader Editor",
+      "zh": "在 Shader Editor 中打开"
+    },
+    {
+      "table": "option_label",
+      "key": "Open in Text Editor",
+      "zh": "用文本编辑器打开"
+    },
+    {
+      "table": "option_label",
+      "key": "Set as Preview",
+      "zh": "设为预览"
+    },
+    {
+      "table": "option_label",
+      "key": "Your list is Empty!\nUse the plus button to add more.",
+      "zh": "列表为空！\n点击加号按钮添加。"
+    },
+    {
+      "table": "option_label",
+      "key": "This node is not being referenced by any Get Local Var.",
+      "zh": "该节点没有被任何 Get Local Var 引用。"
+    },
+    {
+      "table": "panel",
+      "key": "Helper",
+      "zh": "帮助"
+    },
+    {
+      "table": "option_label",
+      "key": "Shows helper info for ASE users",
+      "zh": "显示端口与节点的辅助信息"
+    },
+    {
+      "table": "panel",
+      "key": "Wiki Page",
+      "zh": "Wiki 页面"
+    },
+    {
+      "table": "node_title",
+      "key": "Camera Direction",
+      "zh": "摄像机方向"
+    },
+    {
+      "table": "node_title",
+      "key": "Eye Index",
+      "zh": "眼睛索引"
+    },
+    {
+      "table": "node_title",
+      "key": "View Vector",
+      "zh": "视图向量"
+    },
+    {
+      "table": "node_title",
+      "key": "Matrix2X2",
+      "zh": "2x2 矩阵"
+    },
+    {
+      "table": "node_title",
+      "key": "NaN",
+      "zh": "NaN（非数）"
+    },
+    {
+      "table": "node_title",
+      "key": "Matrix Split",
+      "zh": "矩阵拆分"
+    },
+    {
+      "table": "node_title",
+      "key": "Inverse Model Matrix",
+      "zh": "模型矩阵的逆"
+    },
+    {
+      "table": "node_title",
+      "key": "Position",
+      "zh": "位置"
+    },
+    {
+      "table": "node_title",
+      "key": "Camera Position",
+      "zh": "摄像机位置"
+    },
+    {
+      "table": "node_title",
+      "key": "View Direction",
+      "zh": "视图方向"
+    },
+    {
+      "table": "node_title",
+      "key": "Main Light Attenuation",
+      "zh": "主光衰减"
+    },
+    {
+      "table": "node_title",
+      "key": "Main Light Color",
+      "zh": "主光颜色"
+    },
+    {
+      "table": "node_title",
+      "key": "Matrix Create",
+      "zh": "矩阵构造"
+    },
+    {
+      "table": "category",
+      "key": "Debug",
+      "zh": "调试"
     }
   ]
 }

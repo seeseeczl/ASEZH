@@ -1,0 +1,5 @@
+#if false
+if( GUILayout.Button( "Open in Shader Editor" ) )
+{
+}
+#endif

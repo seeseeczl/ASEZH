@@ -40,6 +40,8 @@ MANAGED_NAMES = {
     "PropertyNode.cs", "FunctionInput.cs", "FunctionOutput.cs", "CustomExpressionNode.cs",
     "NodeParametersWindow.cs", "ScreenColorNode.cs", "StaticSwitch.cs", "WireNode.cs",
 "TemplateMasterNode.cs", "TemplateMultiPassMasterNode.cs", "ColorMaskHelper.cs", "StandardSurface.cs", "TessellationOpHelper.cs", "MasterNode.cs", "CustomTagsHelper.cs", "DependenciesHelper.cs", "AdditionalPragmasHelper.cs", "AdditionalDefinesHelper.cs", "AdditionalIncludesHelper.cs", "TemplateTagsModule.cs", "TemplateAdditionalDirectivesHelper.cs", "AdditionalSurfaceOptionsHelper.cs", "UsePassHelper.cs",
+"TriplanarNode.cs", "CustomShaderInspector.cs", "CustomMaterialInspector.cs", "RegisterLocalVarNode.cs", "PortLegendInfo.cs",
+"ToggleSwitchNode.cs",
 }
 
 

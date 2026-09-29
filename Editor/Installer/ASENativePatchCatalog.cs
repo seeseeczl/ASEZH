@@ -44,12 +44,17 @@ namespace AmplifyShaderEditor
 				"GUI.Label( m_titleClickArea , ASENativeDisplay.TitleContent( this, m_content ) , UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );" );
 			Add( patches, "native-panel-title", "NodeParametersWindow.cs", "m_dummyContent.text = selectedNode.Attributes.Name;",
 				"m_dummyContent.text = ASENativeDisplay.Title( selectedNode, selectedNode.Attributes.Name );" );
-			foreach( string file in new[] { "ScreenColorNode.cs", "StaticSwitch.cs" } )
+			// 这三个节点自己画标题，不走 ParentNode 的钩子。
+			foreach( string[] title in new[]
 			{
-				string label = file == "StaticSwitch.cs" ? "StaticSwitchStr" : "\"Grab Screen Color\"";
-				Add( patches, "native-title-" + file, file,
-					"GUI.Label( titlePos, " + label + ", UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );",
-					"GUI.Label( titlePos, ASENativeDisplay.Title( this, " + label + " ), UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );" );
+				new[] { "ScreenColorNode.cs", "\"Grab Screen Color\"" },
+				new[] { "StaticSwitch.cs", "StaticSwitchStr" },
+				new[] { "ToggleSwitchNode.cs", "ToggleSwitchStr" },
+			} )
+			{
+				Add( patches, "native-title-" + title[ 0 ], title[ 0 ],
+					"GUI.Label( titlePos, " + title[ 1 ] + ", UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );",
+					"GUI.Label( titlePos, ASENativeDisplay.Title( this, " + title[ 1 ] + " ), UIUtils.GetCustomStyle( CustomStyle.NodeTitle ) );" );
 			}
 			Add( patches, "native-wire-label", "WireNode.cs",
 				"GUI.Label( m_outputPorts[ i ].LabelPosition, m_outputPorts[ i ].Name, UIUtils.OutputPortLabel );",

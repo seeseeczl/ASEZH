@@ -1,0 +1,6 @@
+#if false
+private GUIContent m_content = new GUIContent( "Helper", "Shows helper info for ASE users" );
+if( GUILayout.Button( "Wiki Page" ) )
+{
+}
+#endif
